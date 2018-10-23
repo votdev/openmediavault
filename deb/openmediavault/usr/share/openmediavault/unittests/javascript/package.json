@@ -8,7 +8,9 @@
 	"dependencies": {
 		"jest": "^23.6.0"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"jsdom": "^12.2.0"
+	},
 	"scripts": {
 		"test": "jest --watchAll"
 	},
