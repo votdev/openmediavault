@@ -26,7 +26,7 @@ set -e
 
 remove_action() {
 	# Activate trigger to purge cached files.
-	dpkg-trigger update-fixperms
+	dpkg-trigger update-workbench
 }
 
 case "$1" in

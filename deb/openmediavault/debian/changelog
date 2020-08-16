@@ -1,3 +1,9 @@
+openmediavault (6.0-1) UNRELEASED; urgency=low
+
+  * Reimplement UI.
+
+ -- Volker Theile <volker.theile@openmediavault.org>  Mon, 14 Dec 2020 20:28:37 +0100
+
 openmediavault (5.6.2-1) stable; urgency=low
 
   * Fix bug in GID processing at the user import dialog.

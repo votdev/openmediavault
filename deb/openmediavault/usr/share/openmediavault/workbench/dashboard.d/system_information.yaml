@@ -1,0 +1,25 @@
+version: "1.0"
+type: dashboard-widget
+data:
+  id: bb8fa1b6-df13-11ea-9ef7-933dec0aeaf3
+  title: _("System Information")
+  type: datatable
+  permissions:
+    role:
+    - admin
+  datatable:
+    hasHeader: false
+    columnMode: flex
+    columns:
+    - prop: key
+      flexGrow: 1
+      cellClass: omv-text-bold
+      cellTemplateName: template
+      cellTemplateConfig: "{{ key | translate }}"
+    - prop: value
+      flexGrow: 3
+    store:
+      proxy:
+        service: System
+        get:
+          method: getInformation

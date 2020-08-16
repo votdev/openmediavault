@@ -43,7 +43,7 @@ remove_action() {
 	# file has been removed by the package management.
 	deb-systemd-invoke force-reload rsyslog || :
 	# Activate trigger to purge cached files.
-	dpkg-trigger update-fixperms
+	dpkg-trigger update-workbench
 }
 
 case "$1" in

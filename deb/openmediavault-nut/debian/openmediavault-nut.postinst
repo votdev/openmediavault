@@ -59,7 +59,7 @@ case "$1" in
 		# Activate package triggers. These triggers are only set during the
 		# package installation.
 		########################################################################
-		dpkg-trigger update-fixperms
+		dpkg-trigger update-workbench
 		dpkg-trigger update-locale
 
 		########################################################################
