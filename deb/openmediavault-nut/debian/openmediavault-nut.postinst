@@ -56,11 +56,9 @@ case "$1" in
 		fi
 
 		########################################################################
-		# Activate package triggers. These triggers are only set during the
-		# package installation.
+		# Activate trigger to rebuild workbench configuration files.
 		########################################################################
 		dpkg-trigger update-workbench
-		dpkg-trigger update-locale
 
 		########################################################################
 		# Initialize and migrate configuration database.

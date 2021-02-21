@@ -98,9 +98,9 @@ case "$1" in
 			####################################################################
 			# Setup various file permissions.
 			####################################################################
-			# Allow the web interface to read/write cached files.
 			chmod 775 "${OMV_CACHE_DIR}"
-			chown ":${OMV_WEBGUI_FILE_OWNERGROUP_NAME}" "${OMV_CACHE_DIR}"
+			chown -R "${OMV_WEBGUI_FILE_OWNERGROUP_NAME}:${OMV_WEBGUI_FILE_OWNERGROUP_NAME}" \
+				"${OMV_DOCUMENTROOT_DIR}"
 
 			####################################################################
 			# Update the local plugin packages archive. The 'packages' command
@@ -160,14 +160,9 @@ case "$1" in
 		deb-systemd-helper enable openmediavault-issue.service
 
 		########################################################################
-		# Trigger file permission update.
+		# Activate trigger to rebuild workbench configuration files.
 		########################################################################
 		dpkg-trigger update-workbench
-
-		########################################################################
-		# Trigger locale files creation/update.
-		########################################################################
-		dpkg-trigger update-locale
 
 		########################################################################
 		# Migrate configuration database.
@@ -313,14 +308,9 @@ case "$1" in
 		########################################################################
 		for trigger in $2; do
 			case "${trigger}" in
-				update-locale)
-					echo "Updating locale files ..."
-					omv_install_locale
-				;;
-
 				update-workbench)
 					echo "Updating workbench configuration files ..."
-					omv-mkworkbench || :
+					omv-mkworkbench all || :
 				;;
 
 				restart-engined)

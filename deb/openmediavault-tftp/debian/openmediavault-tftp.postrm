@@ -25,8 +25,7 @@ set -e
 . /usr/share/openmediavault/scripts/helper-functions
 
 remove_action() {
-	echo "Updating configuration database ..."
-	# Activate trigger to purge cached files.
+	# Activate trigger to rebuild workbench configuration files.
 	dpkg-trigger update-workbench
 }
 

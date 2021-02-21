@@ -23,6 +23,7 @@ import glob
 import json
 import os
 import re
+import shutil
 import sys
 from typing import Any, Callable, Dict, List, Union
 
@@ -31,6 +32,7 @@ import openmediavault.collectiontools
 import openmediavault.datamodel.schema
 import openmediavault.json.schema
 import openmediavault.log
+import polib
 import yaml
 
 import openmediavault
@@ -56,7 +58,7 @@ def load_yaml_files(schema: openmediavault.datamodel.Schema,
                     *,
                     validate: Callable[[str, Dict, List[Dict]], None] = None) -> List[Dict]:
     result = []
-    for name in glob.glob(os.path.join(dir_path, '*.yaml')):
+    for name in glob.iglob(os.path.join(dir_path, '*.yaml')):
         with open(name, 'r') as fd:
             content = strip_gettext(yaml.load(fd))
             openmediavault.log.info('Processing manifest "%s" ...',
@@ -84,10 +86,13 @@ def write_json_file(file_path: str, data: Union[Dict, List], verbose: bool = Fal
     :param data: The data written to the file.
     :param verbose: Print information to STDOUT. Defaults to `False`.
     """
+    user = openmediavault.getenv(
+        'OMV_WEBGUI_FILE_OWNERGROUP_NAME', 'openmediavault-webgui')
     with open(file_path, 'w') as fd:
         fd.write(json.dumps(data, indent=2, sort_keys=True))
-        openmediavault.log.info(
-            'Successfully created "%s".', file_path, verbose=verbose)
+    shutil.chown(file_path, user, user)
+    openmediavault.log.info('Successfully created "%s".',
+                            file_path, verbose=verbose)
 
 
 def load_components(skip_invalid: bool = True, verbose: bool = False) -> Dict:
@@ -318,6 +323,35 @@ def log(ctx):
     log_configs = load_yaml_files(
         log_schema, log_dir, ctx.skip_invalid, ctx.verbose)
     write_json_file(log_file, log_configs, ctx.verbose)
+
+
+@cli.command(name='i18n', help='Build the translation files.')
+@pass_context
+def i18n(ctx):
+    locale_dir = openmediavault.getenv(
+        'OMV_I18N_LOCALE_DIR',
+        '/usr/share/openmediavault/locale'
+    )
+    assets_i18n_dir = openmediavault.getenv(
+        'OMV_WORKBENCH_I18N_ASSETS_DIR',
+        '/var/www/openmediavault/assets/i18n/'
+    )
+    openmediavault.log.info(
+        'Creating translation files ...', verbose=ctx.verbose)
+    for lang_dir in glob.iglob(os.path.join(locale_dir, '*')):
+        if not os.path.isdir(lang_dir):
+            continue
+        lang = os.path.basename(lang_dir)
+        lang_file_path = os.path.join(assets_i18n_dir, f'{lang}.json')
+        translations = {}
+        for po_file_path in glob.iglob(os.path.join(lang_dir, '*.po')):
+            po_file = polib.pofile(po_file_path)
+            openmediavault.log.info(
+                'Processing PO file "%s" ...', po_file_path, verbose=ctx.verbose)
+            for entry in po_file.translated_entries():
+                if entry.msgid and entry.msgstr:
+                    translations[entry.msgid] = entry.msgstr
+        write_json_file(lang_file_path, translations, ctx.verbose)
 
 
 def main():

@@ -29,7 +29,7 @@ case "$1" in
 	;;
 
 	remove)
-		# Activate trigger to purge cached files.
+		# Activate trigger to rebuild workbench configuration files.
 		dpkg-trigger update-workbench
 	;;
 
