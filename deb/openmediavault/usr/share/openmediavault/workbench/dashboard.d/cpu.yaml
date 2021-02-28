@@ -1,0 +1,27 @@
+version: "1.0"
+type: dashboard-widget
+data:
+  id: 9984d6cc-741b-4fda-85bf-fc6471a61e97
+  permissions:
+    role:
+      - admin
+  title: _("CPU")
+  type: chart
+  chart:
+    type: gauge
+    request:
+      service: System
+      method: getInformation
+      transform:
+        cpuDiff: "{{ 100.0 - cpuUsage }}"
+    label:
+      display: true
+      formatter: template
+      formatterConfig: "{{ value }}%"
+    dataConfig:
+      - label: Usage
+        prop: cpuUsage
+        backgroundColor: "#5dacdf"
+      - label: ""
+        prop: cpuDiff
+        backgroundColor: whitesmoke

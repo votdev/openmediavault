@@ -10,7 +10,7 @@ data:
   datatable:
     columns:
     - name: _("Device")
-      prop: devicefile
+      prop: canonicaldevicefile
       flexGrow: 1
       sortable: true
     - name: _("Label")

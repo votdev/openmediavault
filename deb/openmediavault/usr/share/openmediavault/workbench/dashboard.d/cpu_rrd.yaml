@@ -3,7 +3,7 @@ type: dashboard-widget
 data:
   id: e2ed9a54-df38-11ea-8976-7786e66d5f43
   type: rrd
-  title: _("CPU usage")
+  title: _("CPU")
   permissions:
     role:
     - admin
