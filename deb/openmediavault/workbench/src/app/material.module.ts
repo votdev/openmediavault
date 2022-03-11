@@ -6,7 +6,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { DateAdapter, MatRippleModule } from '@angular/material/core';
 import { MatNativeDateModule, NativeDateAdapter } from '@angular/material/core';
@@ -22,6 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -34,7 +34,6 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
-    MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
@@ -54,6 +53,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatToolbarModule,
     MatTooltipModule,
     MatTabsModule,
+    MatSlideToggleModule,
     DragDropModule,
     OverlayModule,
     ClipboardModule

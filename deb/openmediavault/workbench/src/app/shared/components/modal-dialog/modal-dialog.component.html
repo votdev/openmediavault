@@ -12,10 +12,10 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <ng-container *ngIf="showConfirmCheckbox">
-    <mat-checkbox (change)="onConfirmCheckboxChange()"
-                  translate>
+    <mat-slide-toggle (change)="onConfirmCheckboxChange()"
+                      translate>
       Confirm
-    </mat-checkbox>
+    </mat-slide-toggle>
     <span fxFlex></span>
   </ng-container>
   <button *ngFor="let button of config.buttons"

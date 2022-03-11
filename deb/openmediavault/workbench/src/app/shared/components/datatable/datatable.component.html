@@ -97,7 +97,7 @@
              let-value="value"
              let-column="column"
              let-row="row">
-  <mat-checkbox [checked]="(!column?.cellTemplateConfig ? value : (column?.cellTemplateConfig | template:row)) | toBoolean"></mat-checkbox>
+  <mat-slide-toggle [checked]="(!column?.cellTemplateConfig ? value : (column?.cellTemplateConfig | template:row)) | toBoolean"></mat-slide-toggle>
 </ng-template>
 
 <ng-template #joinTpl
