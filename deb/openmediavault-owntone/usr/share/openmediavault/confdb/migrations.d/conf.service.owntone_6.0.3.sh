@@ -23,27 +23,6 @@ set -e
 
 . /usr/share/openmediavault/scripts/helper-functions
 
-########################################################################
-# Update the configuration.
-# <config>
-#   <services>
-#     <owntone>
-#       <enable>0|1</enable>
-#       <port>3689</port>
-#       <sharedfolderref></sharedfolderref>
-#       <password></password>
-#       <adminpassword>admin</adminpassword>
-#     </owntone>
-#   </services>
-# </config>
-########################################################################
-if ! omv_config_exists "/config/services/owntone"; then
-	omv_config_add_node "/config/services" "owntone"
-	omv_config_add_key "/config/services/owntone" "enable" "0"
-	omv_config_add_key "/config/services/owntone" "port" "3689"
-	omv_config_add_key "/config/services/owntone" "sharedfolderref" ""
-	omv_config_add_key "/config/services/owntone" "password" ""
-	omv_config_add_key "/config/services/owntone" "adminpassword" "admin"
-fi
+omv_config_delete "/config/services/owntone/libraryname"
 
 exit 0

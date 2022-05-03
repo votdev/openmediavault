@@ -25,8 +25,6 @@
 # podman logs -f owntone
 
 {% set config = salt['omv_conf.get']('conf.service.owntone') %}
-{% set time_config = salt['omv_conf.get']('conf.system.time') %}
-{% set sf_path = salt['omv_conf.get_sharedfolder_path'](config.sharedfolderref) %}
 
 {% if config.enable | to_bool %}
 
@@ -39,8 +37,7 @@ create_owntone_container_systemd_unit_file:
       - salt://{{ tpldir }}/files/container-owntone.service.j2
     - template: jinja
     - context:
-        sf_path: {{ sf_path }}
-        timezone: {{ time_config.timezone }}
+        config: {{ config }}
     - user: root
     - group: root
     - mode: 644

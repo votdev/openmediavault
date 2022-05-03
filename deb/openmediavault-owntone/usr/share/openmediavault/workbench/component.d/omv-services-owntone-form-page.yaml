@@ -36,13 +36,6 @@ data:
             operator: truthy
             arg0:
               prop: enable
-      - type: textInput
-        name: libraryname
-        label: _("Library name")
-        hint: _("The name of the library as displayed by the clients.")
-        value: ""
-        validators:
-          required: true
       - type: passwordInput
         name: password
         label: _("Password")

@@ -71,5 +71,10 @@ class OwnTone extends \OMV\Engine\Module\ServiceAbstract
 			OMV_NOTIFY_MODIFY,
 			"org.openmediavault.conf.system.time",
 			[$this, "setDirty"]);
+		$moduleMngr = \OMV\Engine\Module\Manager::getInstance();
+		$dispatcher->addListener(
+			OMV_NOTIFY_MODIFY,
+			"org.openmediavault.conf.service.owntone",
+			[$moduleMngr->getModule("zeroconf"), "setDirty"]);
 	}
 }

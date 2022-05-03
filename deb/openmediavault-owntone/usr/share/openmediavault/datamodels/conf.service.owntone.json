@@ -11,10 +11,6 @@
 			"type": "boolean",
 			"default": false
 		},
-		"libraryname": {
-			"type": "string",
-			"default": "%h - OwnTone"
-		},
 		"port": {
 			"type": "integer",
 			"minimum": 1,

@@ -71,10 +71,10 @@ general {
 library {
   # Name of the library as displayed by the clients
   # %h: hostname, %v: version
-  name = "{{ config.libraryname }}"
+  name = "My Music on %h"
 
   # TCP port to listen on. Default port is 3689 (daap)
-  port = {{ config.port }}
+  port = 3689
 
   # Password for the library. Optional.
 {%- if config.password | length > 0 %}

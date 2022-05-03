@@ -1,0 +1,57 @@
+{%- set name = salt['pillar.get']('default:OMV_OWNTONE_ZEROCONF_NAME', '%h - OwnTone') -%}
+{%- set ffid = 4294967295 | random_hash('md5') -%}
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+    <name replace-wildcards="yes">{{ name }}</name>
+    <service>
+        <type>_http._tcp</type>
+        <port>{{ config.port }}</port>
+        <txt-record>path=/</txt-record>
+        <txt-record>Password={{ (config.adminpassword | length > 0) | yesno('true,false') }}</txt-record>
+    </service>
+    <service>
+        <type>_rsp._tcp</type>
+        <txt-record>ffid={{ ffid }}</txt-record>
+        <txt-record>Password={{ (config.adminpassword | length > 0) | yesno('true,false') }}</txt-record>
+        <txt-record>Version=196610</txt-record>
+        <txt-record>iTSh Version=13107</txt-record>
+        <txt-record>Machine Name={{ name }}</txt-record>
+        <txt-record>Machine ID={{ name | md5 }}</txt-record>
+        <txt-record>Database ID={{ name | md5 }}</txt-record>
+        <txt-record>txtvers=1</txt-record>
+    </service>
+    <service>
+        <type>_daap._tcp</type>
+        <txt-record>ffid={{ ffid }}</txt-record>
+        <txt-record>Password={{ (config.adminpassword | length > 0) | yesno('true,false') }}</txt-record>
+        <txt-record>Version=196610</txt-record>
+        <txt-record>iTSh Version=13107</txt-record>
+        <txt-record>Machine Name={{ name }}</txt-record>
+        <txt-record>Machine ID={{ name | md5 }}</txt-record>
+        <txt-record>Database ID={{ name | md5 }}</txt-record>
+        <txt-record>txtvers=1</txt-record>
+    </service>
+</service-group>
+<service-group>
+    <name replace-wildcards="yes">iTunes_Ctrl_{{ name | md5 }}</name>
+    <service>
+        <type>_dacp._tcp</type>
+        <txt-record>OSsi=0x2012E</txt-record>
+        <txt-record>DbId=1</txt-record>
+        <txt-record>Ver=131077</txt-record>
+        <txt-record>txtvers=1</txt-record>
+    </service>
+</service-group>
+<service-group>
+    <name replace-wildcards="yes">{{ name | md5 }}</name>
+    <service>
+        <type>_touch-able._tcp</type>
+        <txt-record>DbId={{ name | md5 }}</txt-record>
+        <txt-record>DvTy=iTunes</txt-record>
+        <txt-record>DvSv=2306</txt-record>
+        <txt-record>Ver=131073</txt-record>
+        <txt-record>OSsi=0x1F5</txt-record>
+        <txt-record>CtlN={{ name }}</txt-record>
+    </service>
+</service-group>
