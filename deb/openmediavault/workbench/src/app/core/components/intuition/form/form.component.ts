@@ -15,7 +15,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -26,18 +34,20 @@ import {
 } from '@angular/forms';
 import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
 import * as _ from 'lodash';
+import { Subscription } from 'rxjs';
+import { debounceTime, filter } from 'rxjs/operators';
 
 import {
   flattenFormFieldConfig,
   setupConfObjUuidFields
 } from '~/app/core/components/intuition/functions.helper';
-import { FormFieldName } from '~/app/core/components/intuition/models/form.type';
+import { FormFieldName, FormValues } from '~/app/core/components/intuition/models/form.type';
 import {
   FormFieldConfig,
   FormFieldConstraintValidator,
   FormFieldModifier
 } from '~/app/core/components/intuition/models/form-field-config.type';
-import { format } from '~/app/functions.helper';
+import { format, formatDeep, isFormatable } from '~/app/functions.helper';
 import { CustomValidators } from '~/app/shared/forms/custom-validators';
 import { ConstraintService } from '~/app/shared/services/constraint.service';
 
@@ -48,7 +58,7 @@ let nextUniqueId = 0;
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements AfterViewInit, OnInit {
+export class FormComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input()
   id: string;
 
@@ -58,13 +68,34 @@ export class FormComponent implements AfterViewInit, OnInit {
   @Input()
   context = {};
 
+  // Event emitted whenever the form has been changed.
+  // The event submits the latest form values and the configuration of
+  // the field that has triggered the change as a tuple.
+  @Output()
+  readonly valueChangesBy = new EventEmitter<[FormValues, FormFieldConfig]>();
+
   public formGroup: FormGroup;
+
+  private subscriptions: Subscription = new Subscription();
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.sanitizeConfig();
     this.createForm();
+    // Initialize the `valueChangesBy` event.
+    const allFields: Array<FormFieldConfig> = flattenFormFieldConfig(this.config);
+    _.forEach(allFields, (field: FormFieldConfig) => {
+      const control: AbstractControl = this.formGroup.get(field.name);
+      this.subscriptions.add(
+        control?.valueChanges.subscribe((value: any) => {
+          // Get the current values (including any disabled controls) and
+          // emit the event.
+          const values: FormValues = this.formGroup.getRawValue();
+          this.valueChangesBy.emit([values, field]);
+        })
+      );
+    });
   }
 
   ngAfterViewInit(): void {
@@ -73,6 +104,7 @@ export class FormComponent implements AfterViewInit, OnInit {
     // which finally sets the correct (configured) state of the form field
     // after form initialization.
     const allFields: Array<FormFieldConfig> = flattenFormFieldConfig(this.config);
+    const allFieldNames: Array<FormFieldName> = _.map(allFields, _.property('name'));
     const fieldsToUpdate: Array<FormFieldName> = [];
     _.forEach(allFields, (field: FormFieldConfig) => {
       _.forEach(field?.modifiers, (modifier) => {
@@ -87,6 +119,60 @@ export class FormComponent implements AfterViewInit, OnInit {
       const control: AbstractControl = this.formGroup.get(name);
       control?.updateValueAndValidity({ onlySelf: true, emitEvent: true });
     });
+    // Process the value template configuration.
+    _.forEach(allFields, (field: FormFieldConfig) => {
+      if (
+        ['folderBrowser', 'numberInput', 'textInput'].includes(field.type) &&
+        isFormatable(field.valueTemplate)
+      ) {
+        // Get the list of field names whose events we are interested in.
+        // If the list is not specified explicitly, then use the names of
+        // all existing fields (excluding the own one).
+        const deps: Array<FormFieldName> = _.isArray(field.valueTemplateDeps)
+          ? field.valueTemplateDeps
+          : _.pull(allFieldNames, field.name);
+        this.subscriptions.add(
+          this.valueChangesBy
+            .pipe(
+              // Skip those value changes that are triggered by fields we
+              // are not interested in.
+              filter((data: [FormValues, FormFieldConfig]) => deps.includes(data[1].name)),
+              // Process the event if a given time has passed without
+              // another event was triggered. This will prevent useless
+              // updates of the form field, e.g. on page initialization
+              // when all fields are set in a batch.
+              debounceTime(5)
+            )
+            .subscribe((data: [FormValues, FormFieldConfig]) => {
+              const values: FormValues = data[0];
+              const control: AbstractControl = this.formGroup.get(field.name);
+              if (control) {
+                // Check if a constraint is specified when the value may
+                // be set.
+                switch (field.valueTemplateApplyIf) {
+                  case 'pristine':
+                    if (!control.pristine) {
+                      return;
+                    }
+                    break;
+                  case 'empty':
+                    if (!_.isEmpty(control.value)) {
+                      return;
+                    }
+                    break;
+                }
+                // Interpolate the template with the given form values.
+                const value = formatDeep(field.valueTemplate, values);
+                control.setValue(value);
+              }
+            })
+        );
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   protected sanitizeConfig() {
@@ -163,7 +249,8 @@ export class FormComponent implements AfterViewInit, OnInit {
           break;
         case 'textInput':
           _.defaultsDeep(field, {
-            autocapitalize: 'none'
+            autocapitalize: 'none',
+            valueTemplateApplyIf: 'always'
           });
           break;
         case 'textarea':
@@ -189,6 +276,12 @@ export class FormComponent implements AfterViewInit, OnInit {
             separator: ','
           });
           break;
+        case 'numberInput': {
+          _.defaultsDeep(field, {
+            valueTemplateApplyIf: 'always'
+          });
+          break;
+        }
       }
     });
     // Populate the data model identifier field.

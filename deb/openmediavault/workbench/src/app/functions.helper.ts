@@ -442,6 +442,7 @@ export const cron2human = (value: string): string => {
     /* eslint-enable @typescript-eslint/naming-convention */
   };
   return cronstrue.toString(value, {
+    throwExceptionOnParseError: false,
     locale: _.get(localeMap, getCurrentLocale(), 'en')
   });
 };

@@ -93,19 +93,11 @@ export class SharedFolderFormPageComponent extends BaseFormPageComponent {
           'The relative path of the folder to share. The specified folder will be created if it does not exist.'
         ),
         value: '',
+        valueTemplate: '{{ name | rstrip("/") }}/',
+        valueTemplateDeps: ['name'],
+        valueTemplateApplyIf: 'empty',
         dirType: 'mntent',
         dirRefIdField: 'mntentref',
-        modifiers: [
-          {
-            type: 'value',
-            typeConfig: '{{ name | rstrip("/") }}/',
-            constraint: {
-              operator: 'and',
-              arg0: { operator: 'notEmpty', arg0: { prop: 'name' } },
-              arg1: { operator: 'empty', arg0: { prop: 'reldirpath' } }
-            }
-          }
-        ],
         validators: {
           required: true
         }

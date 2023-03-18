@@ -310,6 +310,21 @@ export type FormFieldConfig = {
 
   // --- tagInput ---
   separator?: string;
+
+  // --- folderBrowser | textInput | numberInput ---
+  // This template is evaluated whenever the form has been modified.
+  // The resulting value will be applied to the form field.
+  valueTemplate?: string;
+  // A list of names of the form fields that are used in the template.
+  // Defaults to the names of all form fields. To limit the event noise
+  // and to improve the performance of the form, this list should be set
+  // to only that fields that the template really depends on.
+  valueTemplateDeps?: Array<FormFieldName>;
+  // Apply the resulting value of the template interpolation always
+  // (which will override an existing value), only if the form field
+  // is pristine (the field value has not been changed yet) or the
+  // field is empty. Defaults to `always`.
+  valueTemplateApplyIf?: 'always' | 'pristine' | 'empty';
 };
 
 export type FormFieldConstraintValidator = {
