@@ -1,0 +1,19 @@
+<ng-container *ngFor="let item of config.items">
+  <ng-container [ngSwitch]="item.type">
+    <ng-template [ngSwitchCase]="'form'">
+      <omv-intuition-form-page [config]="item.config"></omv-intuition-form-page>
+    </ng-template>
+
+    <ng-template [ngSwitchCase]="'datatable'">
+      <omv-intuition-datatable-page [config]="item.config"></omv-intuition-datatable-page>
+    </ng-template>
+
+    <ng-template [ngSwitchCase]="'text'">
+      <omv-intuition-text-page [config]="item.config"></omv-intuition-text-page>
+    </ng-template>
+
+    <ng-template [ngSwitchCase]="'selectionlist'">
+      <omv-intuition-selection-list-page [config]="item.config"></omv-intuition-selection-list-page>
+    </ng-template>
+  </ng-container>
+</ng-container>

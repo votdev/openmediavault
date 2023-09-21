@@ -39,6 +39,7 @@ import { RrdPageComponent } from '~/app/core/components/intuition/rrd-page/rrd-p
 import { SelectionListPageComponent } from '~/app/core/components/intuition/selection-list-page/selection-list-page.component';
 import { TabsPageComponent } from '~/app/core/components/intuition/tabs-page/tabs-page.component';
 import { TextPageComponent } from '~/app/core/components/intuition/text-page/text-page.component';
+import { VboxPageComponent } from '~/app/core/components/intuition/vbox-page/vbox-page.component';
 import { MaterialModule } from '~/app/material.module';
 import { SharedModule } from '~/app/shared/shared.module';
 
@@ -77,7 +78,8 @@ import { SharedModule } from '~/app/shared/shared.module';
     SelectionListPageComponent,
     RrdPageComponent,
     FormCodeEditorComponent,
-    FormTagInputComponent
+    FormTagInputComponent,
+    VboxPageComponent
   ],
   exports: [
     DatatablePageComponent,
@@ -86,7 +88,8 @@ import { SharedModule } from '~/app/shared/shared.module';
     TabsPageComponent,
     TextPageComponent,
     SelectionListPageComponent,
-    RrdPageComponent
+    RrdPageComponent,
+    VboxPageComponent
   ],
   imports: [
     CommonModule,

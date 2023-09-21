@@ -21,148 +21,176 @@ import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 
 import { DatatablePageComponent } from '~/app/core/components/intuition/datatable-page/datatable-page.component';
-import { DatatablePageConfig } from '~/app/core/components/intuition/models/datatable-page-config.type';
+import { VboxPageConfig } from '~/app/core/components/intuition/models/vbox-page-config.type';
 import { format } from '~/app/functions.helper';
 import { NotificationType } from '~/app/shared/enum/notification-type.enum';
 import { NotificationService } from '~/app/shared/services/notification.service';
 import { RpcService } from '~/app/shared/services/rpc.service';
 
 @Component({
-  template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>'
+  template: '<omv-intuition-vbox-page [config]="this.config"></omv-intuition-vbox-page>'
 })
 export class SharedFolderPermissionsDatatablePageComponent {
   @ViewChild(DatatablePageComponent, { static: true })
   private page: DatatablePageComponent;
 
-  public config: DatatablePageConfig = {
-    stateId: '99f40468-8309-11ea-834f-cbe87c99180b',
-    autoReload: false,
-    limit: 0,
-    hasFooter: false,
-    hasSearchField: true,
-    icon: 'information',
-    subTitle: gettext(
-      // eslint-disable-next-line max-len
-      'These settings are used by the services to configure the user and group access rights. Please note that these settings have no effect on file system permissions.'
-    ),
-    selectionType: 'none',
-    columns: [
-      { name: gettext('Name'), prop: 'name', flexGrow: 2, sortable: true },
+  public config: VboxPageConfig = {
+    items: [
       {
-        name: gettext('Type'),
-        prop: 'type',
-        flexGrow: 1,
-        sortable: true,
-        cellTemplateName: 'chip',
-        cellTemplateConfig: {
-          map: {
-            user: { value: gettext('User') },
-            group: { value: gettext('Group') }
-          }
-        }
-      },
-      {
-        name: gettext('Permissions'),
-        prop: 'perms',
-        flexGrow: 3,
-        sortable: true,
-        cellTemplateName: 'buttonToggle',
-        cellTemplateConfig: {
-          buttons: [
+        type: 'form',
+        config: {
+          icon: 'information',
+          subTitle: gettext(
+            // eslint-disable-next-line max-len
+            'These settings are used by the services to configure the user and group access rights. Please note that these settings have no effect on file system permissions.'
+          ),
+          fields: [
             {
-              value: '7',
-              text: gettext('Read/Write')
-            },
-            {
-              value: '5',
-              text: gettext('Read-only')
-            },
-            {
-              value: '0',
-              text: gettext('No access')
+              type: 'sharedFolderSelect',
+              name: 'uuid',
+              label: gettext('Name'),
+              disabled: true,
+              hasCreateButton: false,
+              value: '{{ _routeParams.uuid }}'
             }
           ]
         }
-      }
-    ],
-    sorters: [
-      {
-        dir: 'desc',
-        prop: 'type'
       },
       {
-        dir: 'asc',
-        prop: 'name'
-      }
-    ],
-    store: {
-      proxy: {
-        service: 'ShareMgmt',
-        get: {
-          method: 'getPrivileges',
-          params: {
-            uuid: '{{ _routeParams.uuid }}'
-          }
-        }
-      }
-    },
-    actions: [
-      {
-        type: 'iconButton',
-        icon: 'mdi:transfer',
-        tooltip: gettext('Copy permissions'),
-        execute: {
-          type: 'formDialog',
-          formDialog: {
-            title: gettext('Copy permissions'),
-            fields: [
-              {
-                type: 'sharedFolderSelect',
-                name: 'src',
-                store: {
-                  filters: [
-                    { operator: 'ne', arg0: { prop: 'uuid' }, arg1: '{{ _routeParams.uuid }}' }
-                  ]
-                },
-                hasCreateButton: false,
-                label: gettext('Source'),
-                hint: gettext('The shared folder from which the permissions are copied.'),
-                validators: {
-                  required: true
+        type: 'datatable',
+        config: {
+          stateId: '99f40468-8309-11ea-834f-cbe87c99180b',
+          autoReload: false,
+          limit: 0,
+          hasFooter: false,
+          hasSearchField: true,
+          selectionType: 'none',
+          columns: [
+            { name: gettext('Name'), prop: 'name', flexGrow: 2, sortable: true },
+            {
+              name: gettext('Type'),
+              prop: 'type',
+              flexGrow: 1,
+              sortable: true,
+              cellTemplateName: 'chip',
+              cellTemplateConfig: {
+                map: {
+                  user: { value: gettext('User') },
+                  group: { value: gettext('Group') }
                 }
-              },
-              {
-                type: 'hidden',
-                name: 'dst',
-                value: '{{ _routeParams.uuid }}'
               }
-            ],
-            buttons: {
-              submit: {
-                text: gettext('Copy'),
-                execute: {
-                  type: 'request',
-                  request: {
-                    service: 'ShareMgmt',
-                    method: 'copyPrivileges',
-                    successNotification: gettext('Shared folder permissions have been copied.')
+            },
+            {
+              name: gettext('Permissions'),
+              prop: 'perms',
+              flexGrow: 3,
+              sortable: true,
+              cellTemplateName: 'buttonToggle',
+              cellTemplateConfig: {
+                buttons: [
+                  {
+                    value: '7',
+                    text: gettext('Read/Write')
+                  },
+                  {
+                    value: '5',
+                    text: gettext('Read-only')
+                  },
+                  {
+                    value: '0',
+                    text: gettext('No access')
+                  }
+                ]
+              }
+            }
+          ],
+          sorters: [
+            {
+              dir: 'desc',
+              prop: 'type'
+            },
+            {
+              dir: 'asc',
+              prop: 'name'
+            }
+          ],
+          store: {
+            proxy: {
+              service: 'ShareMgmt',
+              get: {
+                method: 'getPrivileges',
+                params: {
+                  uuid: '{{ _routeParams.uuid }}'
+                }
+              }
+            }
+          },
+          actions: [
+            {
+              type: 'iconButton',
+              icon: 'mdi:transfer',
+              tooltip: gettext('Copy permissions'),
+              execute: {
+                type: 'formDialog',
+                formDialog: {
+                  title: gettext('Copy permissions'),
+                  fields: [
+                    {
+                      type: 'sharedFolderSelect',
+                      name: 'src',
+                      store: {
+                        filters: [
+                          {
+                            operator: 'ne',
+                            arg0: { prop: 'uuid' },
+                            arg1: '{{ _routeParams.uuid }}'
+                          }
+                        ]
+                      },
+                      hasCreateButton: false,
+                      label: gettext('Source'),
+                      hint: gettext('The shared folder from which the permissions are copied.'),
+                      validators: {
+                        required: true
+                      }
+                    },
+                    {
+                      type: 'hidden',
+                      name: 'dst',
+                      value: '{{ _routeParams.uuid }}'
+                    }
+                  ],
+                  buttons: {
+                    submit: {
+                      text: gettext('Copy'),
+                      execute: {
+                        type: 'request',
+                        request: {
+                          service: 'ShareMgmt',
+                          method: 'copyPrivileges',
+                          successNotification: gettext(
+                            'Shared folder permissions have been copied.'
+                          )
+                        }
+                      }
+                    }
                   }
                 }
               }
             }
-          }
+          ],
+          buttons: [
+            {
+              template: 'cancel',
+              url: '/storage/shared-folders'
+            },
+            {
+              text: gettext('Save'),
+              class: 'omv-background-color-pair-primary',
+              click: this.onSave.bind(this)
+            }
+          ]
         }
-      }
-    ],
-    buttons: [
-      {
-        template: 'cancel',
-        url: '/storage/shared-folders'
-      },
-      {
-        text: gettext('Save'),
-        class: 'omv-background-color-pair-primary',
-        click: this.onSave.bind(this)
       }
     ]
   };
