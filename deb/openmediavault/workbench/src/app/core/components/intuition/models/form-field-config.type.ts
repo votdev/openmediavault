@@ -306,11 +306,23 @@ export type FormFieldConfig = {
   // otherwise `false`.
   trim?: boolean;
 
-  // --- select | textInput ---
+  // --- select | sharedFolderSelect | sshCertSelect | sslCertSelect | textInput ---
   // Defaults to `value`.
+  // Deprecated in OMV8. Use `optionValueField` instead.
   valueField?: string;
   // Defaults to `text`.
+  // Deprecated in OMV8. Use `optionTextField` instead.
   textField?: string;
+  // The name of the field to display the option value.
+  // Defaults to `value`.
+  optionValueField?: string;
+  // The name of the field to display the option text.
+  // Defaults to `text`.
+  optionTextField?: string;
+  // A tokenized string that is used to render the option value.
+  optionValue?: string;
+  // A tokenized string that is used to render the option text.
+  optionText?: string;
   store?: DataStore;
 
   // --- select ---

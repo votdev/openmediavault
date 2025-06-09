@@ -160,17 +160,21 @@ export class FormComponent implements AfterViewInit, OnInit {
         case 'sshCertSelect':
         case 'sslCertSelect':
           _.defaultsDeep(field, {
-            valueField: 'value',
-            textField: 'text',
+            optionValueField: _.defaultTo(field.valueField, 'value'),
+            optionTextField: _.defaultTo(field.textField, 'text'),
             hasEmptyOption: false,
             emptyOptionText: gettext('None'),
             store: {
               data: []
             }
           });
+          _.defaultsDeep(field, {
+            optionValue: `{{ ${field.optionValueField} }}`,
+            optionText: `{{ ${field.optionTextField} }}`
+          });
           if (_.isArray(field.store.data) && _.isUndefined(field.store.fields)) {
             _.merge(field.store, {
-              fields: _.uniq([field.valueField, field.textField])
+              fields: _.uniq([field.optionValueField, field.optionTextField])
             });
           }
           if (['sharedFolderSelect', 'sshCertSelect', 'sslCertSelect'].includes(field.type)) {
@@ -187,16 +191,20 @@ export class FormComponent implements AfterViewInit, OnInit {
         case 'textInput':
           _.defaultsDeep(field, {
             autocapitalize: 'none',
-            valueField: 'value',
-            textField: 'text',
+            optionValueField: _.defaultTo(field.valueField, 'value'),
+            optionTextField: _.defaultTo(field.textField, 'text'),
             suggestions: false,
             store: {
               data: []
             }
           });
+          _.defaultsDeep(field, {
+            optionValue: `{{ ${field.optionValueField} }}`,
+            optionText: `{{ ${field.optionTextField} }}`
+          });
           if (_.isArray(field.store.data) && _.isUndefined(field.store.fields)) {
             _.merge(field.store, {
-              fields: _.uniq([field.valueField, field.textField])
+              fields: _.uniq([field.optionValueField, field.optionTextField])
             });
           }
           break;

@@ -44,8 +44,8 @@ export class FormSslcertSelectComponent extends FormSelectComponent {
   protected override sanitizeConfig(): void {
     super.sanitizeConfig();
     _.merge(this.config, {
-      valueField: 'uuid',
-      textField: 'comment',
+      optionValueField: 'uuid',
+      optionTextField: 'comment',
       placeholder: 'Select a SSL certificate ...',
       store: {
         proxy: {

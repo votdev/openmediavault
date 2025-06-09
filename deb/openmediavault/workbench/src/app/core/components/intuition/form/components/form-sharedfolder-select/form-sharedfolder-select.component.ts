@@ -45,8 +45,8 @@ export class FormSharedfolderSelectComponent extends FormSelectComponent {
   protected override sanitizeConfig(): void {
     super.sanitizeConfig();
     _.merge(this.config, {
-      valueField: 'uuid',
-      textField: 'description',
+      optionValueField: 'uuid',
+      optionTextField: 'description',
       placeholder: gettext('Select a shared folder ...'),
       store: {
         proxy: {

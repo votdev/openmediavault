@@ -6,8 +6,8 @@
               [required]="config.validators?.required">
     <ng-container *ngIf="!loading; else renderLoading">
       <mat-option *ngFor="let option of config.store.data"
-                  [value]="option[config.valueField]">
-        {{ option[config.textField] }}<ng-container *ngIf="option['validto']"> [{{ 'Valid to' | transloco }} {{ option['validto'] | localeDate:'datetime' }}]</ng-container>
+                  value="{{ config.optionValue | template:option }}">
+        {{ config.optionText | template:option | transloco }}<ng-container *ngIf="option['validto']"> [{{ 'Valid to' | transloco }} {{ option['validto'] | localeDate:'datetime' }}]</ng-container>
       </mat-option>
     </ng-container>
     <ng-template #renderLoading>

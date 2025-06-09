@@ -83,8 +83,8 @@ export class FormSelectComponent extends AbstractFormFieldComponent implements O
         this.loading = false;
         if (this.config.hasEmptyOption) {
           const item = {};
-          _.set(item, this.config.valueField, '');
-          _.set(item, this.config.textField, this.config.emptyOptionText);
+          _.set(item, this.config.optionValueField, '');
+          _.set(item, this.config.optionText, this.config.emptyOptionText);
           this.config.store.data.unshift(item);
         }
       });

@@ -23,8 +23,8 @@ describe('FormSelectComponent', () => {
     component.config = {
       type: 'select',
       name: 'foo',
-      valueField: 'value',
-      textField: 'text',
+      optionValueField: 'value',
+      optionTextField: 'text',
       hasEmptyOption: false,
       store: {
         data: []

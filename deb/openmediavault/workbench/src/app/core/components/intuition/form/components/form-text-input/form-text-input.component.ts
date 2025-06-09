@@ -91,7 +91,7 @@ export class FormTextInputComponent extends AbstractFormFieldComponent implement
 
   private doFilter(value: string): Record<string, any> {
     return _.filter(this.config.store.data, (option) => {
-      return _.toLower(option[this.config.valueField]).includes(_.toLower(value));
+      return _.toLower(option[this.config.optionValueField]).includes(_.toLower(value));
     });
   }
 }

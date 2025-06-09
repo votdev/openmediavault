@@ -86,8 +86,8 @@ export class SharedFolderAclFormPageComponent extends BaseFormPageComponent impl
             name: 'owner',
             label: gettext('Owner'),
             hint: gettext('Permissions of owner.'),
-            valueField: 'name',
-            textField: 'name',
+            optionValueField: 'name',
+            optionText: '{{ name }} [{{ uid }}]',
             store: {
               proxy: {
                 service: 'UserMgmt',
@@ -132,8 +132,8 @@ export class SharedFolderAclFormPageComponent extends BaseFormPageComponent impl
             name: 'group',
             label: gettext('Group'),
             hint: gettext('Permissions of group.'),
-            valueField: 'name',
-            textField: 'name',
+            optionValueField: 'name',
+            optionText: '{{ name }} [{{ gid }}]',
             store: {
               proxy: {
                 service: 'UserMgmt',

@@ -6,8 +6,8 @@
               [required]="config.validators?.required">
     <ng-container *ngIf="!loading; else renderLoading">
       <mat-option *ngFor="let option of config.store.data"
-                  [value]="option[config.valueField]">
-        {{option[config.textField]}}
+                  value="{{ config.optionValue | template:option }}">
+        {{ config.optionText | template:option | transloco }}
       </mat-option>
     </ng-container>
     <ng-template #renderLoading>
