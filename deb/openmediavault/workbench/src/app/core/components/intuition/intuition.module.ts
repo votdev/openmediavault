@@ -43,6 +43,7 @@ import { TabsPageComponent } from '~/app/core/components/intuition/tabs-page/tab
 import { TextPageComponent } from '~/app/core/components/intuition/text-page/text-page.component';
 import { MaterialModule } from '~/app/material.module';
 import { SharedModule } from '~/app/shared/shared.module';
+import { FormCardComponent } from './form/components/form-card/form-card.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { SharedModule } from '~/app/shared/shared.module';
     FormCodeEditorComponent,
     FormTagInputComponent,
     CodeEditorPageComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    FormCardComponent
   ],
   exports: [
     DatatablePageComponent,

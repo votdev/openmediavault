@@ -43,6 +43,7 @@ export type FormFieldConfig = {
   // | container   | Align child fields in horizontal order.              |
   // '--------------------------------------------------------------------'
   type:
+    | 'card'
     | 'confObjUuid'
     | 'hidden'
     | 'divider'
@@ -175,7 +176,7 @@ export type FormFieldConfig = {
   // Specifies the size of the field in percent.
   flex?: 10 | 20 | 25 | 33 | 45 | 50 | 66 | 75 | 80 | 90 | 100;
 
-  // --- button | hint ---
+  // --- button | card | hint ---
   text?: string;
 
   // --- button | iconButton ---

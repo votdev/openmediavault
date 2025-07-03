@@ -25,6 +25,7 @@ import { FormPageConfig } from '~/app/core/components/intuition/models/form-page
 })
 export class ProcessesFormPageComponent {
   public config: FormPageConfig = {
+    autoReload: 5000,
     request: {
       service: 'System',
       get: {
@@ -65,29 +66,92 @@ export class ProcessesFormPageComponent {
         ]
       },
       {
+        type: 'hidden',
+        name: 'load_1m'
+      },
+      {
+        type: 'hidden',
+        name: 'load_5m'
+      },
+      {
+        type: 'hidden',
+        name: 'load_15m'
+      },
+      {
+        type: 'hidden',
+        name: 'tasks_total'
+      },
+      {
+        type: 'hidden',
+        name: 'tasks_running'
+      },
+      {
+        type: 'hidden',
+        name: 'tasks_sleeping'
+      },
+      {
+        type: 'hidden',
+        name: 'tasks_stopped'
+      },
+      {
+        type: 'hidden',
+        name: 'tasks_zombie'
+      },
+
+      {
+        type: 'hidden',
+        name: 'mem_total'
+      },
+      {
+        type: 'hidden',
+        name: 'mem_free'
+      },
+      {
+        type: 'hidden',
+        name: 'mem_used'
+      },
+      {
+        type: 'hidden',
+        name: 'mem_buff_cache'
+      },
+      {
+        type: 'hidden',
+        name: 'swap_total'
+      },
+      {
+        type: 'hidden',
+        name: 'swap_free'
+      },
+      {
+        type: 'hidden',
+        name: 'swap_used'
+      },
+      {
+        type: 'hidden',
+        name: 'mem_available'
+      },
+      {
         type: 'container',
         fields: [
           {
-            type: 'textInput',
-            name: 'load_1m',
+            type: 'card',
             label: gettext('Load Average'),
-            value: '',
-            flex: 33,
-            readonly: true
+            text: '1min:\t<strong>{{ load_1m }}</strong><br>5min:\t<strong>{{ load_5m }}</strong><br>15min:\t<strong>{{ load_15m }}</strong>'
           },
           {
-            type: 'textInput',
-            name: 'load_5m',
-            value: '',
-            flex: 33,
-            readonly: true
+            type: 'card',
+            label: gettext('Tasks'),
+            text: 'Total:\t\t<strong>{{ tasks_total }}</strong><br>Running:\t\t<strong>{{ tasks_running }}</strong><br>Sleeping:\t<strong>{{ tasks_sleeping }}</strong><br>Stopped:\t<strong>{{ tasks_stopped }}</strong><br>Zombie:\t\t<strong>{{ tasks_zombie }}</strong>'
           },
           {
-            type: 'textInput',
-            name: 'load_15m',
-            value: '',
-            flex: 33,
-            readonly: true
+            type: 'card',
+            label: gettext('MiB Mem'),
+            text: 'Total:\t\t<strong>{{ mem_total }}</strong><br>Free:\t\t<strong>{{ mem_free }}</strong><br>Used:\t\t<strong>{{ mem_used }}</strong><br>Buff/Cache:\t<strong>{{ mem_buff_cache }}</strong>'
+          },
+          {
+            type: 'card',
+            label: gettext('MiB Swap'),
+            text: 'Total:\t<strong>{{ swap_total }}</strong><br>Free:\t<strong>{{ swap_free }}</strong><br>Used:\t<strong>{{ swap_used }}</strong><br>Avail:\t<strong>{{ mem_available }}</strong>'
           }
         ]
       },
