@@ -2,9 +2,9 @@
 #
 # This file is part of openmediavault.
 #
-# @license   https://www.gnu.org/licenses/gpl.html GPL Version 3
+# @license   http://www.gnu.org/licenses/gpl.html GPL Version 3
 # @author    Volker Theile <volker.theile@openmediavault.org>
-# @copyright Copyright (c) 2009-2025 Volker Theile
+# @copyright Copyright (c) 2009-2023 Volker Theile
 #
 # openmediavault is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with openmediavault. If not, see <https://www.gnu.org/licenses/>.
+# along with openmediavault. If not, see <http://www.gnu.org/licenses/>.
 
 set -e
 
