@@ -22,7 +22,7 @@
 # https://bugs.launchpad.net/ubuntu/+source/debootstrap/+bug/86536
 FIX_DEBOOTSTRAP_PKG_INSTALL=perl-openssl-defaults
 
-DISTRIBUTION=bookworm
+DISTRIBUTION=trixie
 OMV_DISTRIBUTION=sandworm
 ARCHITECTURE?=amd64
 NAME=$(DISTRIBUTION)-$(ARCHITECTURE)
