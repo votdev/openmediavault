@@ -38,7 +38,7 @@ export class FormTextInputComponent extends AbstractFormFieldComponent implement
   autocompleteTrigger: MatAutocompleteTrigger;
 
   public loading = false;
-  public filteredOptions$: Observable<Record<string, any>>;
+  public filteredOptions$: Observable<Record<string, any>[]>;
 
   private abstractControl: AbstractControl;
 
@@ -98,7 +98,7 @@ export class FormTextInputComponent extends AbstractFormFieldComponent implement
       });
   }
 
-  private doFilter(value: string): Record<string, any> {
+  private doFilter(value: string): Record<string, any>[] {
     return _.filter(this.config.store.data, (option) => {
       return _.toLower(option[this.config.valueField]).includes(_.toLower(value));
     });

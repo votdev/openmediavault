@@ -10,7 +10,6 @@ import {
   TranslocoLoader,
   TranslocoModule
 } from '@ngneat/transloco';
-import { HashMap } from '@ngneat/transloco/lib/types';
 import * as _ from 'lodash';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -44,7 +43,11 @@ class CustomLoader implements TranslocoLoader {
  */
 @Injectable({ providedIn: 'root' })
 class CustomTranspiler extends DefaultTranspiler {
-  public override transpile(value: any, params: HashMap, translation: Translation): any {
+  public override transpile(
+    value: any,
+    params: Record<string, any>,
+    translation: Translation
+  ): any {
     return value;
   }
 }

@@ -124,14 +124,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "styles": ["src/styles.scss"],
-            "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/favicon.svg",
-              "src/favicon_180x180.png",
-              "src/assets"
-            ]
+            "zoneless": false
           }
         },
         "lint": {

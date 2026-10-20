@@ -20,7 +20,7 @@
     "noImplicitReturns": true,
     "noImplicitAny": false,
     "module": "es2022",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
