@@ -30,7 +30,8 @@
 // The Material 3 theme is used with its default look. The color palettes
 // are generated from the corporate colors, see `scss/theme/_m3-palettes.scss`.
 // Customizations of Material components must be done via the
-// `mat.<component>-overrides()` mixins in `scss/theme/material/` only.
+// `mat.<component>-overrides()` mixins and the `--mat-sys-*` system
+// variables only.
 // The dark color scheme is activated by the class `omv-dark-theme` on the
 // body element, see `AppComponent`.
 ////////////////////////////////////////////////////////////////////////////////
@@ -53,8 +54,6 @@ html {
 body.omv-dark-theme {
   color-scheme: dark;
 }
-
-@include theme.all-component-themes;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes
