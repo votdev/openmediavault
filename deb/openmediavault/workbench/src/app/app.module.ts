@@ -21,9 +21,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslocoService } from '@jsverse/transloco';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
+import { ToastrModule } from '@openng/ngx-toastr';
 import dayjs from 'dayjs';
 import updateLocale from 'dayjs/plugin/updateLocale';
-import { ToastrModule } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
 
 import { AppComponent } from '~/app/app.component';

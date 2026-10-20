@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { ToastrModule } from '@openng/ngx-toastr';
 import { DatatableComponent as NgxDatatableComponent } from '@siemens/ngx-datatable';
-import { ToastrModule } from 'ngx-toastr';
 
 import { ComponentsModule } from '~/app/shared/components/components.module';
 import { DatatableComponent } from '~/app/shared/components/datatable/datatable.component';

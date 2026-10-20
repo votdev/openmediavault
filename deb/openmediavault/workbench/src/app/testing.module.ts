@@ -9,7 +9,7 @@ import {
   TranslocoMissingHandler,
   TranslocoTestingModule
 } from '@jsverse/transloco';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 export class TestingTranslocoMissingHandler implements TranslocoMissingHandler {
   handle(key: string, config: TranslocoConfig) {
