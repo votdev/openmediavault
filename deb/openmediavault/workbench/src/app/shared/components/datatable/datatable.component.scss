@@ -153,18 +153,18 @@ omv-datatable {
           vertical-align: middle;
 
           &.disabled a {
-            color: var(--omv-color-disabled-text);
+            color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent);
             background-color: transparent !important;
           }
 
           &.active a {
-            background: var(--omv-background-color-hover);
+            background: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
             font-weight: bold;
           }
         }
 
         a {
-          color: var(--omv-color-text);
+          color: var(--mat-sys-on-surface);
           height: 22px;
           min-width: 24px;
           line-height: 22px;
@@ -176,7 +176,7 @@ omv-datatable {
           vertical-align: bottom;
 
           &:hover {
-            background: var(--omv-background-color-hover);
+            background: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
             color: theme.$omv-color-primary;
           }
         }

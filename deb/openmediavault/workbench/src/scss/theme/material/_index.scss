@@ -13,8 +13,9 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-@use 'css-variables';
-
+// Customizations of the Angular Material components.
+//
+// Use the `mat.<component>-overrides()` mixins and the Material 3 system
+// variables (`--mat-sys-*`) only. Do not style internal Material classes.
 @mixin all-component-themes {
-  @include css-variables.theme;
 }

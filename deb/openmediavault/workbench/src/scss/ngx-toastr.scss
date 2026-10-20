@@ -16,9 +16,6 @@
 @use 'scss/theme';
 
 .toast-container {
-  font-family: theme.$omv-font-family-default;
-  font-size: var(--omv-font-size-body-1);
-
   .ngx-toastr {
     box-shadow: unset;
     min-width: 300px;

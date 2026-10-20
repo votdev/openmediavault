@@ -57,14 +57,6 @@ body.omv-dark-theme {
 @include theme.all-component-themes;
 
 ////////////////////////////////////////////////////////////////////////////////
-// CSS variables
-////////////////////////////////////////////////////////////////////////////////
-:root {
-  --omv-background-color-muted: rgb(0 0 0 / 10%);
-  --omv-background-color-muted-text: rgb(0 0 0 / 6%);
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Classes
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -750,38 +742,38 @@ body.omv-dark-theme {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Color - Derived from the active Material theme
+// Color - Derived from the Material 3 system colors
 .omv-color-text {
-  color: var(--omv-color-text);
+  color: var(--mat-sys-on-surface);
 }
 
 .omv-color-secondary-text {
-  color: var(--omv-color-secondary-text);
+  color: var(--mat-sys-on-surface-variant);
 }
 
 .omv-color-disabled-text {
-  color: var(--omv-color-disabled-text);
+  color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent);
 }
 
 .omv-color-hint-text {
-  color: var(--omv-color-hint-text);
+  color: var(--mat-sys-on-surface-variant);
 }
 
 .omv-background-color-hover {
-  background-color: var(--omv-background-color-hover);
+  background-color: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
 }
 
 .omv-background-color-muted,
 .omv-background-color-selected-button {
-  background-color: var(--omv-background-color-muted);
+  background-color: var(--mat-sys-surface-container-highest);
 }
 
 .omv-background-color-muted-text {
-  background-color: var(--omv-background-color-muted-text);
+  background-color: var(--mat-sys-surface-container-high);
 }
 
 .omv-background-color-card {
-  background-color: var(--omv-background-color-card);
+  background-color: var(--mat-sys-surface-container-low);
 }
 
 .omv-background-color-transparent {
@@ -877,21 +869,21 @@ body.omv-dark-theme {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Font - Derived from the Material theme typography
+// Font - Derived from the Material 3 type scale
 .omv-font-weight-title {
-  font-weight: var(--omv-font-weight-title);
+  font-weight: var(--mat-sys-title-large-weight);
 }
 
 .omv-font-size-title {
-  font-size: var(--omv-font-size-title);
+  font-size: var(--mat-sys-title-large-size);
 }
 
 .omv-font-size-headline {
-  font-size: var(--omv-font-size-headline);
+  font-size: var(--mat-sys-headline-small-size);
 }
 
 .omv-font-size-subheading-2 {
-  font-size: var(--omv-font-size-subheading-2);
+  font-size: var(--mat-sys-body-large-size);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1042,7 +1034,7 @@ body.omv-dark-theme {
   line-height: 1.2rem;
 
   blockquote {
-    background-color: var(--omv-background-color-muted-text);
+    background-color: var(--mat-sys-surface-container-high);
     border-left: 4px solid dc.$omv-color-corporate-default;
     border-radius: 4px;
     margin: 20px 0;
@@ -1050,7 +1042,7 @@ body.omv-dark-theme {
   }
 
   code {
-    background-color: var(--omv-background-color-muted-text);
+    background-color: var(--mat-sys-surface-container-high);
     border-radius: 4px;
     font-size: 85%;
     margin: 0;
@@ -1059,7 +1051,7 @@ body.omv-dark-theme {
   }
 
   pre {
-    background-color: var(--omv-background-color-muted-text);
+    background-color: var(--mat-sys-surface-container-high);
     border-radius: 4px;
     font-size: 85%;
     overflow: auto;
