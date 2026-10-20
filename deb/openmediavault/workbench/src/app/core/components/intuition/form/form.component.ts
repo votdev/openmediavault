@@ -366,7 +366,7 @@ export class FormComponent implements AfterViewInit, OnInit {
   private doModifier(control: AbstractControl, modifier: FormFieldModifier): void {
     const opposite = _.defaultTo(modifier.opposite, true);
     const nativeElement: HTMLElement = _.get(control, 'nativeElement');
-    const formFieldElement = nativeElement && nativeElement.closest('.mat-form-field');
+    const formFieldElement = nativeElement && nativeElement.closest('.omv-form-field');
     // Note, use `getRawValue` here to get the latest values including
     // those of disabled form fields as well. `values` is outdated at
     // that moment because the event we are handling has not bubbled up

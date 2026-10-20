@@ -799,23 +799,23 @@ $omv-dark-theme: map.deep-merge(
 ////////////////////////////////////////////////////////////////////////////////
 // Color - Derived from the active Material theme
 .omv-color-text {
-  color: var(--mat-color-text);
+  color: var(--omv-color-text);
 }
 
 .omv-color-secondary-text {
-  color: var(--mat-color-secondary-text);
+  color: var(--omv-color-secondary-text);
 }
 
 .omv-color-disabled-text {
-  color: var(--mat-color-disabled-text);
+  color: var(--omv-color-disabled-text);
 }
 
 .omv-color-hint-text {
-  color: var(--mat-color-hint-text);
+  color: var(--omv-color-hint-text);
 }
 
 .omv-background-color-hover {
-  background-color: var(--mat-background-color-hover);
+  background-color: var(--omv-background-color-hover);
 }
 
 .omv-background-color-muted,
@@ -828,7 +828,7 @@ $omv-dark-theme: map.deep-merge(
 }
 
 .omv-background-color-card {
-  background-color: var(--mat-background-color-card);
+  background-color: var(--omv-background-color-card);
 }
 
 .omv-background-color-transparent {
@@ -926,15 +926,15 @@ $omv-dark-theme: map.deep-merge(
 ////////////////////////////////////////////////////////////////////////////////
 // Font - Derived from the Material theme typography
 .omv-font-weight-title {
-  font-weight: var(--mat-font-weight-title);
+  font-weight: var(--omv-font-weight-title);
 }
 
 .omv-font-size-title {
-  font-size: var(--mat-font-size-title);
+  font-size: var(--omv-font-size-title);
 }
 
 .omv-font-size-subheading-2 {
-  font-size: var(--mat-font-size-subheading-2);
+  font-size: var(--omv-font-size-subheading-2);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1131,8 +1131,8 @@ body {
 }
 
 body {
-  background-color: var(--mat-background-color-body);
-  font-family: var(--mat-font-family-body);
+  background-color: var(--omv-background-color-body);
+  font-family: var(--omv-font-family-body);
   margin: 0;
 }
 

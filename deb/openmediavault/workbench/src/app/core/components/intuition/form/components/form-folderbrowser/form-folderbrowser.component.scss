@@ -5,7 +5,7 @@
   padding-top: unset;
 
   .mat-list-option {
-    font-size: var(--mat-font-size-body-1);
+    font-size: var(--omv-font-size-body-1);
   }
 }
 
@@ -16,7 +16,7 @@
 .cdk-overlay-pane {
   .mat-toolbar.omv-selection-header {
     .mat-form-field {
-      font-size: var(--mat-font-size-body-1);
+      font-size: var(--omv-font-size-body-1);
 
       &.mat-focused {
         color: theme.$omv-color-primary;
@@ -30,7 +30,7 @@
 }
 
 .omv-selection-actions {
-  font-size: var(--mat-font-size-body-1);
+  font-size: var(--omv-font-size-body-1);
   padding: dv.$omv-padding;
 
   .mat-button-base:not(:last-child) {

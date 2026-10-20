@@ -7,15 +7,15 @@ omv-datatable {
     .mat-toolbar {
       .mat-button:not(.mat-button-disabled),
       .mat-icon-button:not(.mat-button-disabled) {
-        color: var(--mat-primary-color-text);
+        color: var(--omv-primary-color-text);
       }
 
       .mat-form-field {
-        font-size: var(--mat-font-size-body-1);
+        font-size: var(--omv-font-size-body-1);
 
         &.mat-focused {
           .mat-form-field-ripple {
-            background-color: var(--mat-primary-color-text);
+            background-color: var(--omv-primary-color-text);
           }
         }
 
@@ -23,7 +23,7 @@ omv-datatable {
           padding-bottom: unset;
 
           .mat-input-element {
-            caret-color: var(--mat-primary-color-text);
+            caret-color: var(--omv-primary-color-text);
             color: currentcolor;
           }
         }
@@ -178,18 +178,18 @@ omv-datatable {
           vertical-align: middle;
 
           &.disabled a {
-            color: var(--mat-color-disabled-text);
+            color: var(--omv-color-disabled-text);
             background-color: transparent !important;
           }
 
           &.active a {
-            background: var(--mat-background-color-hover);
+            background: var(--omv-background-color-hover);
             font-weight: bold;
           }
         }
 
         a {
-          color: var(--mat-color-text);
+          color: var(--omv-color-text);
           height: 22px;
           min-width: 24px;
           line-height: 22px;
@@ -201,7 +201,7 @@ omv-datatable {
           vertical-align: bottom;
 
           &:hover {
-            background: var(--mat-background-color-hover);
+            background: var(--omv-background-color-hover);
             color: theme.$omv-color-primary;
           }
         }
