@@ -38,7 +38,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-intuition-rrd-page',
   templateUrl: './rrd-page.component.html',
   styleUrls: ['./rrd-page.component.scss'],
-  providers: [PageContextService]
+  providers: [PageContextService],
+  standalone: false
 })
 export class RrdPageComponent extends AbstractPageComponent<RrdPageConfig> implements OnInit {
   @Unsubscribe()

@@ -22,6 +22,7 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
 @Component({
   selector: 'omv-form-checkbox',
   templateUrl: './form-checkbox.component.html',
-  styleUrls: ['./form-checkbox.component.scss']
+  styleUrls: ['./form-checkbox.component.scss'],
+  standalone: false
 })
 export class FormCheckboxComponent extends AbstractFormFieldComponent {}

@@ -30,7 +30,8 @@
 $omv-typography-config: mat.m2-define-typography-config(theme.$omv-font-family-default);
 
 @include mat.all-component-typographies($omv-typography-config);
-@include mat.core;
+@include mat.elevation-classes;
+@include mat.app-background;
 
 $omv-theme-primary-palette: mat.m2-define-palette(theme.$omv-color-primary-palette);
 $omv-theme-accent-palette: map.merge(
@@ -785,7 +786,7 @@ $omv-dark-theme: map.deep-merge(
   color: theme.$omv-color-info;
 }
 
-@each $name in map-keys(theme.$omv-color-pairs) {
+@each $name in map.keys(theme.$omv-color-pairs) {
   .omv-background-color-pair-#{$name} {
     @include theme.background-color-pair($name);
   }

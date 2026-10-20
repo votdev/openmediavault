@@ -32,6 +32,7 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
   selector: 'omv-form-image',
   templateUrl: './form-image.component.html',
   styleUrls: ['./form-image.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class FormImageComponent extends AbstractFormFieldComponent {}

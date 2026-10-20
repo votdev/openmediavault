@@ -13,12 +13,13 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
+@use 'sass:map';
 @use 'scss/theme/colors' as tc;
 
 @mixin theme($mode, $theme-config, $typography-config) {
   // We need to define these classes here as well to have a
   // higher order of precedence.
-  @each $name in map-keys(tc.$omv-color-pairs) {
+  @each $name in map.keys(tc.$omv-color-pairs) {
     .mat-mdc-chip.omv-background-color-pair-#{$name} {
       @include tc.background-color-pair($name);
     }

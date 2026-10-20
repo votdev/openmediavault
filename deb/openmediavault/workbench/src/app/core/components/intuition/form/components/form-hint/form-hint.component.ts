@@ -6,6 +6,7 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
   selector: 'omv-form-hint',
   templateUrl: './form-hint.component.html',
   styleUrls: ['./form-hint.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class FormHintComponent extends AbstractFormFieldComponent {}

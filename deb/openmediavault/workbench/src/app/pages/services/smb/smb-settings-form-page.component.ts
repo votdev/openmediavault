@@ -22,7 +22,8 @@ import { FormPageConfig } from '~/app/core/components/intuition/models/form-page
 import { BaseFormPageComponent } from '~/app/pages/base-page-component';
 
 @Component({
-  template: '<omv-intuition-form-page [config]="this.config"></omv-intuition-form-page>'
+  template: '<omv-intuition-form-page [config]="this.config"></omv-intuition-form-page>',
+  standalone: false
 })
 export class SmbSettingsFormPageComponent extends BaseFormPageComponent {
   public config: FormPageConfig = {
@@ -158,7 +159,7 @@ export class SmbSettingsFormPageComponent extends BaseFormPageComponent {
         name: 'homesextraoptions',
         label: gettext('Extra options'),
         hint: gettext(
-          "Please check the <a href='http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html' target='_blank'>manual page</a> for more details." // eslint-disable-line @typescript-eslint/quotes
+          "Please check the <a href='http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html' target='_blank'>manual page</a> for more details."
         ),
         value: ''
       },

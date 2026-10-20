@@ -22,6 +22,7 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
 @Component({
   selector: 'omv-form-textarea',
   templateUrl: './form-textarea.component.html',
-  styleUrls: ['./form-textarea.component.scss']
+  styleUrls: ['./form-textarea.component.scss'],
+  standalone: false
 })
 export class FormTextareaComponent extends AbstractFormFieldComponent {}

@@ -20,7 +20,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'omv-blank-page',
   templateUrl: './blank-page.component.html',
-  styleUrls: ['./blank-page.component.scss']
+  styleUrls: ['./blank-page.component.scss'],
+  standalone: false
 })
 export class BlankPageComponent {
   constructor() {}

@@ -38,7 +38,8 @@ import { NotificationService } from '~/app/shared/services/notification.service'
   selector: 'omv-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class LoginPageComponent implements OnInit {
   public currentLocale: string;

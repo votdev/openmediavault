@@ -22,7 +22,8 @@ import { BaseSelectionListPageComponent } from '~/app/pages/base-page-component'
 
 @Component({
   template:
-    '<omv-intuition-selection-list-page [config]="this.config"></omv-intuition-selection-list-page>'
+    '<omv-intuition-selection-list-page [config]="this.config"></omv-intuition-selection-list-page>',
+  standalone: false
 })
 export class NotificationSelectionListPageComponent extends BaseSelectionListPageComponent {
   public config: SelectionListPageConfig = {

@@ -28,7 +28,8 @@ import { DataStoreResponse, DataStoreService } from '~/app/shared/services/data-
 @Component({
   selector: 'omv-dashboard-widget-grid',
   templateUrl: './dashboard-widget-grid.component.html',
-  styleUrls: ['./dashboard-widget-grid.component.scss']
+  styleUrls: ['./dashboard-widget-grid.component.scss'],
+  standalone: false
 })
 export class DashboardWidgetGridComponent implements OnInit {
   @Input()

@@ -34,7 +34,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-form-button',
   templateUrl: './form-button.component.html',
   styleUrls: ['./form-button.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class FormButtonComponent extends AbstractFormFieldComponent {
   constructor(

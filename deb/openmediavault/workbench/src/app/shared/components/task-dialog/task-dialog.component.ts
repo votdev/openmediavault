@@ -48,7 +48,8 @@ import { RpcBgResponse, RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-task-dialog',
   templateUrl: './task-dialog.component.html',
   styleUrls: ['./task-dialog.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class TaskDialogComponent implements OnInit, OnDestroy {
   @HostBinding('class')

@@ -30,7 +30,8 @@ import { ModalDialogConfig } from '~/app/shared/models/modal-dialog-config.type'
 @Component({
   selector: 'omv-confirm-dialog',
   templateUrl: './modal-dialog.component.html',
-  styleUrls: ['./modal-dialog.component.scss']
+  styleUrls: ['./modal-dialog.component.scss'],
+  standalone: false
 })
 export class ModalDialogComponent {
   // Internal

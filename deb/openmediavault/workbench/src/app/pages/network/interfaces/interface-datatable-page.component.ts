@@ -24,7 +24,8 @@ import { DEFAULT_TEXTS } from '~/app/shared/constants/text.constants';
 
 @Component({
   template:
-    '<omv-intuition-datatable-page #page [config]="this.config"></omv-intuition-datatable-page>'
+    '<omv-intuition-datatable-page #page [config]="this.config"></omv-intuition-datatable-page>',
+  standalone: false
 })
 export class InterfaceDatatablePageComponent extends BaseFormPageComponent {
   public config: DatatablePageConfig = {

@@ -30,7 +30,8 @@ import { DataStoreService } from '~/app/shared/services/data-store.service';
 @Component({
   selector: 'omv-form-select',
   templateUrl: './form-select.component.html',
-  styleUrls: ['./form-select.component.scss']
+  styleUrls: ['./form-select.component.scss'],
+  standalone: false
 })
 export class FormSelectComponent extends AbstractFormFieldComponent implements OnInit {
   @Unsubscribe()

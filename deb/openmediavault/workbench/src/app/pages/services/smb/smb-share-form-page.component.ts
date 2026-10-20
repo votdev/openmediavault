@@ -22,7 +22,8 @@ import { FormPageConfig } from '~/app/core/components/intuition/models/form-page
 import { BaseFormPageComponent } from '~/app/pages/base-page-component';
 
 @Component({
-  template: '<omv-intuition-form-page [config]="this.config"></omv-intuition-form-page>'
+  template: '<omv-intuition-form-page [config]="this.config"></omv-intuition-form-page>',
+  standalone: false
 })
 export class SmbShareFormPageComponent extends BaseFormPageComponent {
   public config: FormPageConfig = {
@@ -73,7 +74,7 @@ export class SmbShareFormPageComponent extends BaseFormPageComponent {
         label: gettext('Public'),
         hint: [
           gettext(
-            "If 'Guests allowed' is selected and no login credential is provided, then access as guest. Always access as guest when 'Guests only' is selecting; in this case no password is required to connect to the share." // eslint-disable-line @typescript-eslint/quotes
+            "If 'Guests allowed' is selected and no login credential is provided, then access as guest. Always access as guest when 'Guests only' is selecting; in this case no password is required to connect to the share."
           ),
           gettext('Make sure that the guest user <em>nobody</em> can access the files.')
         ].join(' '),
@@ -365,7 +366,7 @@ export class SmbShareFormPageComponent extends BaseFormPageComponent {
         name: 'extraoptions',
         label: gettext('Extra options'),
         hint: gettext(
-          "Please check the <a href='http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html' target='_blank'>manual page</a> for more details." // eslint-disable-line @typescript-eslint/quotes
+          "Please check the <a href='http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html' target='_blank'>manual page</a> for more details."
         ),
         value: ''
       }

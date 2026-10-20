@@ -649,7 +649,7 @@ nunjucksEnv.addFilter('cron2human', cron2human);
  */
 nunjucksEnv.addFilter('override', (value: any, newValue: any, testName: string, ...args: any) => {
   // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   const testFn: Function = nunjucksEnv.getTest(testName);
   const testRes: boolean = testFn.call(this, ...args);
   return testRes ? newValue : value;

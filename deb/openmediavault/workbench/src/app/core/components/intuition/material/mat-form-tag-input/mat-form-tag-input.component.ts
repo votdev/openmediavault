@@ -40,7 +40,8 @@ let nextUniqueId = 0;
       provide: MatFormFieldControl,
       useExisting: MatFormTagInputComponent
     }
-  ]
+  ],
+  standalone: false
 })
 export class MatFormTagInputComponent implements ControlValueAccessor, MatFormFieldControl<string> {
   // eslint-disable-next-line @typescript-eslint/naming-convention

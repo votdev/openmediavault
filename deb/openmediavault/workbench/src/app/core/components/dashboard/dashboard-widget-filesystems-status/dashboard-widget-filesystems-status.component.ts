@@ -24,7 +24,8 @@ import { DataStoreResponse, DataStoreService } from '~/app/shared/services/data-
 @Component({
   selector: 'omv-dashboard-widget-filesystems-status',
   templateUrl: './dashboard-widget-filesystems-status.component.html',
-  styleUrls: ['./dashboard-widget-filesystems-status.component.scss']
+  styleUrls: ['./dashboard-widget-filesystems-status.component.scss'],
+  standalone: false
 })
 export class DashboardWidgetFilesystemsStatusComponent {
   @Input()

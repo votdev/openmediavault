@@ -23,7 +23,8 @@ import { DashboardWidgetConfig } from '~/app/core/components/dashboard/models/da
 @Component({
   selector: 'omv-dashboard-widget-value',
   templateUrl: './dashboard-widget-value.component.html',
-  styleUrls: ['./dashboard-widget-value.component.scss']
+  styleUrls: ['./dashboard-widget-value.component.scss'],
+  standalone: false
 })
 export class DashboardWidgetValueComponent implements OnInit {
   @Input()

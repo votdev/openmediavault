@@ -43,7 +43,8 @@ import { UserLocalStorageService } from '~/app/shared/services/user-local-storag
 @Component({
   selector: 'omv-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss']
+  styleUrls: ['./top-bar.component.scss'],
+  standalone: false
 })
 export class TopBarComponent {
   @Output()

@@ -24,7 +24,8 @@ import { ClipboardService } from '~/app/shared/services/clipboard.service';
 @Component({
   selector: 'omv-form-password-input',
   templateUrl: './form-password-input.component.html',
-  styleUrls: ['./form-password-input.component.scss']
+  styleUrls: ['./form-password-input.component.scss'],
+  standalone: false
 })
 export class FormPasswordInputComponent extends AbstractFormFieldComponent {
   constructor(private clipboardService: ClipboardService) {

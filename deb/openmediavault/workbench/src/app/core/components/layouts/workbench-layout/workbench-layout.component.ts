@@ -43,7 +43,8 @@ import { UserLocalStorageService } from '~/app/shared/services/user-local-storag
 @Component({
   selector: 'omv-workbench-layout',
   templateUrl: './workbench-layout.component.html',
-  styleUrls: ['./workbench-layout.component.scss']
+  styleUrls: ['./workbench-layout.component.scss'],
+  standalone: false
 })
 export class WorkbenchLayoutComponent implements OnInit {
   @ViewChild('navigationSidenav', { static: false })

@@ -209,7 +209,7 @@ export class CustomValidators {
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   static pattern(pattern: string | RegExp | Function, errorData?: any): ValidatorFn {
     let test: (value: any) => boolean;
     if (_.isString(pattern)) {

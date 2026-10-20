@@ -95,7 +95,8 @@ export type MatFormDatatableAction = {
       provide: MatFormFieldControl,
       useExisting: MatFormDatatableComponent
     }
-  ]
+  ],
+  standalone: false
 })
 export class MatFormDatatableComponent
   implements ControlValueAccessor, MatFormFieldControl<any[]>, OnInit, OnDestroy, OnChanges

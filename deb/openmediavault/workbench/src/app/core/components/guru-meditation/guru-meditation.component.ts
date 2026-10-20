@@ -21,6 +21,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'omv-guru-meditation',
   templateUrl: './guru-meditation.component.html',
   styleUrls: ['./guru-meditation.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class GuruMeditationComponent {}

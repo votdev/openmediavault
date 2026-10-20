@@ -42,7 +42,8 @@ import { RunningTasks, TaskRunnerService } from '~/app/shared/services/task-runn
 @Component({
   selector: 'omv-notification-bar',
   templateUrl: './notification-bar.component.html',
-  styleUrls: ['./notification-bar.component.scss']
+  styleUrls: ['./notification-bar.component.scss'],
+  standalone: false
 })
 export class NotificationBarComponent implements OnInit {
   @Input()

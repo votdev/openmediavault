@@ -26,7 +26,8 @@ import { DataStoreService } from '~/app/shared/services/data-store.service';
 @Component({
   selector: 'omv-form-sharedfolder-select',
   templateUrl: './form-sharedfolder-select.component.html',
-  styleUrls: ['./form-sharedfolder-select.component.scss']
+  styleUrls: ['./form-sharedfolder-select.component.scss'],
+  standalone: false
 })
 export class FormSharedfolderSelectComponent extends FormSelectComponent {
   constructor(

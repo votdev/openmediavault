@@ -51,7 +51,8 @@ let nextUniqueId = 0;
 @Component({
   selector: 'omv-intuition-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
+  standalone: false
 })
 export class FormComponent implements AfterViewInit, OnInit {
   @Input()
@@ -446,7 +447,7 @@ export class FormComponent implements AfterViewInit, OnInit {
         break;
       case 'reload':
         if (fulfilled) {
-          // eslint-disable-next-line @typescript-eslint/ban-types
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
           const reloadFn: Function = _.get(control, 'reload');
           if (_.isFunction(reloadFn)) {
             const store: DataStore = formatDeep(modifier.typeConfig, values);

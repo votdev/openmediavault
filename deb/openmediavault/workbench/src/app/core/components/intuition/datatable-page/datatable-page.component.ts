@@ -56,7 +56,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-intuition-datatable-page',
   templateUrl: './datatable-page.component.html',
   styleUrls: ['./datatable-page.component.scss'],
-  providers: [PageContextService]
+  providers: [PageContextService],
+  standalone: false
 })
 export class DatatablePageComponent extends AbstractPageComponent<DatatablePageConfig> {
   @ViewChild('table', { static: true })

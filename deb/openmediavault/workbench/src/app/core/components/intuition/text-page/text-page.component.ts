@@ -50,7 +50,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-intuition-text-page',
   templateUrl: './text-page.component.html',
   styleUrls: ['./text-page.component.scss'],
-  providers: [PageContextService]
+  providers: [PageContextService],
+  standalone: false
 })
 export class TextPageComponent extends AbstractPageComponent<TextPageConfig> implements OnInit {
   @ViewChild('contentContainer', { static: true })

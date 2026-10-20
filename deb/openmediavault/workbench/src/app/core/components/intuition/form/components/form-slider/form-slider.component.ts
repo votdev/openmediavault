@@ -22,7 +22,8 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
 @Component({
   selector: 'omv-form-slider',
   templateUrl: './form-slider.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class FormSliderComponent extends AbstractFormFieldComponent {
   onChange(value: number) {

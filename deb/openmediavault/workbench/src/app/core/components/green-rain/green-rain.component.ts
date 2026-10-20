@@ -41,7 +41,8 @@ type Column = {
   selector: 'omv-green-rain',
   templateUrl: './green-rain.component.html',
   styleUrls: ['./green-rain.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class GreenRainComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true })

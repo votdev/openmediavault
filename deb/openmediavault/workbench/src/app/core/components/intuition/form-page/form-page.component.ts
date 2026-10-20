@@ -63,7 +63,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-intuition-form-page',
   templateUrl: './form-page.component.html',
   styleUrls: ['./form-page.component.scss'],
-  providers: [PageContextService]
+  providers: [PageContextService],
+  standalone: false
 })
 export class FormPageComponent
   extends AbstractPageComponent<FormPageConfig>
