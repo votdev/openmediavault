@@ -60,7 +60,7 @@ export class SubmitButtonComponent {
       _.invokeMap(invalidControls, 'markAllAsTouched');
       _.invokeMap(invalidControls, 'updateValueAndValidity');
       const element = this.elementRef.nativeElement.offsetParent.querySelector(
-        '.mat-input-element.ng-invalid'
+        '.mat-mdc-input-element.ng-invalid'
       );
       if (element) {
         if (_.isFunction(element.focus)) {

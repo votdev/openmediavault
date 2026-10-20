@@ -27,18 +27,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Initialize Material
 ////////////////////////////////////////////////////////////////////////////////
-$omv-typography-config: mat.define-legacy-typography-config(theme.$omv-font-family-default);
+$omv-typography-config: mat.define-typography-config(theme.$omv-font-family-default);
 
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy($omv-typography-config);`
-@include mat.all-legacy-component-typographies($omv-typography-config);
-@include mat.legacy-core;
+@include mat.all-component-typographies($omv-typography-config);
+@include mat.core;
 
 $omv-theme-primary-palette: mat.define-palette(theme.$omv-color-primary-palette);
 $omv-theme-accent-palette: map.merge(
@@ -107,11 +99,11 @@ $omv-dark-theme: map.deep-merge(
   )
 );
 
-@include mat.all-legacy-component-themes($omv-light-theme);
+@include mat.all-component-themes($omv-light-theme);
 @include theme.all-component-themes('light', $omv-light-theme, $omv-typography-config);
 
 .omv-dark-theme {
-  @include mat.all-legacy-component-colors($omv-dark-theme);
+  @include mat.all-component-colors($omv-dark-theme);
   @include theme.all-component-themes('dark', $omv-dark-theme, $omv-typography-config);
 }
 

@@ -16,20 +16,18 @@
  * GNU General Public License for more details.
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-import { MatLegacySliderChange as MatSliderChange } from '@angular/material/legacy-slider';
 
 import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form/components/abstract-form-field-component';
 
 @Component({
   selector: 'omv-form-slider',
   templateUrl: './form-slider.component.html',
-  styleUrls: ['./form-slider.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class FormSliderComponent extends AbstractFormFieldComponent {
-  onChange(event: MatSliderChange) {
+  onChange(value: number) {
     const control = this.formGroup.get(this.config.name);
-    control.setValue(event.value);
+    control.setValue(value);
     control.markAsTouched();
     control.markAsDirty();
     control.updateValueAndValidity();

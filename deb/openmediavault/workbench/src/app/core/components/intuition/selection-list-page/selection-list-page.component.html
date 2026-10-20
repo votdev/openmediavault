@@ -22,13 +22,14 @@
                         [multiple]="config.multiple"
                         (selectionChange)="onSelectionChange($event)">
       <mat-list-option *ngFor="let option of config.store.data"
-                       checkboxPosition="before"
+                       togglePosition="before"
                        [value]="option[config.valueProp]"
                        [selected]="config.value.includes(option[config.valueProp])">
-        {{ option[config.textProp] | transloco }}
-        <mat-hint *ngIf="config.hintProp && option[config.hintProp]">
+        <span matListItemTitle>{{ option[config.textProp] | transloco }}</span>
+        <span *ngIf="config.hintProp && option[config.hintProp]"
+              matListItemLine>
           {{ option[config.hintProp] | transloco }}
-        </mat-hint>
+        </span>
       </mat-list-option>
     </mat-selection-list>
   </mat-card-content>

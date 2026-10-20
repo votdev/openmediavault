@@ -20,16 +20,16 @@
 @mixin theme($mode, $theme-config, $typography-config) {
   :root {
     --omv-font-family-body: #{mat.font-family($typography-config)};
-    --omv-font-size-body-1: #{mat.font-size($typography-config, body-1)};
+    --omv-font-size-body-1: #{mat.font-size($typography-config, body-2)};
     --omv-font-size-button: #{mat.font-size($typography-config, button)};
     --omv-font-size-caption: #{mat.font-size($typography-config, caption)};
-    --omv-font-size-headline: #{mat.font-size($typography-config, headline)};
-    --omv-font-size-subheading-2: #{mat.font-size($typography-config, subheading-2)};
-    --omv-font-size-title: #{mat.font-size($typography-config, title)};
-    --omv-font-weight-body-1: #{mat.font-weight($typography-config, body-1)};
-    --omv-font-weight-headline: #{mat.font-weight($typography-config, headline)};
-    --omv-font-weight-subheading-2: #{mat.font-weight($typography-config, subheading-2)};
-    --omv-font-weight-title: #{mat.font-weight($typography-config, title)};
+    --omv-font-size-headline: #{mat.font-size($typography-config, headline-5)};
+    --omv-font-size-subheading-2: #{mat.font-size($typography-config, subtitle-1)};
+    --omv-font-size-title: #{mat.font-size($typography-config, headline-6)};
+    --omv-font-weight-body-1: #{mat.font-weight($typography-config, body-2)};
+    --omv-font-weight-headline: #{mat.font-weight($typography-config, headline-5)};
+    --omv-font-weight-subheading-2: #{mat.font-weight($typography-config, subtitle-1)};
+    --omv-font-weight-title: #{mat.font-weight($typography-config, headline-6)};
 
     @if $mode == light {
       @include color($theme-config, $typography-config);

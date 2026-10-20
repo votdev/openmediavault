@@ -5,32 +5,23 @@
 omv-datatable {
   .action-toolbar {
     .mat-toolbar {
-      .mat-button:not(.mat-button-disabled),
-      .mat-icon-button:not(.mat-button-disabled) {
+      .mat-mdc-button:not(.mat-mdc-button-disabled),
+      .mat-mdc-icon-button:not(.mat-mdc-button-disabled) {
         color: var(--omv-primary-color-text);
       }
 
-      .mat-form-field {
+      .mat-mdc-form-field {
         font-size: var(--omv-font-size-body-1);
 
-        &.mat-focused {
-          .mat-form-field-ripple {
-            background-color: var(--omv-primary-color-text);
-          }
-        }
 
-        .mat-form-field-infix {
-          padding-bottom: unset;
-
-          .mat-input-element {
-            caret-color: var(--omv-primary-color-text);
-            color: currentcolor;
-          }
+        .mat-mdc-input-element {
+          caret-color: var(--omv-primary-color-text);
+          color: currentcolor;
         }
       }
     }
 
-    .mat-progress-bar {
+    .mat-mdc-progress-bar {
       position: absolute;
     }
   }
