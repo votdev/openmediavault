@@ -8,7 +8,7 @@ import {
   TranslocoConfig,
   TranslocoMissingHandler,
   TranslocoTestingModule
-} from '@ngneat/transloco';
+} from '@jsverse/transloco';
 import { ToastrModule } from 'ngx-toastr';
 
 export class TestingTranslocoMissingHandler implements TranslocoMissingHandler {
@@ -22,7 +22,11 @@ export class TestingTranslocoMissingHandler implements TranslocoMissingHandler {
   imports: [
     NoopAnimationsModule,
     RouterTestingModule,
-    TranslocoTestingModule,
+    TranslocoTestingModule.forRoot({
+      langs: { en: {} },
+      translocoConfig: { availableLangs: ['en'], defaultLang: 'en' },
+      preloadLangs: true
+    }),
     ToastrModule.forRoot()
   ],
   providers: [

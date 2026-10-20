@@ -8,8 +8,9 @@ import {
   TRANSLOCO_TRANSPILER,
   translocoConfig,
   TranslocoLoader,
-  TranslocoModule
-} from '@ngneat/transloco';
+  TranslocoModule,
+  TranspileParams
+} from '@jsverse/transloco';
 import * as _ from 'lodash';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -43,11 +44,7 @@ class CustomLoader implements TranslocoLoader {
  */
 @Injectable({ providedIn: 'root' })
 class CustomTranspiler extends DefaultTranspiler {
-  public override transpile(
-    value: any,
-    params: Record<string, any>,
-    translation: Translation
-  ): any {
+  public override transpile({ value }: TranspileParams): any {
     return value;
   }
 }

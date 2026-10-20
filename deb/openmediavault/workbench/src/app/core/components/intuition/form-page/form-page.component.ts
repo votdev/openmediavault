@@ -17,7 +17,7 @@
  */
 import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { EMPTY, exhaustMap, Observable, Subscription, timer } from 'rxjs';
 import { debounceTime, finalize } from 'rxjs/operators';
