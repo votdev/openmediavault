@@ -13,7 +13,7 @@
     <span [innerHtml]="hint.text | transloco | template:pageContext | nl2br | sanitizeHtml"></span>
   </omv-alert-panel>
 </div>
-<mat-card>
+<mat-card class="omv-m">
   <ng-container *ngTemplateOutlet="renderCardHeader"></ng-container>
   <mat-card-content>
     <omv-datatable #table
@@ -87,14 +87,14 @@
       </mat-card-header>
     </ng-container>
     <ng-container *ngIf="!config.icon">
-      <mat-card-title-group>
+      <mat-card-header>
         <mat-card-title *ngIf="config.title">
           {{ config.title | transloco | template:pageContext }}
         </mat-card-title>
         <mat-card-subtitle *ngIf="config.subTitle">
           {{ config.subTitle | transloco | template:pageContext }}
         </mat-card-subtitle>
-      </mat-card-title-group>
+      </mat-card-header>
     </ng-container>
   </ng-container>
 </ng-template>

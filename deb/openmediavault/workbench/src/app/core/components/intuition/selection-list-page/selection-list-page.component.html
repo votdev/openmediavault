@@ -1,5 +1,6 @@
 <omv-intuition-page-header></omv-intuition-page-header>
-<mat-card [ngClass]="{'omv-display-none': (pageStatus?.loading && pageStatus?.initialLoad) || pageStatus?.error}">
+<mat-card class="omv-m"
+          [ngClass]="{'omv-display-none': (pageStatus?.loading && pageStatus?.initialLoad) || pageStatus?.error}">
   <mat-toolbar *ngIf="config.multiple && config.hasSelectAllButton"
                class="omv-sticky">
     <button mat-icon-button
@@ -9,14 +10,14 @@
       <mat-icon svgIcon="mdi:check-all"></mat-icon>
     </button>
   </mat-toolbar>
-  <mat-card-title-group *ngIf="config.title || config.subTitle">
+  <mat-card-header *ngIf="config.title || config.subTitle">
     <mat-card-title *ngIf="config.title">
       {{ config.title | transloco | template:pageContext }}
     </mat-card-title>
     <mat-card-subtitle *ngIf="config.subTitle">
       {{ config.subTitle | transloco | template:pageContext }}
     </mat-card-subtitle>
-  </mat-card-title-group>
+  </mat-card-header>
   <mat-card-content>
     <mat-selection-list #list
                         [multiple]="config.multiple"

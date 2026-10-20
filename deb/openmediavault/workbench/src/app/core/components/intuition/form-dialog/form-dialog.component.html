@@ -45,14 +45,14 @@
       </mat-card-header>
     </ng-container>
     <ng-container *ngIf="!config.icon">
-      <mat-card-title-group>
+      <mat-card-header>
         <mat-card-title *ngIf="config.title">
           {{ config.title }}
         </mat-card-title>
         <mat-card-subtitle *ngIf="config.subTitle">
           {{ config.subTitle }}
         </mat-card-subtitle>
-      </mat-card-title-group>
+      </mat-card-header>
     </ng-container>
   </mat-card>
 </ng-template>

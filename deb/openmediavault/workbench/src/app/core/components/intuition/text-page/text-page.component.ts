@@ -49,7 +49,6 @@ import { RpcService } from '~/app/shared/services/rpc.service';
 @Component({
   selector: 'omv-intuition-text-page',
   templateUrl: './text-page.component.html',
-  styleUrls: ['./text-page.component.scss'],
   providers: [PageContextService],
   standalone: false
 })
