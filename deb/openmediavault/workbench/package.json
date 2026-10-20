@@ -55,7 +55,7 @@
     "@jsverse/transloco": "^8.4.0",
     "@mdi/angular-material": "^7.2.96",
     "@openng/ngx-toastr": "^1.1.1",
-    "@siemens/ngx-datatable": "21.6.0",
+    "@siemens/ngx-datatable": "^26.2.2",
     "chart.js": "^4.5.1",
     "chartjs-plugin-datalabels": "^2.2.0",
     "cronstrue": "^2.61.0",

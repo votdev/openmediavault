@@ -39,7 +39,7 @@ describe('DatatableComponent', () => {
     const datatable: NgxDatatableComponent = fixture.debugElement
       .query(By.directive(NgxDatatableComponent))
       .injector.get(NgxDatatableComponent);
-    datatable.treeAction.emit({ row });
+    datatable.treeAction.emit({ row, rowIndex: 0 });
 
     expect(treeAction).toHaveBeenCalledWith(row);
   });
