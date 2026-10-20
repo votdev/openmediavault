@@ -16,7 +16,6 @@
  * GNU General Public License for more details.
  */
 import { Injectable } from '@angular/core';
-import { CanDeactivate } from '@angular/router';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
 import * as _ from 'lodash';
@@ -29,7 +28,7 @@ import { DialogService } from '~/app/shared/services/dialog.service';
 @Injectable({
   providedIn: 'root'
 })
-export class IsDirtyGuardService implements CanDeactivate<Dirty> {
+export class IsDirtyGuardService {
   constructor(private dialogService: DialogService) {}
 
   canDeactivate(
