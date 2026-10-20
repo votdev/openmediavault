@@ -18,7 +18,7 @@
 @mixin omv-scrollbar {
   scrollbar-color: dc.$omv-color-corporate-default transparent;
 
-  --scrollbar-border-radius: 0 !important;
+  --scrollbar-thumb-shape: 0 !important;
   --scrollbar-thumb-color: #{dc.$omv-color-corporate-default} !important;
   --scrollbar-thumb-hover-color: var(--scrollbar-thumb-color) !important;
 }
