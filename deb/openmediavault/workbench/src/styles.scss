@@ -27,9 +27,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Initialize Material
 //
-// The Material 3 theme is used with its default look. Only the corporate
-// colors are applied. The dark color scheme is activated by the class
-// `omv-dark-theme` on the body element, see `AppComponent`.
+// The Material 3 theme is used with its default look. The color palettes
+// are generated from the corporate colors, see `scss/theme/_m3-palettes.scss`.
+// Customizations of Material components must be done via the
+// `mat.<component>-overrides()` mixins in `scss/theme/material/` only.
+// The dark color scheme is activated by the class `omv-dark-theme` on the
+// body element, see `AppComponent`.
 ////////////////////////////////////////////////////////////////////////////////
 html {
   @include mat.theme(
@@ -41,28 +44,6 @@ html {
       ),
       typography: theme.$omv-font-family-default,
       density: 0
-    )
-  );
-  @include mat.theme-overrides(
-    (
-      // Corporate colors.
-      primary: dc.$omv-color-corporate-default,
-      on-primary: dc.$omv-color-black,
-      tertiary: dc.$omv-color-yellow,
-      on-tertiary: dc.$omv-color-black,
-      error: dc.$omv-color-red,
-      on-error: dc.$omv-color-white,
-      // Surfaces.
-      surface:
-        light-dark(
-          map.get(dc.$omv-color-slate-gray-palette, 50),
-          map.get(dc.$omv-color-slate-gray-palette, 900)
-        ),
-      surface-container-low:
-        light-dark(dc.$omv-color-white, map.get(dc.$omv-color-charcoal-palette, 600)),
-      surface-container: light-dark(dc.$omv-color-white, map.get(dc.$omv-color-charcoal-palette, 600)),
-      surface-container-high:
-        light-dark(dc.$omv-color-white, map.get(dc.$omv-color-charcoal-palette, 600))
     )
   );
 
@@ -1107,7 +1088,8 @@ body {
 }
 
 body {
-  background-color: var(--omv-background-color-body);
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
   margin: 0;
 }

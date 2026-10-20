@@ -38,10 +38,6 @@
     --omv-background-color-selected-button: var(--mat-sys-secondary-container);
     --omv-background-color-card: var(--mat-sys-surface-container-low);
     --omv-background-color-background: var(--mat-sys-surface);
-    --omv-background-color-body: light-dark(
-      #{dc.$omv-color-corporate-default},
-      var(--mat-sys-surface-container-low)
-    );
     --omv-primary-color-text: #{dc.$omv-color-corporate-default};
   }
 }
