@@ -15,7 +15,7 @@
 // GNU General Public License for more details.
 @use 'scss/theme/colors' as tc;
 
-@mixin theme($mode, $theme-config, $typography-config) {
+@mixin theme {
   .mat-toolbar {
     color: tc.$omv-color-primary;
   }

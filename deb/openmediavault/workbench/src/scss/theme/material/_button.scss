@@ -17,7 +17,7 @@
 @use 'scss/defaults/variables' as dv;
 @use 'scss/theme/colors' as tc;
 
-@mixin theme($mode, $theme-config, $typography-config) {
+@mixin theme {
   .mat-button-toggle.mat-button-toggle-checked {
     @include tc.background-color-pair('accent');
   }

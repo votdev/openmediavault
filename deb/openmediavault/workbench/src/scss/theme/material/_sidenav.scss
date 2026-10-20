@@ -17,7 +17,7 @@
 @use '@angular/material' as mat;
 @use 'scss/defaults/colors' as dc;
 
-@mixin theme($mode, $theme-config, $typography-config) {
+@mixin theme {
   .mat-sidenav {
     background-color: map.get(dc.$omv-color-charcoal-palette, 600);
   }

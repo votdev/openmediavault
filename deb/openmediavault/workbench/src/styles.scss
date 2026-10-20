@@ -26,87 +26,54 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Initialize Material
+//
+// The Material 3 theme is used with its default look. Only the corporate
+// colors are applied. The dark color scheme is activated by the class
+// `omv-dark-theme` on the body element, see `AppComponent`.
 ////////////////////////////////////////////////////////////////////////////////
-$omv-typography-config: mat.m2-define-typography-config(theme.$omv-font-family-default);
-
-@include mat.all-component-typographies($omv-typography-config);
-@include mat.elevation-classes;
-@include mat.app-background;
-
-$omv-theme-primary-palette: mat.m2-define-palette(theme.$omv-color-primary-palette);
-$omv-theme-accent-palette: map.merge(
-  mat.m2-define-palette(theme.$omv-color-accent-palette),
-  (
-    default-contrast: theme.$omv-color-accent-contrast
-  )
-);
-$omv-theme-warn-palette: mat.m2-define-palette(theme.$omv-color-warn-palette);
-$omv-light-theme: mat.m2-define-light-theme(
-  (
-    color: (
-      primary: $omv-theme-primary-palette,
-      accent: $omv-theme-accent-palette,
-      warn: $omv-theme-warn-palette
+html {
+  @include mat.theme(
+    (
+      color: (
+        primary: theme.$omv-m3-primary-palette,
+        tertiary: theme.$omv-m3-tertiary-palette,
+        theme-type: color-scheme
+      ),
+      typography: theme.$omv-font-family-default,
+      density: 0
     )
-  )
-);
-$omv-light-theme-background-palette: (
-  status-bar: map.get(dc.$omv-color-slate-gray-palette, 300),
-  app-bar: map.get(dc.$omv-color-slate-gray-palette, 100),
-  background: map.get(dc.$omv-color-slate-gray-palette, 50),
-  selected-button: map.get(dc.$omv-color-slate-gray-palette, 300),
-  selected-disabled-button: map.get(dc.$omv-color-slate-gray-palette, 400),
-  disabled-button-toggle: map.get(dc.$omv-color-slate-gray-palette, 200),
-  unselected-chip: map.get(dc.$omv-color-slate-gray-palette, 300),
-  disabled-list-option: map.get(dc.$omv-color-slate-gray-palette, 200),
-  tooltip: map.get(dc.$omv-color-slate-gray-palette, 700)
-);
-$omv-light-theme: map.deep-merge(
-  $omv-light-theme,
-  (
-    background: $omv-light-theme-background-palette,
-    color: (
-      background: $omv-light-theme-background-palette
+  );
+  @include mat.theme-overrides(
+    (
+      // Corporate colors.
+      primary: dc.$omv-color-corporate-default,
+      on-primary: dc.$omv-color-black,
+      tertiary: dc.$omv-color-yellow,
+      on-tertiary: dc.$omv-color-black,
+      error: dc.$omv-color-red,
+      on-error: dc.$omv-color-white,
+      // Surfaces.
+      surface:
+        light-dark(
+          map.get(dc.$omv-color-slate-gray-palette, 50),
+          map.get(dc.$omv-color-slate-gray-palette, 900)
+        ),
+      surface-container-low:
+        light-dark(dc.$omv-color-white, map.get(dc.$omv-color-charcoal-palette, 600)),
+      surface-container: light-dark(dc.$omv-color-white, map.get(dc.$omv-color-charcoal-palette, 600)),
+      surface-container-high:
+        light-dark(dc.$omv-color-white, map.get(dc.$omv-color-charcoal-palette, 600))
     )
-  )
-);
-$omv-dark-theme: mat.m2-define-dark-theme(
-  (
-    color: (
-      primary: $omv-theme-primary-palette,
-      accent: $omv-theme-accent-palette,
-      warn: $omv-theme-warn-palette
-    )
-  )
-);
-$omv-dark-theme-background-palette: (
-  app-bar: map.get(dc.$omv-color-charcoal-palette, 800),
-  background: map.get(dc.$omv-color-slate-gray-palette, 900),
-  card: map.get(dc.$omv-color-charcoal-palette, 600),
-  dialog: map.get(dc.$omv-color-charcoal-palette, 600),
-  raised-button: map.get(dc.$omv-color-charcoal-palette, 800),
-  selected-button: map.get(dc.$omv-color-charcoal-palette, 900),
-  selected-disabled-button: map.get(dc.$omv-color-charcoal-palette, 800),
-  unselected-chip: map.get(dc.$omv-color-charcoal-palette, 700),
-  tooltip: map.get(dc.$omv-color-charcoal-palette, 700)
-);
-$omv-dark-theme: map.deep-merge(
-  $omv-dark-theme,
-  (
-    background: $omv-dark-theme-background-palette,
-    color: (
-      background: $omv-dark-theme-background-palette
-    )
-  )
-);
+  );
 
-@include mat.all-component-themes($omv-light-theme);
-@include theme.all-component-themes('light', $omv-light-theme, $omv-typography-config);
-
-.omv-dark-theme {
-  @include mat.all-component-colors($omv-dark-theme);
-  @include theme.all-component-themes('dark', $omv-dark-theme, $omv-typography-config);
+  color-scheme: light;
 }
+
+body.omv-dark-theme {
+  color-scheme: dark;
+}
+
+@include theme.all-component-themes;
 
 ////////////////////////////////////////////////////////////////////////////////
 // CSS variables
@@ -938,6 +905,10 @@ $omv-dark-theme: map.deep-merge(
   font-size: var(--omv-font-size-title);
 }
 
+.omv-font-size-headline {
+  font-size: var(--omv-font-size-headline);
+}
+
 .omv-font-size-subheading-2 {
   font-size: var(--omv-font-size-subheading-2);
 }
@@ -1137,7 +1108,7 @@ body {
 
 body {
   background-color: var(--omv-background-color-body);
-  font-family: var(--omv-font-family-body);
+  font: var(--mat-sys-body-medium);
   margin: 0;
 }
 

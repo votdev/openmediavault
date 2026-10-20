@@ -16,7 +16,7 @@
 @use 'sass:map';
 @use 'scss/theme/colors' as tc;
 
-@mixin theme($mode, $theme-config, $typography-config) {
+@mixin theme {
   // We need to define these classes here as well to have a
   // higher order of precedence.
   @each $name in map.keys(tc.$omv-color-pairs) {

@@ -15,7 +15,7 @@
 <mat-dialog-actions align="end">
   <button *ngIf="config.buttons.cancel && !config.buttons.cancel.hidden"
           mat-flat-button
-          color="accent"
+          class="omv-background-color-pair-accent"
           (click)="onCancel()">
     {{ config.buttons.cancel.text | transloco }}
   </button>
