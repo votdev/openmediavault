@@ -89,7 +89,6 @@ export type MatFormDatatableAction = {
   selector: 'mat-form-datatable',
   exportAs: 'matFormDatatable',
   templateUrl: './mat-form-datatable.component.html',
-  styleUrls: ['./mat-form-datatable.component.scss'],
   providers: [
     {
       provide: MatFormFieldControl,

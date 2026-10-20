@@ -41,7 +41,6 @@ import {
 @Component({
   selector: 'omv-apply-config-panel',
   templateUrl: './apply-config-panel.component.html',
-  styleUrls: ['./apply-config-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false
 })

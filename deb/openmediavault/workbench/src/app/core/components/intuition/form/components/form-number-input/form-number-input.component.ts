@@ -24,7 +24,6 @@ import { ClipboardService } from '~/app/shared/services/clipboard.service';
 @Component({
   selector: 'omv-form-number-input',
   templateUrl: './form-number-input.component.html',
-  styleUrls: ['./form-number-input.component.scss'],
   standalone: false
 })
 export class FormNumberInputComponent extends AbstractFormFieldComponent {

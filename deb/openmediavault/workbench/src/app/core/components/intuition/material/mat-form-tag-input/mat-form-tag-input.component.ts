@@ -34,7 +34,6 @@ let nextUniqueId = 0;
   selector: 'mat-form-tag-input',
   exportAs: 'matFormTagInput',
   templateUrl: './mat-form-tag-input.component.html',
-  styleUrls: ['./mat-form-tag-input.component.scss'],
   providers: [
     {
       provide: MatFormFieldControl,

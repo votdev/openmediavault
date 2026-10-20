@@ -40,7 +40,6 @@ type Column = {
 @Component({
   selector: 'omv-green-rain',
   templateUrl: './green-rain.component.html',
-  styleUrls: ['./green-rain.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false
 })

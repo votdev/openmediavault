@@ -22,7 +22,6 @@ import * as _ from 'lodash';
 @Component({
   selector: 'omv-submit-button',
   templateUrl: './submit-button.component.html',
-  styleUrls: ['./submit-button.component.scss'],
   standalone: false
 })
 export class SubmitButtonComponent {

@@ -28,7 +28,7 @@
 // Initialize Material
 //
 // The Material 3 theme is used with its default look. The color palettes
-// are generated from the corporate colors, see `scss/theme/_m3-palettes.scss`.
+// are generated from the corporate colors, see `scss/theme/_palettes.scss`.
 // Customizations of Material components must be done via the
 // `mat.<component>-overrides()` mixins and the `--mat-sys-*` system
 // variables only.
@@ -729,15 +729,6 @@ body.omv-dark-theme {
   .omv-background-color-pair-#{$name} {
     @include theme.background-color-pair($name);
   }
-
-  .omv-dark-theme {
-    .omv-background-color-pair-#{$name} {
-      @include theme.background-color-pair($name);
-    }
-  }
-}
-
-.omv-background-color-pair-tip {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -951,16 +942,6 @@ body.omv-dark-theme {
   }
 }
 
-@keyframes loading-spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Icon
 .omv-icon-sm {
@@ -1118,6 +1099,6 @@ img.loading {
   border-left: 1.1em solid dc.$omv-color-corporate-default;
   animation-duration: 1.1s;
   animation-iteration-count: infinite;
-  animation-name: loading-spinner;
+  animation-name: rotate-360;
   animation-timing-function: linear;
 }

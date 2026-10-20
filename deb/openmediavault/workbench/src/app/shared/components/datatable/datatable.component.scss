@@ -1,4 +1,3 @@
-@use 'sass:map';
 @use 'scss/defaults/colors' as dc;
 @use 'scss/theme';
 
@@ -38,7 +37,7 @@ omv-datatable {
         &.active:hover .datatable-row-group {
           @include theme.background-color-pair('accent');
 
-          background-color: map.get(theme.$omv-color-accent-palette, 800) !important;
+          background-color: #f5c300 !important;
           transition-property: background;
           transition-duration: 0.3s;
           transition-timing-function: linear;
@@ -48,7 +47,7 @@ omv-datatable {
         &.active:focus .datatable-row-group {
           @include theme.background-color-pair('accent');
 
-          background-color: map.get(theme.$omv-color-accent-palette, 700) !important;
+          background-color: #f6c900 !important;
         }
       }
     }
@@ -68,7 +67,7 @@ omv-datatable {
         &:focus .datatable-row-group {
           @include theme.background-color-pair('primary');
 
-          background-color: map.get(theme.$omv-color-primary-palette, 700);
+          background-color: #4b9bd7;
         }
       }
     }
