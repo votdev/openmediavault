@@ -2,11 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, NgModule } from '@angular/core';
 import {
   DefaultTranspiler,
+  provideTransloco,
+  provideTranslocoTranspiler,
   Translation,
-  TRANSLOCO_CONFIG,
-  TRANSLOCO_LOADER,
-  TRANSLOCO_TRANSPILER,
-  translocoConfig,
   TranslocoLoader,
   TranslocoModule,
   TranspileParams
@@ -52,18 +50,18 @@ class CustomTranspiler extends DefaultTranspiler {
 @NgModule({
   exports: [TranslocoModule],
   providers: [
-    {
-      provide: TRANSLOCO_CONFIG,
-      useValue: translocoConfig({
+    provideTransloco({
+      config: {
         availableLangs: _.keys(SupportedLocales),
         defaultLang: 'en_GB',
         missingHandler: { allowEmpty: true, logMissingKey: false },
         prodMode: environment.production,
         reRenderOnLangChange: true
-      })
-    },
-    { provide: TRANSLOCO_LOADER, useClass: CustomLoader },
-    { provide: TRANSLOCO_TRANSPILER, useClass: CustomTranspiler }
+      },
+      loader: CustomLoader
+    }),
+    // Override the default transpiler.
+    provideTranslocoTranspiler(CustomTranspiler)
   ]
 })
 export class TranslocoRootModule {}
