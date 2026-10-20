@@ -19,7 +19,7 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, Input, Optional, Self, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { MatFormFieldControl } from '@angular/material/form-field';
+import { MatLegacyFormFieldControl as MatFormFieldControl } from '@angular/material/legacy-form-field';
 import * as _ from 'lodash';
 import { Subject } from 'rxjs';
 
