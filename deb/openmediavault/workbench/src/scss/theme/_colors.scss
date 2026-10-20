@@ -28,13 +28,14 @@ $omv-color-error: dc.$omv-color-red;
 $omv-color-warning: dc.$omv-color-yellow;
 $omv-color-info: dc.$omv-color-corporate-dark;
 $omv-color-pairs: (
+  // The `primary` and `accent` pairs follow the Material 3 theme colors.
   'primary': (
-    background-color: $omv-color-primary,
-    color: $omv-color-primary-contrast
+    background-color: var(--mat-sys-primary),
+    color: var(--mat-sys-on-primary)
   ),
   'accent': (
-    background-color: $omv-color-accent,
-    color: $omv-color-accent-contrast
+    background-color: var(--mat-sys-tertiary),
+    color: var(--mat-sys-on-tertiary)
   ),
   'green': (
     background-color: dc.$omv-color-green,

@@ -14,14 +14,20 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 @use 'sass:map';
+@use '@angular/material' as mat;
 @use 'scss/theme/colors' as tc;
 
 @mixin theme {
-  // We need to define these classes here as well to have a
-  // higher order of precedence.
+  // Apply the color pairs to the chips, e.g.
+  // `<mat-chip class="omv-background-color-pair-green">`.
   @each $name in map.keys(tc.$omv-color-pairs) {
-    .mat-mdc-chip.omv-background-color-pair-#{$name} {
-      @include tc.background-color-pair($name);
+    .omv-background-color-pair-#{$name} {
+      @include mat.chips-overrides(
+        (
+          elevated-container-color: map.get(tc.$omv-color-pairs, $name, background-color),
+          label-text-color: map.get(tc.$omv-color-pairs, $name, color)
+        )
+      );
     }
   }
 }

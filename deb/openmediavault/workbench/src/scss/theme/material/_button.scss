@@ -14,19 +14,29 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 @use 'sass:map';
-@use 'scss/defaults/variables' as dv;
+@use '@angular/material' as mat;
 @use 'scss/theme/colors' as tc;
 
 @mixin theme {
-  .mat-button-toggle.mat-button-toggle-checked {
-    @include tc.background-color-pair('accent');
+  // Apply the color pairs to the filled buttons and button toggles,
+  // e.g. `<button mat-flat-button class="omv-background-color-pair-red">`.
+  @each $name in map.keys(tc.$omv-color-pairs) {
+    .omv-background-color-pair-#{$name} {
+      @include mat.button-overrides(
+        (
+          filled-container-color: map.get(tc.$omv-color-pairs, $name, background-color),
+          filled-label-text-color: map.get(tc.$omv-color-pairs, $name, color)
+        )
+      );
+    }
   }
 
-  // We need to define these classes here as well to have a
-  // higher order of precedence.
-  @each $name in map.keys(tc.$omv-color-pairs) {
-    .mat-mdc-unelevated-button.omv-background-color-pair-#{$name} {
-      @include tc.background-color-pair($name);
-    }
+  .mat-button-toggle-group {
+    @include mat.button-toggle-overrides(
+      (
+        selected-state-background-color: map.get(tc.$omv-color-pairs, accent, background-color),
+        selected-state-text-color: map.get(tc.$omv-color-pairs, accent, color)
+      )
+    );
   }
 }
