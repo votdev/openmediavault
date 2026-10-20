@@ -1,6 +1,7 @@
 omv-task-dialog {
-  .mat-mdc-dialog-content {
-    max-height: none !important;
+  // The task output should use the full height of the dialog.
+  .omv-task-dialog-body {
+    max-height: none;
 
     .omv-task-dialog-content {
       white-space: break-spaces;

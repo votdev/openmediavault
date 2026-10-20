@@ -70,8 +70,8 @@
              [cdkConnectedOverlayMinWidth]="triggerRect?.width!"
              (backdropClick)="close()"
              (detach)="close()">
-  <div class="mat-select-panel-wrap">
-    <div class="mat-select-panel mat-primary omv-display-flex omv-flex-column">
+  <div class="omv-folderbrowser-panel-wrap">
+    <div class="omv-folderbrowser-panel omv-display-flex omv-flex-column">
       <mat-toolbar class="omv-selection-header omv-display-flex omv-flex-row omv-justify-content-end">
         <mat-form-field>
           <button mat-icon-button
@@ -95,19 +95,19 @@
                             (selectionChange)="onSelectionChange($event)">
           <mat-list-option *ngIf="!folders.length"
                            disabled>
-            <mat-icon matListIcon
+            <mat-icon matListItemIcon
                       svgIcon="{{ icon.folder }}"></mat-icon>
-            <span class="mat-option-text">.</span>
+            <span matListItemTitle>.</span>
           </mat-list-option>
           <mat-list-option *ngFor="let folder of filteredFolders$ | async"
                            [value]="folder">
             <mat-icon *ngIf="'..' === folder"
-                      matListIcon
+                      matListItemIcon
                       svgIcon="{{ icon.chevronUp }}"></mat-icon>
             <mat-icon *ngIf="!['..'].includes(folder)"
-                      matListIcon
+                      matListItemIcon
                       svgIcon="{{ icon.folder }}"></mat-icon>
-            <span class="mat-option-text">{{ folder }}</span>
+            <span matListItemTitle>{{ folder }}</span>
           </mat-list-option>
         </mat-selection-list>
       </div>

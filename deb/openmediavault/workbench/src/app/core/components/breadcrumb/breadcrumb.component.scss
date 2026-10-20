@@ -14,13 +14,13 @@ nav {
       border-bottom: 3px solid theme.$omv-color-accent;
     }
 
-    .mat-icon {
+    mat-icon {
       vertical-align: middle;
     }
   }
 
-  .mat-divider {
-    border-color: inherit;
+  // Vertical separators between the breadcrumbs.
+  mat-divider {
     display: unset;
     margin-left: dv.$omv-margin * 0.5;
     margin-right: dv.$omv-margin * 0.5;

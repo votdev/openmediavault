@@ -1,9 +1,4 @@
-.mat-mdc-form-field {
+// Align the search field with the buttons of the toolbar.
+mat-form-field {
   vertical-align: middle;
-}
-
-.mat-divider {
-  display: unset;
-  margin-left: 8px;
-  margin-right: 8px;
 }

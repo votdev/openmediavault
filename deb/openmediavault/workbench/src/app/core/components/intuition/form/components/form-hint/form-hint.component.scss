@@ -1,7 +1,4 @@
-omv-form-hint {
-  omv-alert-panel {
-    .mat-mdc-card {
-      margin: 0 0 1rem !important;
-    }
-  }
+omv-form-hint omv-alert-panel {
+  display: block;
+  margin-bottom: 1rem;
 }

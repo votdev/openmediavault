@@ -4,24 +4,8 @@
 
 omv-datatable {
   .action-toolbar {
-    .mat-toolbar {
-      .mat-mdc-button:not(.mat-mdc-button-disabled),
-      .mat-mdc-icon-button:not(.mat-mdc-button-disabled) {
-        color: var(--omv-primary-color-text);
-      }
-
-      .mat-mdc-form-field {
-        font-size: var(--omv-font-size-body-1);
-
-
-        .mat-mdc-input-element {
-          caret-color: var(--omv-primary-color-text);
-          color: currentcolor;
-        }
-      }
-    }
-
-    .mat-mdc-progress-bar {
+    // Show the loading indicator as overlay below the toolbar.
+    mat-progress-bar {
       position: absolute;
     }
   }

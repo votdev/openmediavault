@@ -1,4 +1,3 @@
-@use 'scss/defaults/colors' as dc;
 @use 'scss/defaults/variables' as dv;
 
 .omv-navigation-bar {
@@ -7,24 +6,19 @@
   height: 100%;
 
   .header {
-    background-color: dc.$omv-color-transparent;
-    border-left: 3px solid dc.$omv-color-transparent;
     height: dv.$omv-top-bar-height;
     padding-left: dv.$omv-padding;
 
     .logo {
       width: 100%;
       height: 100%;
-      background-image: url('^./assets/images/openmediavault_logo_simple.svg');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position-y: center;
-    }
-  }
 
-  .content {
-    .mat-nav-list {
-      padding-top: unset;
+      // Use the logo as mask to colorize it with the theme color.
+      background-color: var(--mat-sys-primary);
+      mask-image: url('^./assets/images/openmediavault_logo_simple.svg');
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      mask-position: left center;
     }
   }
 }

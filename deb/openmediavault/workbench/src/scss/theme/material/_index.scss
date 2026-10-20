@@ -13,18 +13,8 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-@use 'button';
-@use 'chip';
 @use 'css-variables';
-@use 'sidenav';
-@use 'tab';
-@use 'toolbar';
 
 @mixin all-component-themes {
-  @include button.theme;
-  @include chip.theme;
   @include css-variables.theme;
-  @include sidenav.theme;
-  @include tab.theme;
-  @include toolbar.theme;
 }

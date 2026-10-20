@@ -1,5 +1,5 @@
 <mat-list-item role="listitem"
-               [ngClass]="{'active': item.active}"
+               [activated]="item.active"
                [style.padding-left.px]="16 + depth * 32"
                (click)="onClick(item)">
   <mat-icon matListItemIcon
