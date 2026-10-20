@@ -13,23 +13,23 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-@use "sass:map";
+@use 'sass:map';
 @use '@angular/material' as mat;
 @use 'scss/defaults/colors' as dc;
 
 @mixin theme($mode, $theme-config, $typography-config) {
   :root {
-    --omv-font-family-body: #{mat.font-family($typography-config)};
-    --omv-font-size-body-1: #{mat.font-size($typography-config, body-2)};
-    --omv-font-size-button: #{mat.font-size($typography-config, button)};
-    --omv-font-size-caption: #{mat.font-size($typography-config, caption)};
-    --omv-font-size-headline: #{mat.font-size($typography-config, headline-5)};
-    --omv-font-size-subheading-2: #{mat.font-size($typography-config, subtitle-1)};
-    --omv-font-size-title: #{mat.font-size($typography-config, headline-6)};
-    --omv-font-weight-body-1: #{mat.font-weight($typography-config, body-2)};
-    --omv-font-weight-headline: #{mat.font-weight($typography-config, headline-5)};
-    --omv-font-weight-subheading-2: #{mat.font-weight($typography-config, subtitle-1)};
-    --omv-font-weight-title: #{mat.font-weight($typography-config, headline-6)};
+    --omv-font-family-body: #{mat.m2-font-family($typography-config)};
+    --omv-font-size-body-1: #{mat.m2-font-size($typography-config, body-2)};
+    --omv-font-size-button: #{mat.m2-font-size($typography-config, button)};
+    --omv-font-size-caption: #{mat.m2-font-size($typography-config, caption)};
+    --omv-font-size-headline: #{mat.m2-font-size($typography-config, headline-5)};
+    --omv-font-size-subheading-2: #{mat.m2-font-size($typography-config, subtitle-1)};
+    --omv-font-size-title: #{mat.m2-font-size($typography-config, headline-6)};
+    --omv-font-weight-body-1: #{mat.m2-font-weight($typography-config, body-2)};
+    --omv-font-weight-headline: #{mat.m2-font-weight($typography-config, headline-5)};
+    --omv-font-weight-subheading-2: #{mat.m2-font-weight($typography-config, subtitle-1)};
+    --omv-font-weight-title: #{mat.m2-font-weight($typography-config, headline-6)};
 
     @if $mode == light {
       @include color($theme-config, $typography-config);
@@ -41,45 +41,42 @@
   @if $mode == dark {
     @include color($theme-config, $typography-config);
 
-    --omv-background-color-body: #{mat.get-color-from-palette(
-      map.get($theme-config, background),
-      card
-    )};
+    --omv-background-color-body: #{mat.m2-get-color-from-palette(
+        map.get($theme-config, background),
+        card
+      )};
   }
 }
 
 @mixin color($theme-config, $typography-config) {
-  --omv-color-text: #{mat.get-color-from-palette(map.get($theme-config, foreground), text)};
-  --omv-color-secondary-text: #{mat.get-color-from-palette(
+  --omv-color-text: #{mat.m2-get-color-from-palette(map.get($theme-config, foreground), text)};
+  --omv-color-secondary-text: #{mat.m2-get-color-from-palette(
       map.get($theme-config, foreground),
       secondary-text
     )};
-  --omv-color-disabled-text: #{mat.get-color-from-palette(
+  --omv-color-disabled-text: #{mat.m2-get-color-from-palette(
       map.get($theme-config, foreground),
       disabled-text
     )};
-  --omv-color-hint-text: #{mat.get-color-from-palette(
+  --omv-color-hint-text: #{mat.m2-get-color-from-palette(
       map.get($theme-config, foreground),
       hint-text
     )};
-  --omv-background-color-hover: #{mat.get-color-from-palette(
+  --omv-background-color-hover: #{mat.m2-get-color-from-palette(
       map.get($theme-config, background),
       hover
     )};
-  --omv-background-color-selected-button: #{mat.get-color-from-palette(
+  --omv-background-color-selected-button: #{mat.m2-get-color-from-palette(
       map.get($theme-config, background),
       selected-button
     )};
-  --omv-background-color-card: #{mat.get-color-from-palette(
+  --omv-background-color-card: #{mat.m2-get-color-from-palette(
       map.get($theme-config, background),
       card
     )};
-  --omv-background-color-background: #{mat.get-color-from-palette(
+  --omv-background-color-background: #{mat.m2-get-color-from-palette(
       map.get($theme-config, background),
       background
     )};
-  --omv-primary-color-text: #{mat.get-color-from-palette(
-      map.get($theme-config, primary),
-      text
-    )};
+  --omv-primary-color-text: #{mat.m2-get-color-from-palette(map.get($theme-config, primary), text)};
 }

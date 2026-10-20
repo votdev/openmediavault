@@ -27,20 +27,20 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Initialize Material
 ////////////////////////////////////////////////////////////////////////////////
-$omv-typography-config: mat.define-typography-config(theme.$omv-font-family-default);
+$omv-typography-config: mat.m2-define-typography-config(theme.$omv-font-family-default);
 
 @include mat.all-component-typographies($omv-typography-config);
 @include mat.core;
 
-$omv-theme-primary-palette: mat.define-palette(theme.$omv-color-primary-palette);
+$omv-theme-primary-palette: mat.m2-define-palette(theme.$omv-color-primary-palette);
 $omv-theme-accent-palette: map.merge(
-  mat.define-palette(theme.$omv-color-accent-palette),
+  mat.m2-define-palette(theme.$omv-color-accent-palette),
   (
     default-contrast: theme.$omv-color-accent-contrast
   )
 );
-$omv-theme-warn-palette: mat.define-palette(theme.$omv-color-warn-palette);
-$omv-light-theme: mat.define-light-theme(
+$omv-theme-warn-palette: mat.m2-define-palette(theme.$omv-color-warn-palette);
+$omv-light-theme: mat.m2-define-light-theme(
   (
     color: (
       primary: $omv-theme-primary-palette,
@@ -69,7 +69,7 @@ $omv-light-theme: map.deep-merge(
     )
   )
 );
-$omv-dark-theme: mat.define-dark-theme(
+$omv-dark-theme: mat.m2-define-dark-theme(
   (
     color: (
       primary: $omv-theme-primary-palette,
@@ -151,7 +151,8 @@ $omv-dark-theme: map.deep-merge(
 
 ////////////////////////////////////////////////////////////////////////////////
 // Sizing
-.omv-h-100, .omv-h-full {
+.omv-h-100,
+.omv-h-full {
   height: 100% !important;
 }
 
@@ -203,7 +204,8 @@ $omv-dark-theme: map.deep-merge(
   width: 90% !important;
 }
 
-.omv-w-100, .omv-w-full {
+.omv-w-100,
+.omv-w-full {
   width: 100% !important;
 }
 
@@ -572,7 +574,8 @@ $omv-dark-theme: map.deep-merge(
 
 // Allow a flex item to shrink but not grow, taking into account its
 // initial size.
-.omv-flex-initial, .omv-flex-nogrow {
+.omv-flex-initial,
+.omv-flex-nogrow {
   flex: 0 1 auto;
 }
 
