@@ -11,6 +11,10 @@
     mat-progress-bar {
       position: absolute;
     }
+
+    mat-card-header {
+      padding-bottom: dv.$omv-padding * 0.5;
+    }
   }
 
   &.loading mat-card {

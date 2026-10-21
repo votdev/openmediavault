@@ -72,6 +72,12 @@ body.omv-dark-theme {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// Vertical align
+.omv-align-middle {
+  vertical-align: middle;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // Overflow
 .omv-overflow-auto {
   overflow: auto;
@@ -728,6 +734,14 @@ body.omv-dark-theme {
 @each $name in map.keys(theme.$omv-color-pairs) {
   .omv-background-color-pair-#{$name} {
     @include theme.background-color-pair($name);
+
+    @include mat.chips-overrides(
+      (
+        outline-color: map.get(theme.$omv-color-pairs, $name, background-color),
+        elevated-container-color: map.get(theme.$omv-color-pairs, $name, background-color),
+        label-text-color: map.get(theme.$omv-color-pairs, $name, color)
+      )
+    );
   }
 }
 
@@ -1015,7 +1029,7 @@ body.omv-dark-theme {
 
   blockquote {
     background-color: var(--mat-sys-surface-container-high);
-    border-left: 4px solid dc.$omv-color-corporate-default;
+    border-left: 4px solid var(--mat-sys-primary);
     border-radius: 4px;
     margin: 20px 0;
     padding: 1px 20px;
@@ -1093,10 +1107,10 @@ img.loading {
   content: url('data:image/x-icon;base64,');
   color: rgb(0 0 0 / 0%) !important; // Hide 'alt' text.
   font-size: 5px;
-  border-top: 1.1em solid dc.$omv-color-whitesmoke;
-  border-right: 1.1em solid dc.$omv-color-whitesmoke;
-  border-bottom: 1.1em solid dc.$omv-color-whitesmoke;
-  border-left: 1.1em solid dc.$omv-color-corporate-default;
+  border-top: 1.1em solid var(--mat-sys-surface-container-high);
+  border-right: 1.1em solid var(--mat-sys-surface-container-high);
+  border-bottom: 1.1em solid var(--mat-sys-surface-container-high);
+  border-left: 1.1em solid var(--mat-sys-primary);
   animation-duration: 1.1s;
   animation-iteration-count: infinite;
   animation-name: rotate-360;

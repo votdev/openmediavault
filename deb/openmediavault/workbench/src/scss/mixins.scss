@@ -13,12 +13,10 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-@use 'scss/defaults/colors' as dc;
-
 @mixin omv-scrollbar {
-  scrollbar-color: dc.$omv-color-corporate-default transparent;
+  scrollbar-color: var(--mat-sys-primary) transparent;
 
   --scrollbar-thumb-shape: 0 !important;
-  --scrollbar-thumb-color: #{dc.$omv-color-corporate-default} !important;
+  --scrollbar-thumb-color: var(--mat-sys-primary) !important;
   --scrollbar-thumb-hover-color: var(--scrollbar-thumb-color) !important;
 }

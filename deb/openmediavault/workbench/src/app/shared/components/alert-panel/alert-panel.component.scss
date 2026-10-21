@@ -25,4 +25,15 @@ mat-card {
   .alert-icon {
     margin-right: 16px;
   }
+
+  mat-card-content {
+    padding: 0;
+  }
+
+  // Keep the buttons in the upper right corner when the content grows.
+  // The utility class `omv-align-items-start` is overridden by the
+  // `align-items: center` of `mat-card-actions`.
+  mat-card-actions {
+    align-items: flex-start;
+  }
 }

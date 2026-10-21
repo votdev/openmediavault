@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+mat-card {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(
+          --mat-form-field-filled-container-color,
+          var(--mat-sys-surface-variant)
+        )
+    )
+  );
+}

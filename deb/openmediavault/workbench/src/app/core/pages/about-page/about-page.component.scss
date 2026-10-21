@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use 'scss/defaults/colors' as dc;
 @use 'scss/defaults/variables' as dv;
 
@@ -7,10 +8,14 @@
   animation-iteration-count: 5;
   animation-timing-function: steps(1);
 
-  .mat-mdc-card {
-    border-radius: unset !important;
+  .omv-about-card {
+    @include mat.card-overrides(
+      (
+        elevated-container-shape: 0
+      )
+    );
+
     margin: dv.$omv-margin;
-    padding: 0;
 
     .titlebar {
       height: 20px;
@@ -48,7 +53,7 @@
     }
   }
 
-  .mat-mdc-card-content {
+  .omv-about-card-content {
     border-left: 2px dc.$omv-color-white solid;
     border-right: 2px dc.$omv-color-white solid;
     border-bottom: 2px dc.$omv-color-white solid;

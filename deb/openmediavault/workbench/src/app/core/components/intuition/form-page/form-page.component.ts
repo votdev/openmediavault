@@ -62,6 +62,7 @@ import { RpcService } from '~/app/shared/services/rpc.service';
 @Component({
   selector: 'omv-intuition-form-page',
   templateUrl: './form-page.component.html',
+  styleUrls: ['./form-page.component.scss'],
   providers: [PageContextService],
   standalone: false
 })

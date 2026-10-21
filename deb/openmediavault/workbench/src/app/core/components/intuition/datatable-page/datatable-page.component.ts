@@ -55,6 +55,7 @@ import { RpcService } from '~/app/shared/services/rpc.service';
 @Component({
   selector: 'omv-intuition-datatable-page',
   templateUrl: './datatable-page.component.html',
+  styleUrls: ['./datatable-page.component.scss'],
   providers: [PageContextService],
   standalone: false
 })

@@ -1,6 +1,3 @@
-@use 'scss/defaults/colors' as dc;
-@use 'scss/theme';
-
 omv-datatable {
   .action-toolbar {
     // Show the loading indicator as overlay below the toolbar.
@@ -30,14 +27,17 @@ omv-datatable {
       .datatable-body-row {
         &.active,
         &.active .datatable-row-group {
-          @include theme.background-color-pair('accent');
+          background-color: var(--mat-sys-secondary-container);
+          color: var(--mat-sys-on-secondary-container);
         }
 
         &.active:hover,
         &.active:hover .datatable-row-group {
-          @include theme.background-color-pair('accent');
-
-          background-color: #f5c300 !important;
+          background-color: color-mix(
+            in srgb,
+            var(--mat-sys-on-secondary-container) 8%,
+            var(--mat-sys-secondary-container)
+          );
           transition-property: background;
           transition-duration: 0.3s;
           transition-timing-function: linear;
@@ -45,9 +45,11 @@ omv-datatable {
 
         &.active:focus,
         &.active:focus .datatable-row-group {
-          @include theme.background-color-pair('accent');
-
-          background-color: #f6c900 !important;
+          background-color: color-mix(
+            in srgb,
+            var(--mat-sys-on-secondary-container) 10%,
+            var(--mat-sys-secondary-container)
+          );
         }
       }
     }
@@ -56,8 +58,7 @@ omv-datatable {
       .datatable-body-row {
         &:hover,
         &:hover .datatable-row-group {
-          @include theme.background-color-pair('primary');
-
+          background-color: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
           transition-property: background;
           transition-duration: 0.3s;
           transition-timing-function: linear;
@@ -65,9 +66,7 @@ omv-datatable {
 
         &:focus,
         &:focus .datatable-row-group {
-          @include theme.background-color-pair('primary');
-
-          background-color: #4b9bd7;
+          background-color: color-mix(in srgb, var(--mat-sys-on-surface) 10%, transparent);
         }
       }
     }
@@ -76,7 +75,7 @@ omv-datatable {
      * Header Styles
      */
     .datatable-header {
-      border-bottom: 1px solid rgb(0 0 0 / 12%);
+      border-bottom: 1px solid var(--mat-sys-outline-variant);
 
       .datatable-header-cell {
         text-align: left;
@@ -89,7 +88,7 @@ omv-datatable {
       }
 
       .resize-handle {
-        border-right: solid 1px #eeeeee;
+        border-right: solid 1px var(--mat-sys-outline-variant);
       }
     }
 
@@ -98,26 +97,26 @@ omv-datatable {
      */
     .datatable-body {
       .datatable-row-detail {
-        background: dc.$omv-color-whitesmoke;
+        background: var(--mat-sys-surface-container);
         padding: 10px;
       }
 
       .datatable-group-header {
-        background: dc.$omv-color-whitesmoke;
-        border-bottom: solid 1px #d9d8d9;
-        border-top: solid 1px #d9d8d9;
+        background: var(--mat-sys-surface-container);
+        border-bottom: solid 1px var(--mat-sys-outline-variant);
+        border-top: solid 1px var(--mat-sys-outline-variant);
       }
 
       .empty-row {
         border-top: 0;
-        border-bottom: 1px solid rgb(0 0 0 / 12%);
+        border-bottom: 1px solid var(--mat-sys-outline-variant);
         text-align: left;
         padding: 0.5rem 1.2rem;
         vertical-align: top;
       }
 
       .datatable-body-row {
-        border-bottom: 1px solid rgb(0 0 0 / 12%);
+        border-bottom: 1px solid var(--mat-sys-outline-variant);
 
         .datatable-body-cell {
           text-align: left;
@@ -176,7 +175,7 @@ omv-datatable {
 
           &:hover {
             background: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
-            color: theme.$omv-color-primary;
+            color: var(--mat-sys-primary);
           }
         }
 
