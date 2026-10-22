@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use 'scss/defaults/variables' as dv;
 
 // Space between the base path and the folder field.
@@ -11,6 +12,15 @@ mat-form-field + mat-form-field {
   background-color: var(--mat-sys-surface-container);
   border-radius: var(--mat-sys-corner-extra-small);
   box-shadow: var(--mat-sys-level2);
+}
+
+// Use the same toolbar background as the datatable page.
+.omv-selection-header {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--mat-sys-surface-variant)
+    )
+  );
 }
 
 .omv-selection-actions {
