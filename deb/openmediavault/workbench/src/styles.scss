@@ -39,7 +39,6 @@ html {
       density: 0
     )
   );
-
   @include mat.progress-bar-overrides(
     (
       active-indicator-color: theme.$omv-color-primary
@@ -740,7 +739,31 @@ body.omv-dark-theme {
       )
     );
 
-    // Buttons paint their background via tokens, not via `background-color`.
+    // Material components paint their colors via tokens, not via
+    // `background-color`. The tokens are inherited by the child components,
+    // e.g. the icon buttons of a card use the foreground color of the pair.
+    @include mat.card-overrides(
+      (
+        elevated-container-color: map.get(theme.$omv-color-pairs, $name, background-color)
+      )
+    );
+    @include mat.icon-button-overrides(
+      (
+        icon-color: map.get(theme.$omv-color-pairs, $name, color),
+        state-layer-color: map.get(theme.$omv-color-pairs, $name, color),
+        ripple-color: color-mix(
+            in srgb,
+            map.get(theme.$omv-color-pairs, $name, color)
+              calc(var(--mat-sys-pressed-state-layer-opacity) * 100%),
+            transparent
+          ),
+        disabled-icon-color: color-mix(
+            in srgb,
+            map.get(theme.$omv-color-pairs, $name, color) 38%,
+            transparent
+          )
+      )
+    );
     @include mat.button-overrides(
       (
         filled-container-color: map.get(theme.$omv-color-pairs, $name, background-color),

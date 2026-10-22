@@ -23,8 +23,6 @@
 }
 
 mat-sidenav[position='end'] {
-  border-left-width: 0;
-
   @include mat.sidenav-overrides(
     (
       container-width: dv.$omv-notification-bar-width

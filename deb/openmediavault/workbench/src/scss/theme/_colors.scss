@@ -14,7 +14,6 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 @use "sass:map";
-@use '@angular/material' as mat;
 @use 'scss/defaults/colors' as dc;
 
 $omv-color-primary: dc.$omv-color-corporate-default;
@@ -91,32 +90,10 @@ $omv-color-pairs: (
   )
 );
 
-// Sets the foreground and background color of an element. Material
-// components paint their colors via tokens, so these are set as well. The
-// tokens are inherited by the child components, e.g. the icon buttons of a
-// card then use the foreground color of the pair.
+// Sets the foreground and background color of an element. The Material
+// components inside of the element are adapted in `styles.scss`, see
+// `.omv-background-color-pair-*`.
 @mixin background-color-pair($name) {
-  $color: map.get($omv-color-pairs, $name, color);
-  $background-color: map.get($omv-color-pairs, $name, background-color);
-
-  color: $color;
-  background-color: $background-color;
-
-  @include mat.card-overrides(
-    (
-      elevated-container-color: $background-color
-    )
-  );
-  @include mat.icon-button-overrides(
-    (
-      icon-color: $color,
-      state-layer-color: $color,
-      ripple-color: color-mix(
-          in srgb,
-          $color calc(var(--mat-sys-pressed-state-layer-opacity) * 100%),
-          transparent
-        ),
-      disabled-icon-color: color-mix(in srgb, $color 38%, transparent)
-    )
-  );
+  color: map.get($omv-color-pairs, $name, color);
+  background-color: map.get($omv-color-pairs, $name, background-color);
 }

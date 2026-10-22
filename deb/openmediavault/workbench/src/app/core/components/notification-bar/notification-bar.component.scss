@@ -1,9 +1,4 @@
-@use 'scss/defaults/variables' as dv;
-
 .omv-notification-bar {
-  min-width: dv.$omv-notification-bar-width;
-  max-width: dv.$omv-notification-bar-width;
-
   mat-list-item {
     // Allow long notification texts to wrap instead of truncating them.
     height: auto;
