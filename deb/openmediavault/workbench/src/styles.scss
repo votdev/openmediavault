@@ -26,14 +26,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Initialize Material
-//
-// The Material 3 theme is used with its default look. The color palettes
-// are generated from the corporate colors, see `scss/theme/_palettes.scss`.
-// Customizations of Material components must be done via the
-// `mat.<component>-overrides()` mixins and the `--mat-sys-*` system
-// variables only.
-// The dark color scheme is activated by the class `omv-dark-theme` on the
-// body element, see `AppComponent`.
 ////////////////////////////////////////////////////////////////////////////////
 html {
   @include mat.theme(
@@ -45,6 +37,12 @@ html {
       ),
       typography: theme.$omv-font-family-default,
       density: 0
+    )
+  );
+
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: theme.$omv-color-primary
     )
   );
 
