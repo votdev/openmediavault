@@ -1,9 +1,6 @@
-@use 'sass:color';
-@use 'scss/defaults/colors' as dc;
-
 :host {
   .topbar {
-    background-color: color.change(dc.$omv-color-corporate-darker, $alpha: 0.54);
+    background-color: color-mix(in srgb, var(--omv-color-corporate-darker) 54%, transparent);
     backdrop-filter: blur(4px);
 
     .logo {

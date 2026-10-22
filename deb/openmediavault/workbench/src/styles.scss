@@ -28,6 +28,12 @@
 // Initialize Material
 ////////////////////////////////////////////////////////////////////////////////
 html {
+  // The corporate colors have no role in the Material 3 theme, thus they
+  // are provided as CSS variables.
+  --omv-color-corporate: #{dc.$omv-color-corporate-default};
+  --omv-color-corporate-dark: #{dc.$omv-color-corporate-dark};
+  --omv-color-corporate-darker: #{dc.$omv-color-corporate-darker};
+
   @include mat.theme(
     (
       color: (
@@ -41,7 +47,7 @@ html {
   );
   @include mat.progress-bar-overrides(
     (
-      active-indicator-color: theme.$omv-color-primary
+      active-indicator-color: var(--omv-color-corporate)
     )
   );
 
@@ -687,12 +693,13 @@ body.omv-dark-theme {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Color
-.omv-color-primary {
-  color: theme.$omv-color-primary;
+.omv-color-primary,
+.omv-color-corporate {
+  color: var(--omv-color-corporate);
 }
 
 .omv-color-accent {
-  color: theme.$omv-color-accent;
+  color: dc.$omv-color-yellow;
 }
 
 .omv-color-black {

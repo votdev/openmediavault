@@ -13,18 +13,16 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-@use "sass:map";
+@use 'sass:map';
 @use 'scss/defaults/colors' as dc;
 
-$omv-color-primary: dc.$omv-color-corporate-default;
-$omv-color-accent: dc.$omv-color-yellow;
 $omv-color-success: dc.$omv-color-green;
 $omv-color-error: dc.$omv-color-red;
 $omv-color-warning: dc.$omv-color-yellow;
-$omv-color-info: dc.$omv-color-corporate-dark;
+$omv-color-info: var(--omv-color-corporate-dark);
 $omv-color-pairs: (
   'primary': (
-    background-color: dc.$omv-color-corporate-default,
+    background-color: var(--omv-color-corporate),
     color: dc.$omv-color-white
   ),
   'accent': (
@@ -48,7 +46,7 @@ $omv-color-pairs: (
     color: dc.$omv-color-white
   ),
   'blue': (
-    background-color: dc.$omv-color-blue,
+    background-color: var(--omv-color-corporate-dark),
     color: dc.$omv-color-white
   ),
   'dark': (

@@ -1,9 +1,8 @@
-@use 'scss/defaults/colors' as dc;
 @use 'scss/defaults/variables' as dv;
 
 .omv-top-bar {
   height: dv.$omv-top-bar-height;
-  border-bottom: dv.$omv-accent-line-width solid dc.$omv-color-corporate-default;
+  border-bottom: dv.$omv-accent-line-width solid var(--omv-color-corporate);
 
   mat-divider {
     height: 24px;

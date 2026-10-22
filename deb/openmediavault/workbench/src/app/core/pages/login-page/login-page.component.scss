@@ -13,7 +13,6 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-@use 'sass:color';
 @use 'scss/defaults/colors' as dc;
 @use 'scss/theme';
 
@@ -26,7 +25,7 @@ omv-login-page {
   }
 
   .topbar {
-    background-color: color.change(dc.$omv-color-corporate-darker, $alpha: 0.54);
+    background-color: color-mix(in srgb, var(--omv-color-corporate-darker) 54%, transparent);
     backdrop-filter: blur(4px);
 
     .logo {
