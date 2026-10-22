@@ -17,4 +17,8 @@
 
 .ng-scrollbar {
   @include mixins.omv-scrollbar;
+
+  --scrollbar-container-offset: 0.25rem; // 4px
+  --scrollbar-track-color: transparent;
+  --scrollbar-track-thickness: 0.3125rem; // 5px
 }
