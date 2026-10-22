@@ -741,6 +741,21 @@ body.omv-dark-theme {
         label-text-color: map.get(theme.$omv-color-pairs, $name, color)
       )
     );
+
+    // Buttons paint their background via tokens, not via `background-color`.
+    @include mat.button-overrides(
+      (
+        filled-container-color: map.get(theme.$omv-color-pairs, $name, background-color),
+        filled-label-text-color: map.get(theme.$omv-color-pairs, $name, color),
+        filled-state-layer-color: map.get(theme.$omv-color-pairs, $name, color),
+        filled-ripple-color: color-mix(
+            in srgb,
+            map.get(theme.$omv-color-pairs, $name, color)
+              calc(var(--mat-sys-pressed-state-layer-opacity) * 100%),
+            transparent
+          )
+      )
+    );
   }
 }
 
