@@ -2,6 +2,8 @@
 @use 'scss/defaults/variables' as dv;
 
 nav {
+  padding-top: dv.$omv-padding * 0.5;
+
   a {
     border-bottom: 3px solid dc.$omv-color-transparent;
     display: inline-block;

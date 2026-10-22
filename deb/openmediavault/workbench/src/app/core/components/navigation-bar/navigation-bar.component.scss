@@ -1,3 +1,4 @@
+@use 'scss/defaults/colors' as dc;
 @use 'scss/defaults/variables' as dv;
 
 .omv-navigation-bar {
@@ -7,6 +8,7 @@
 
   .header {
     height: dv.$omv-top-bar-height;
+    border-bottom: dv.$omv-accent-line-width solid dc.$omv-color-corporate-default;
     padding-left: dv.$omv-padding;
 
     .logo {
