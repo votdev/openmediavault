@@ -12,5 +12,15 @@
     .list-item-message {
       white-space: normal;
     }
+
+    [matListItemIcon],
+    [matListItemMeta] {
+      align-self: center;
+      margin-top: 0;
+    }
+
+    [matListItemMeta]::before {
+      display: none;
+    }
   }
 }

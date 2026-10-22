@@ -734,7 +734,6 @@ body.omv-dark-theme {
 @each $name in map.keys(theme.$omv-color-pairs) {
   .omv-background-color-pair-#{$name} {
     @include theme.background-color-pair($name);
-
     @include mat.chips-overrides(
       (
         outline-color: map.get(theme.$omv-color-pairs, $name, background-color),

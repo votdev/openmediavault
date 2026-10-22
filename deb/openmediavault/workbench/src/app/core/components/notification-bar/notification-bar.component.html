@@ -16,13 +16,9 @@
                 svgIcon="{{ icon.console }}">
       </mat-icon>
       <span matListItemTitle
-            class="list-item-message">
-        {{ "Background task" | transloco }}
-      </span>
+            class="list-item-message">{{ "Background task" | transloco }}</span>
       <span matListItemLine
-            class="list-item-timestamp">
-        {{ task.value.startTime | localeDate:'relative' }}
-      </span>
+            class="list-item-timestamp">{{ task.value.startTime | localeDate:'relative' }}</span>
       <button mat-icon-button
               matListItemMeta
               [matMenuTriggerFor]="taskActionMenu">
@@ -54,9 +50,7 @@
                 svgIcon="{{ icon.information }}">
       </mat-icon>
       <p matListItemTitle
-         class="list-item-title omv-font-weight-bold">
-        {{ 'There are no notifications.' | transloco }}
-      </p>
+         class="list-item-title omv-font-weight-bold">{{ 'There are no notifications.' | transloco }}</p>
     </mat-list-item>
 
     <mat-list-item *ngFor="let notification of notifications"
@@ -84,14 +78,11 @@
       <span matListItemTitle
             class="list-item-title omv-font-weight-bold"
             [ngClass]="{'omv-cursor-pointer': notification.url}"
-            (click)="onNavigate(notification.url)">
-        {{ notification.title | transloco | truncate:100 }}
-      </span>
+            (click)="onNavigate(notification.url)">{{ notification.title | transloco | truncate:100 }}</span>
       <span matListItemLine
             class="list-item-message"
             [ngClass]="{'omv-cursor-pointer': notification.url}"
-            (click)="onNavigate(notification.url)">
-        {{ notification.message | transloco | truncate:100 }}
+            (click)="onNavigate(notification.url)">{{ notification.message | transloco | truncate:100 }}
         <mat-icon *ngIf="notification.url"
                   class="omv-icon-sm"
                   svgIcon="{{ icon.link }}">
@@ -99,9 +90,7 @@
       </span>
       <span *ngIf="notification.timestamp"
             matListItemLine
-            class="list-item-timestamp">
-        {{ notification.timestamp | localeDate:'relative' }}
-      </span>
+            class="list-item-timestamp">{{ notification.timestamp | localeDate:'relative' }}</span>
       <button mat-icon-button
               matListItemMeta
               [matMenuTriggerFor]="notificationActionMenu">
