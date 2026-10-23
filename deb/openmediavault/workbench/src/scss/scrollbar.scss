@@ -14,11 +14,15 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 @use 'scss/mixins';
+@use 'ngx-scrollbar' as scrollbar;
 
 .ng-scrollbar {
   @include mixins.omv-scrollbar;
-
-  --scrollbar-container-offset: 0.25rem; // 4px
-  --scrollbar-track-color: transparent;
-  --scrollbar-track-thickness: 0.3125rem; // 5px
+  @include scrollbar.ng-scrollbar-overrides(
+    (
+      container-offset: 0.25rem,
+      track-color: transparent,
+      track-thickness: 0.3125rem
+    )
+  );
 }
