@@ -51,10 +51,13 @@ html {
     )
   );
 
-  // The default headline padding is only 6px at the top because it is
-  // meant to compensate the height of a pseudo element of the title.
+  // - The dialogs are opened with an explicit width in percent, which must
+  //   not be limited by the M3 maximum of 560px.
+  // - The default headline padding is only 6px at the top because it is
+  //   meant to compensate the height of a pseudo element of the title.
   @include mat.dialog-overrides(
     (
+      container-max-width: 80vw,
       headline-padding: dv.$omv-header-padding dv.$omv-margin dv.$omv-header-padding
     )
   );

@@ -1,4 +1,14 @@
+@use '@angular/material' as mat;
+
 omv-task-dialog {
+  // The task output uses the full width of the dialog.
+  @include mat.dialog-overrides(
+    (
+      content-padding: 0,
+      with-actions-content-padding: 0
+    )
+  );
+
   // The task output should use the full height of the dialog.
   .omv-task-dialog-body {
     max-height: none;
