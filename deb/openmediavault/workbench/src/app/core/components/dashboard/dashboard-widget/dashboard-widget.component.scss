@@ -12,8 +12,9 @@
       position: absolute;
     }
 
+    // Material has no token for the space between the header and the content.
     mat-card-header {
-      padding-bottom: dv.$omv-padding * 0.5;
+      padding-bottom: dv.$omv-header-padding;
     }
   }
 

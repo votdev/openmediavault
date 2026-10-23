@@ -51,6 +51,14 @@ html {
     )
   );
 
+  // The default headline padding is only 6px at the top because it is
+  // meant to compensate the height of a pseudo element of the title.
+  @include mat.dialog-overrides(
+    (
+      headline-padding: dv.$omv-header-padding dv.$omv-margin dv.$omv-header-padding
+    )
+  );
+
   color-scheme: light;
 }
 
