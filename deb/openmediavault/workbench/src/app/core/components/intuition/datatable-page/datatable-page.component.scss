@@ -1,9 +1,0 @@
-@use '@angular/material' as mat;
-
-mat-card {
-  @include mat.toolbar-overrides(
-    (
-      container-background-color: var(--mat-sys-surface-variant)
-    )
-  );
-}

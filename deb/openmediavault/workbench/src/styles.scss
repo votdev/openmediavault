@@ -69,6 +69,16 @@ body.omv-dark-theme {
   color-scheme: dark;
 }
 
+// The toolbars within a card (e.g. of the datatable, text or selection list
+// page) are set off from the surface of the card.
+mat-card {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--mat-sys-surface-variant)
+    )
+  );
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Classes
 ////////////////////////////////////////////////////////////////////////////////

@@ -38,7 +38,7 @@ export class UserSettingsFormPageComponent extends BaseFormPageComponent {
     },
     fields: [
       {
-        type: 'paragraph',
+        type: 'divider',
         title: gettext('User home directory')
       },
       {

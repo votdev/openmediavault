@@ -5,7 +5,7 @@
                 [required]="config.validators?.required">
     {{ config.label | transloco | template:pageContext }}
   </mat-checkbox>
-  <mat-error *ngIf="formGroup.invalid">
+  <mat-error *ngIf="errorState">
     <span *ngIf="formGroup.hasError('required', config.name)">
       {{ 'This field is required.' | transloco }}
     </span>
@@ -13,7 +13,7 @@
       {{ formGroup.getError('constraint', config.name) | transloco }}
     </span>
   </mat-error>
-  <mat-hint *ngIf="config.hint?.length > 0 && !formGroup.get(config.name)?.errors"
+  <mat-hint *ngIf="config.hint?.length > 0 && !errorState"
             [innerHTML]="config.hint | transloco | template:pageContext | sanitizeHtml">
   </mat-hint>
 </div>

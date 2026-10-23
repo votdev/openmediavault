@@ -15,7 +15,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormGroupDirective } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form/components/abstract-form-field-component';
 
@@ -25,4 +27,20 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
   styleUrls: ['./form-checkbox.component.scss'],
   standalone: false
 })
-export class FormCheckboxComponent extends AbstractFormFieldComponent {}
+export class FormCheckboxComponent extends AbstractFormFieldComponent {
+  private errorStateMatcher = inject(ErrorStateMatcher);
+  private parentForm = inject(FormGroupDirective, { optional: true });
+
+  /**
+   * The checkbox is not wrapped by a `mat-form-field`, thus it has to
+   * decide on its own when to display the error. Use the same rule as
+   * Material: the control is invalid and was touched or the form was
+   * submitted.
+   */
+  get errorState(): boolean {
+    return this.errorStateMatcher.isErrorState(
+      this.formGroup.get(this.config.name),
+      this.parentForm
+    );
+  }
+}

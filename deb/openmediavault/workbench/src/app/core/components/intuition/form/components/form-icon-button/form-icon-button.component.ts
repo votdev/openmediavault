@@ -15,14 +15,13 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { FormButtonComponent } from '~/app/core/components/intuition/form/components/form-button/form-button.component';
 
 @Component({
   selector: 'omv-form-icon-button',
   templateUrl: './form-icon-button.component.html',
-  encapsulation: ViewEncapsulation.None,
   standalone: false
 })
 export class FormIconButtonComponent extends FormButtonComponent {}

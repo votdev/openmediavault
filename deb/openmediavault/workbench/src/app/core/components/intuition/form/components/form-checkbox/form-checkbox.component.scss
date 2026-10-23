@@ -1,3 +1,11 @@
-.omv-form-checkbox-wrapper {
-  margin-bottom: 5px;
+@use 'scss/defaults/variables' as dv;
+
+// The hint and the error are rendered outside of a `mat-form-field`, thus
+// they have to look like the subscript of the other form fields.
+mat-hint,
+mat-error {
+  display: block;
+  padding-left: dv.$omv-padding;
+  font: var(--mat-sys-body-small);
+  letter-spacing: var(--mat-sys-body-small-tracking);
 }

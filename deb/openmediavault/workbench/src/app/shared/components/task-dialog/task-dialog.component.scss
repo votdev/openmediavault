@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-omv-task-dialog {
+:host {
   // The task output uses the full width of the dialog.
   @include mat.dialog-overrides(
     (
