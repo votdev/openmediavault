@@ -1,3 +1,8 @@
+.omv-form-dialog-subtitle {
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
 omv-submit-button:not(:first-child) {
   margin-left: 8px;
 }
