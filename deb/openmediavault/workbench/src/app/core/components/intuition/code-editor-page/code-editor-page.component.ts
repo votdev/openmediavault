@@ -30,17 +30,14 @@ import { xml } from '@codemirror/lang-xml';
 import { yaml } from '@codemirror/lang-yaml';
 import {
   bracketMatching,
-  defaultHighlightStyle,
   foldGutter,
   foldKeymap,
   indentOnInput,
-  StreamLanguage,
-  syntaxHighlighting
+  StreamLanguage
 } from '@codemirror/language';
 import { shell } from '@codemirror/legacy-modes/mode/shell';
 import { highlightSelectionMatches, searchKeymap } from '@codemirror/search';
 import { EditorState, Extension, StateEffect } from '@codemirror/state';
-import { oneDark } from '@codemirror/theme-one-dark';
 import {
   EditorView,
   highlightActiveLine,
@@ -48,6 +45,7 @@ import {
   keymap,
   lineNumbers
 } from '@codemirror/view';
+import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
 import * as _ from 'lodash';
 import { EMPTY, exhaustMap, Observable, Subscription, timer } from 'rxjs';
 
@@ -244,7 +242,7 @@ export class CodeEditorPageComponent
   }
 
   private getThemeExtensions(): Extension {
-    return this._useDarkTheme ? oneDark : syntaxHighlighting(defaultHighlightStyle);
+    return this._useDarkTheme ? githubDark : githubLight;
   }
 
   private getLanguageExtensions(): Extension {
