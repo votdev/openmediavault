@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  */
 import { Component } from '@angular/core';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import dayjs from 'dayjs';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
@@ -32,7 +32,8 @@ import {
 } from '~/app/shared/services/system-information.service';
 
 @Component({
-  template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>'
+  template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>',
+  standalone: false
 })
 export class SystemInformationDatatablePageComponent {
   @Unsubscribe()

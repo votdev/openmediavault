@@ -21,7 +21,8 @@ import { toLocaleDate } from '~/app/functions.helper';
 
 @Pipe({
   name: 'localeDate',
-  pure: false
+  pure: false,
+  standalone: false
 })
 export class LocaleDatePipe implements PipeTransform {
   /**

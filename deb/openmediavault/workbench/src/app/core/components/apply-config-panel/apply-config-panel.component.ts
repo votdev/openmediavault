@@ -17,7 +17,7 @@
  */
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -41,8 +41,8 @@ import {
 @Component({
   selector: 'omv-apply-config-panel',
   templateUrl: './apply-config-panel.component.html',
-  styleUrls: ['./apply-config-panel.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class ApplyConfigPanelComponent {
   @Unsubscribe()

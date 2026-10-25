@@ -30,7 +30,8 @@ import {
 @Component({
   selector: 'omv-dashboard-widget-system-information',
   templateUrl: './dashboard-widget-system-information.component.html',
-  styleUrls: ['./dashboard-widget-system-information.component.scss']
+  styleUrls: ['./dashboard-widget-system-information.component.scss'],
+  standalone: false
 })
 export class DashboardWidgetSystemInformationComponent {
   @Input()

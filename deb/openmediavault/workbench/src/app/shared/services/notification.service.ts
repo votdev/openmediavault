@@ -16,8 +16,8 @@
  * GNU General Public License for more details.
  */
 import { Injectable } from '@angular/core';
+import { ToastrService } from '@openng/ngx-toastr';
 import * as _ from 'lodash';
-import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { translate } from '~/app/i18n.helper';

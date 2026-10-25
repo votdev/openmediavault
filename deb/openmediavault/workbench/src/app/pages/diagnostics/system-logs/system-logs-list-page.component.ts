@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  */
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 
 import { DatatablePageComponent } from '~/app/core/components/intuition/datatable-page/datatable-page.component';
@@ -27,7 +27,8 @@ import { DatatableAction } from '~/app/shared/models/datatable-action.type';
 import { RpcService } from '~/app/shared/services/rpc.service';
 
 @Component({
-  template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>'
+  template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>',
+  standalone: false
 })
 export class SystemLogsListPageComponent implements OnInit {
   @ViewChild(DatatablePageComponent, { static: true })

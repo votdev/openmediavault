@@ -37,7 +37,7 @@ import 'cronstrue/locales/ja';
 import 'cronstrue/locales/ko';
 import 'cronstrue/locales/ar';
 
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import cronstrue from 'cronstrue';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
@@ -649,7 +649,7 @@ nunjucksEnv.addFilter('cron2human', cron2human);
  */
 nunjucksEnv.addFilter('override', (value: any, newValue: any, testName: string, ...args: any) => {
   // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   const testFn: Function = nunjucksEnv.getTest(testName);
   const testRes: boolean = testFn.call(this, ...args);
   return testRes ? newValue : value;

@@ -17,7 +17,7 @@
  */
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 
 import { DatatablePageActionConfig } from '~/app/core/components/intuition/models/datatable-page-action-config.type';
@@ -30,7 +30,8 @@ import { Datatable } from '~/app/shared/models/datatable.interface';
 import { DialogService } from '~/app/shared/services/dialog.service';
 
 @Component({
-  template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>'
+  template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>',
+  standalone: false
 })
 export class DiskDatatablePageComponent {
   public config: DatatablePageConfig = {

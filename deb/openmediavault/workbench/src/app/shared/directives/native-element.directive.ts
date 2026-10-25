@@ -21,7 +21,8 @@ import * as _ from 'lodash';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: '[formControlName]'
+  selector: '[formControlName]',
+  standalone: false
 })
 export class NativeElementDirective implements OnInit {
   constructor(

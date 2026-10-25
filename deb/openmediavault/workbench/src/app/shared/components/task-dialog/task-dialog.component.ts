@@ -24,8 +24,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  ViewChild,
-  ViewEncapsulation
+  ViewChild
 } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as _ from 'lodash';
@@ -48,7 +47,7 @@ import { RpcBgResponse, RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-task-dialog',
   templateUrl: './task-dialog.component.html',
   styleUrls: ['./task-dialog.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  standalone: false
 })
 export class TaskDialogComponent implements OnInit, OnDestroy {
   @HostBinding('class')

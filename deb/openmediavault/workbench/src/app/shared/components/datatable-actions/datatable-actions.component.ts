@@ -33,7 +33,8 @@ import { DataStoreService } from '~/app/shared/services/data-store.service';
 @Component({
   selector: 'omv-datatable-actions',
   templateUrl: './datatable-actions.component.html',
-  styleUrls: ['./datatable-actions.component.scss']
+  styleUrls: ['./datatable-actions.component.scss'],
+  standalone: false
 })
 export class DatatableActionsComponent implements OnInit {
   @Input()

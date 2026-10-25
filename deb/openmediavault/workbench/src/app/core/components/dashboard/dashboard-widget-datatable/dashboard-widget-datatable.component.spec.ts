@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 import { DashboardModule } from '~/app/core/components/dashboard/dashboard.module';
 import { DashboardWidgetDatatableComponent } from '~/app/core/components/dashboard/dashboard-widget-datatable/dashboard-widget-datatable.component';

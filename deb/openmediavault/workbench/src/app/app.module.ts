@@ -15,15 +15,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslocoService } from '@ngneat/transloco';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { TranslocoService } from '@jsverse/transloco';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
+import { ToastrModule } from '@openng/ngx-toastr';
 import dayjs from 'dayjs';
 import updateLocale from 'dayjs/plugin/updateLocale';
-import { ToastrModule } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
 
 import { AppComponent } from '~/app/app.component';
@@ -40,8 +40,8 @@ import { TranslocoRootModule } from '~/app/transloco-root.module';
 
 @NgModule({
   declarations: [AppComponent],
+  bootstrap: [AppComponent],
   imports: [
-    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule.forRoot(),
@@ -108,9 +108,9 @@ import { TranslocoRootModule } from '~/app/transloco-root.module';
       },
       multi: true,
       deps: [TranslocoService]
-    }
-  ],
-  bootstrap: [AppComponent]
+    },
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule {
   constructor(public titleService: TitleService) {}

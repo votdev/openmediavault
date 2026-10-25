@@ -23,7 +23,7 @@ import {
   ValidatorFn,
   Validators
 } from '@angular/forms';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { debounceTime } from 'rxjs/operators';
 import validator from 'validator';
@@ -209,7 +209,7 @@ export class CustomValidators {
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   static pattern(pattern: string | RegExp | Function, errorData?: any): ValidatorFn {
     let test: (value: any) => boolean;
     if (_.isString(pattern)) {

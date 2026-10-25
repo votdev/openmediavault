@@ -9,8 +9,8 @@
 
     .gauge-label {
       position: absolute;
-      font-size: var(--mat-font-size-body-1);
-      font-weight: var(--mat-font-weight-title);
+      font-size: var(--mat-sys-body-medium-size);
+      font-weight: var(--mat-sys-title-large-weight);
     }
   }
 
@@ -21,11 +21,11 @@
       margin-bottom: 8px;
 
       .total-value {
-        font-size: var(--mat-font-size-body-1);
+        font-size: var(--mat-sys-body-medium-size);
       }
 
       .total-label {
-        font-size: var(--mat-font-size-caption);
+        font-size: var(--mat-sys-body-small-size);
       }
     }
 
@@ -35,15 +35,15 @@
         padding-left: 8px;
 
         .item-value {
-          font-size: var(--mat-font-size-body-1);
+          font-size: var(--mat-sys-body-medium-size);
         }
 
         .item-label {
-          font-size: var(--mat-font-size-caption);
+          font-size: var(--mat-sys-body-small-size);
         }
 
         .item-percent {
-          font-size: var(--mat-font-size-body-1);
+          font-size: var(--mat-sys-body-medium-size);
         }
       }
     }

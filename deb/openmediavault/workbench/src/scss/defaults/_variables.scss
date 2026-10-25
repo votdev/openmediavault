@@ -14,9 +14,10 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 $omv-margin: 1.5rem; // 24px
-$omv-margin-icon-text: 0.625rem; // 10px
 $omv-padding: 1rem; // 16px
+$omv-header-padding: $omv-padding; // Vertical space of dialog and card headers.
 $omv-top-bar-height: 4rem; // 64px
 $omv-navigation-bar-width: 18.75rem; // 300px
 $omv-notification-bar-width: 21.875rem; // 350px
 $omv-border-radius: 0.75rem; // 12px
+$omv-accent-line-width: 0.25rem; // 4px

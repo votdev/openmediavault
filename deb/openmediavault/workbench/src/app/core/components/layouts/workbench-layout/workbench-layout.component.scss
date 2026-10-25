@@ -1,6 +1,31 @@
+@use '@angular/material' as mat;
+@use 'scss/defaults/variables' as dv;
+
 :host {
   display: block;
   max-width: 120rem;
   margin: 0 auto;
   height: 100%;
+}
+
+// The drawers have the width of their content. Without this the Material 3
+// default of 360px is used, which is wider than the bars.
+#omv-workbench-navigation {
+  // Material 3 draws a 1px (transparent) divider at the edge of the drawer.
+  // It would show up as a gap between the bar and the content.
+  border-right-width: 0;
+
+  @include mat.sidenav-overrides(
+    (
+      container-width: dv.$omv-navigation-bar-width
+    )
+  );
+}
+
+mat-sidenav[position='end'] {
+  @include mat.sidenav-overrides(
+    (
+      container-width: dv.$omv-notification-bar-width
+    )
+  );
 }

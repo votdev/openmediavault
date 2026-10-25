@@ -13,28 +13,21 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-@use "sass:map";
+@use 'sass:map';
 @use 'scss/defaults/colors' as dc;
 
-$omv-color-primary-palette: dc.$omv-color-corporate-palette;
-$omv-color-primary: dc.$omv-color-corporate-default;
-$omv-color-primary-contrast: dc.$omv-color-white;
-$omv-color-accent-palette: dc.$omv-color-yellow-palette;
-$omv-color-accent: dc.$omv-color-yellow;
-$omv-color-accent-contrast: dc.$omv-color-brown-coffee;
-$omv-color-warn-palette: dc.$omv-color-red-palette;
 $omv-color-success: dc.$omv-color-green;
 $omv-color-error: dc.$omv-color-red;
 $omv-color-warning: dc.$omv-color-yellow;
-$omv-color-info: dc.$omv-color-corporate-dark;
+$omv-color-info: var(--omv-color-corporate-dark);
 $omv-color-pairs: (
   'primary': (
-    background-color: $omv-color-primary,
-    color: $omv-color-primary-contrast
+    background-color: var(--omv-color-corporate),
+    color: dc.$omv-color-white
   ),
   'accent': (
-    background-color: $omv-color-accent,
-    color: $omv-color-accent-contrast
+    background-color: var(--mat-sys-tertiary),
+    color: var(--mat-sys-on-tertiary)
   ),
   'green': (
     background-color: dc.$omv-color-green,
@@ -45,7 +38,7 @@ $omv-color-pairs: (
     color: dc.$omv-color-brown-coffee
   ),
   'orange': (
-    background-color: dc.$omv-color-dark-orange,
+    background-color: dc.$omv-color-orange,
     color: dc.$omv-color-white
   ),
   'red': (
@@ -53,7 +46,7 @@ $omv-color-pairs: (
     color: dc.$omv-color-white
   ),
   'blue': (
-    background-color: dc.$omv-color-blue,
+    background-color: var(--omv-color-corporate-dark),
     color: dc.$omv-color-white
   ),
   'dark': (
@@ -89,12 +82,15 @@ $omv-color-pairs: (
     color: dc.$omv-color-brown-coffee
   ),
   'terminal': (
-    // https://retrocomputing.stackexchange.com/questions/12835/exactly-what-color-was-the-text-on-monochrome-terminals-with-green-on-black-and/12837#12837
+    /* https://retrocomputing.stackexchange.com/questions/12835/exactly-what-color-was-the-text-on-monochrome-terminals-with-green-on-black-and/12837#12837*/
     background-color: dc.$omv-color-charleston-green,
     color: dc.$omv-color-neon-green
   )
 );
 
+// Sets the foreground and background color of an element. The Material
+// components inside of the element are adapted in `styles.scss`, see
+// `.omv-background-color-pair-*`.
 @mixin background-color-pair($name) {
   color: map.get($omv-color-pairs, $name, color);
   background-color: map.get($omv-color-pairs, $name, background-color);

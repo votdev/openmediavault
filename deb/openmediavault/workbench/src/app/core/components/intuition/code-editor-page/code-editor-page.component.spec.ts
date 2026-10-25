@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 import { CodeEditorPageComponent } from '~/app/core/components/intuition/code-editor-page/code-editor-page.component';
 import { IntuitionModule } from '~/app/core/components/intuition/intuition.module';

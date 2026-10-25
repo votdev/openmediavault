@@ -8,7 +8,8 @@ import { binaryUnit, toBytes } from '~/app/functions.helper';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: '[binaryUnit]'
+  selector: '[binaryUnit]',
+  standalone: false
 })
 export class BinaryUnitDirective implements OnInit {
   // The default unit used when the value does not contain a unit.

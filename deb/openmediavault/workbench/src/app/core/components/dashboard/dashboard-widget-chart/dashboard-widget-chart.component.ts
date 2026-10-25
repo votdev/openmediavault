@@ -43,7 +43,8 @@ Chart.register(ArcElement, DoughnutController, Tooltip);
 @Component({
   selector: 'omv-dashboard-widget-chart',
   templateUrl: './dashboard-widget-chart.component.html',
-  styleUrls: ['./dashboard-widget-chart.component.scss']
+  styleUrls: ['./dashboard-widget-chart.component.scss'],
+  standalone: false
 })
 export class DashboardWidgetChartComponent implements OnInit, OnDestroy {
   @ViewChild('chartCtx', { static: true })

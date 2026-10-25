@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 import { HttpErrorInterceptorService } from '~/app/shared/services/http-error-interceptor.service';
 import { TestingModule } from '~/app/testing.module';

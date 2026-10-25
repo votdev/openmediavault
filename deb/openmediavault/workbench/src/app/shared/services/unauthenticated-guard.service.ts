@@ -16,13 +16,7 @@
  * GNU General Public License for more details.
  */
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  CanActivateChild,
-  Router,
-  RouterStateSnapshot
-} from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 
 import { AuthService } from '~/app/shared/services/auth.service';
 
@@ -34,7 +28,7 @@ import { AuthService } from '~/app/shared/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UnauthenticatedGuardService implements CanActivate, CanActivateChild {
+export class UnauthenticatedGuardService {
   constructor(
     private authService: AuthService,
     private router: Router

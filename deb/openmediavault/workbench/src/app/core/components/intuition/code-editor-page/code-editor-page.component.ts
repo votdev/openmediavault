@@ -74,8 +74,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
 @Component({
   selector: 'omv-intuition-code-editor-page',
   templateUrl: './code-editor-page.component.html',
-  styleUrls: ['./code-editor-page.component.scss'],
-  providers: [PageContextService]
+  providers: [PageContextService],
+  standalone: false
 })
 export class CodeEditorPageComponent
   extends AbstractPageComponent<CodeEditorPageConfig>

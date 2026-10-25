@@ -1,4 +1,4 @@
-<mat-form-field class="omv-flex-1"
+<mat-form-field class="omv-form-field omv-flex-1"
                 [formGroup]="formGroup">
   <div *ngIf="config.icon"
        matPrefix>
@@ -11,12 +11,14 @@
          type="number"
          [formControlName]="config.name">
   <mat-slider class="omv-w-100"
-              [value]="sliderInput.value"
-              (change)="onChange($event)"
+              discrete
               [max]="config?.validators?.max"
               [min]="config?.validators?.min"
-              [step]="config.step"
-              thumbLabel="true">
+              [step]="config.step">
+    <input matSliderThumb
+           #sliderThumb="matSliderThumb"
+           [value]="sliderInput.value"
+           (change)="onChange(sliderThumb.value)">
   </mat-slider>
   <mat-error *ngIf="formGroup.invalid">
     <span *ngIf="formGroup.hasError('required', config.name)">

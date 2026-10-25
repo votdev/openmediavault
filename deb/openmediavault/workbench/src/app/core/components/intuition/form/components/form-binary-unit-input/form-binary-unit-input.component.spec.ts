@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 import { FormBinaryUnitInputComponent } from '~/app/core/components/intuition/form/components/form-binary-unit-input/form-binary-unit-input.component';
 import { IntuitionModule } from '~/app/core/components/intuition/intuition.module';

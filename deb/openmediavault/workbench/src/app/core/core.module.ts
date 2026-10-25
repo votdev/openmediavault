@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { type ModuleWithProviders, NgModule } from '@angular/core';
 
 import { ComponentsModule } from '~/app/core/components/components.module';
 import { PagesModule } from '~/app/core/pages/pages.module';

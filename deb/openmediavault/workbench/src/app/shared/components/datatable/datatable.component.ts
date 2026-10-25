@@ -24,14 +24,14 @@ import {
   OnInit,
   Output,
   SimpleChange,
-  SimpleChanges,
+  type SimpleChanges,
   TemplateRef,
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
-import { DatatableComponent as NgxDatatableComponent } from '@siemens/ngx-datatable';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
+import { DatatableComponent as NgxDatatableComponent, SortPropDir } from '@siemens/ngx-datatable';
 import * as _ from 'lodash';
 import { Subscription, timer } from 'rxjs';
 
@@ -65,7 +65,8 @@ export type DataTableCellChanged = {
   selector: 'omv-datatable',
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class DatatableComponent implements Datatable, OnInit, OnDestroy, OnChanges {
   @ViewChild('table', { static: true })
@@ -409,12 +410,18 @@ export class DatatableComponent implements Datatable, OnInit, OnDestroy, OnChang
     this.selectionChangeEvent.emit(_.cloneDeep(this.selection));
   }
 
-  onSort({ sorts }): void {
+  onSelectedChange(selected: DatatableData[]): void {
+    // The datatable does not modify the passed array in place.
+    this.selection.set(selected);
+    this.onSelect();
+  }
+
+  onSortsChange(sorts: SortPropDir[]): void {
     if (this.remotePaging) {
       this.offset = 0;
     }
     if (this.remoteSorting) {
-      this.sorters = sorts;
+      this.sorters = sorts as Sorter[];
       this.reloadData();
     }
   }

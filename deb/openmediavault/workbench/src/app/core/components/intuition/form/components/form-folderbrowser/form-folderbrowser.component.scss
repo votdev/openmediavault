@@ -1,43 +1,29 @@
+@use '@angular/material' as mat;
 @use 'scss/defaults/variables' as dv;
-@use 'scss/theme';
 
-.mat-list-base {
-  padding-top: unset;
-
-  .mat-list-option {
-    font-size: var(--mat-font-size-body-1);
-  }
-}
-
-.mat-form-field + .mat-form-field {
+// Space between the base path and the folder field.
+mat-form-field + mat-form-field {
   padding-left: 12px;
 }
 
-.cdk-overlay-pane {
-  .mat-toolbar.omv-selection-header {
-    .mat-form-field {
-      font-size: var(--mat-font-size-body-1);
+// The overlay panel of the folder browser.
+.omv-folderbrowser-panel {
+  max-height: 50vh;
+  background-color: var(--mat-sys-surface-container);
+  border-radius: var(--mat-sys-corner-extra-small);
+  box-shadow: var(--mat-sys-level2);
+}
 
-      &.mat-focused {
-        color: theme.$omv-color-primary;
-      }
-
-      .mat-form-field-infix {
-        padding-bottom: unset;
-      }
-    }
-  }
+// Use the same toolbar background as the datatable page.
+.omv-selection-header {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--mat-sys-surface-variant)
+    )
+  );
 }
 
 .omv-selection-actions {
-  font-size: var(--mat-font-size-body-1);
   padding: dv.$omv-padding;
-
-  .mat-button-base:not(:last-child) {
-    margin-right: 0.5rem;
-  }
-}
-
-.mat-select-panel {
-  max-height: 50vh;
+  gap: 0.5rem;
 }

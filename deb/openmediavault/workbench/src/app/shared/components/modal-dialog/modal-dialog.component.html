@@ -1,11 +1,10 @@
 <div *ngIf="config.title"
-     class="omv-display-flex omv-flex-row omv-align-items-center omv-gap-4"
      mat-dialog-title>
   <mat-icon *ngIf="config.icon"
-            class="omv-icon-lg"
+            class="omv-align-middle omv-pr-h omv-icon-lg"
             svgIcon="{{ config.icon }}">
   </mat-icon>
-  <div>{{ config.title | transloco }}</div>
+  {{ config.title | transloco }}
 </div>
 <mat-dialog-content>
   <span [innerHTML]="config.message | transloco | sanitizeHtml"></span>

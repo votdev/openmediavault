@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 import { RpcService } from '~/app/shared/services/rpc.service';
 import { TestingModule } from '~/app/testing.module';

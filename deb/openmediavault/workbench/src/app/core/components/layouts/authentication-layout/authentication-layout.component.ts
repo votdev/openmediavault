@@ -20,7 +20,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'omv-authentication-layout',
   templateUrl: './authentication-layout.component.html',
-  styleUrls: ['./authentication-layout.component.scss']
+  styleUrls: ['./authentication-layout.component.scss'],
+  standalone: false
 })
 export class AuthenticationLayoutComponent {
   constructor() {}

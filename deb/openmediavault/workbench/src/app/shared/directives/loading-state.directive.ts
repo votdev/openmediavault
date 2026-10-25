@@ -6,7 +6,8 @@ import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
  */
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: 'img[loadingState]'
+  selector: 'img[loadingState]',
+  standalone: false
 })
 export class LoadingStateDirective {
   constructor(

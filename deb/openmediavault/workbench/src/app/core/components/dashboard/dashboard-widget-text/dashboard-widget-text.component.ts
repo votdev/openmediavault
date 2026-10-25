@@ -23,7 +23,8 @@ import { DashboardWidgetConfig } from '~/app/core/components/dashboard/models/da
 @Component({
   selector: 'omv-dashboard-widget-text',
   templateUrl: './dashboard-widget-text.component.html',
-  styleUrls: ['./dashboard-widget-text.component.scss']
+  styleUrls: ['./dashboard-widget-text.component.scss'],
+  standalone: false
 })
 export class DashboardWidgetTextComponent implements OnInit {
   @Input()

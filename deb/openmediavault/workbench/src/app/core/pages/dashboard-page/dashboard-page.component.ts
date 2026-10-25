@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  */
 import { Component, OnInit } from '@angular/core';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 
 import { DashboardWidgetConfig } from '~/app/core/components/dashboard/models/dashboard-widget-config.model';
@@ -25,7 +25,8 @@ import { DashboardWidgetConfigService } from '~/app/core/services/dashboard-widg
 @Component({
   selector: 'omv-dashboard-page',
   templateUrl: './dashboard-page.component.html',
-  styleUrls: ['./dashboard-page.component.scss']
+  styleUrls: ['./dashboard-page.component.scss'],
+  standalone: false
 })
 export class DashboardPageComponent implements OnInit {
   public widgets: Array<DashboardWidgetConfig> = [];

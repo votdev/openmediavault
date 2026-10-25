@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 import { FormDialogComponent } from '~/app/core/components/intuition/form-dialog/form-dialog.component';
 import { IntuitionModule } from '~/app/core/components/intuition/intuition.module';

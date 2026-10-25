@@ -4,9 +4,9 @@
     <mat-progress-bar *ngIf="loading && firstLoad"
                       mode="indeterminate">
     </mat-progress-bar>
-    <mat-card-title-group *ngIf="config.title && !config.hideTitle">
+    <mat-card-header *ngIf="config.title && !config.hideTitle">
       <mat-card-title>{{ config.title | transloco }}</mat-card-title>
-    </mat-card-title-group>
+    </mat-card-header>
     <mat-card-content *ngIf="!error && !firstLoad">
       <ng-content></ng-content>
     </mat-card-content>
