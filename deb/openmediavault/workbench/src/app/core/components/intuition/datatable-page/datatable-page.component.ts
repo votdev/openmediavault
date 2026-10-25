@@ -17,7 +17,7 @@
  */
 import { Component, Inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { concat, Observable, Subscription } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
@@ -55,8 +55,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
 @Component({
   selector: 'omv-intuition-datatable-page',
   templateUrl: './datatable-page.component.html',
-  styleUrls: ['./datatable-page.component.scss'],
-  providers: [PageContextService]
+  providers: [PageContextService],
+  standalone: false
 })
 export class DatatablePageComponent extends AbstractPageComponent<DatatablePageConfig> {
   @ViewChild('table', { static: true })

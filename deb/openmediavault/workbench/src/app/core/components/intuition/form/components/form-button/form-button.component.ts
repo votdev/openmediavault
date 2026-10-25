@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
@@ -33,8 +33,7 @@ import { RpcService } from '~/app/shared/services/rpc.service';
 @Component({
   selector: 'omv-form-button',
   templateUrl: './form-button.component.html',
-  styleUrls: ['./form-button.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  standalone: false
 })
 export class FormButtonComponent extends AbstractFormFieldComponent {
   constructor(

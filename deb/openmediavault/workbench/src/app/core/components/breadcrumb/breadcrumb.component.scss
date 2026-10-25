@@ -1,8 +1,9 @@
 @use 'scss/defaults/colors' as dc;
 @use 'scss/defaults/variables' as dv;
-@use 'scss/theme';
 
 nav {
+  padding-top: dv.$omv-padding * 0.5;
+
   a {
     border-bottom: 3px solid dc.$omv-color-transparent;
     display: inline-block;
@@ -11,16 +12,16 @@ nav {
     white-space: nowrap;
 
     &:hover:not(.active) {
-      border-bottom: 3px solid theme.$omv-color-accent;
+      border-bottom: 3px solid var(--mat-sys-tertiary);
     }
 
-    .mat-icon {
+    mat-icon {
       vertical-align: middle;
     }
   }
 
-  .mat-divider {
-    border-color: inherit;
+  // Vertical separators between the breadcrumbs.
+  mat-divider {
     display: unset;
     margin-left: dv.$omv-margin * 0.5;
     margin-right: dv.$omv-margin * 0.5;

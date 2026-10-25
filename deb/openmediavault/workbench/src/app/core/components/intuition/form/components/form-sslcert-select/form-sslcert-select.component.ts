@@ -25,7 +25,7 @@ import { DataStoreService } from '~/app/shared/services/data-store.service';
 @Component({
   selector: 'omv-form-sslcert-select',
   templateUrl: './form-sslcert-select.component.html',
-  styleUrls: ['./form-sslcert-select.component.scss']
+  standalone: false
 })
 export class FormSslcertSelectComponent extends FormSelectComponent {
   constructor(

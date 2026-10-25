@@ -17,7 +17,7 @@
  */
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import { EMPTY, interval, Subscription } from 'rxjs';
 import { catchError, switchMap, take } from 'rxjs/operators';
 
@@ -43,7 +43,8 @@ import { UserLocalStorageService } from '~/app/shared/services/user-local-storag
 @Component({
   selector: 'omv-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss']
+  styleUrls: ['./top-bar.component.scss'],
+  standalone: false
 })
 export class TopBarComponent {
   @Output()

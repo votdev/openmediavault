@@ -43,7 +43,8 @@ export type Breadcrumb = {
   selector: 'omv-breadcrumb',
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class BreadcrumbComponent {
   @Unsubscribe()

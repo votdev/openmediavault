@@ -12,7 +12,8 @@
     <span [innerHtml]="hint.text | transloco | template:pageContext | nl2br | sanitizeHtml"></span>
   </omv-alert-panel>
 </div>
-<mat-card [ngClass]="{'omv-display-none': (pageStatus?.loading && pageStatus?.initialLoad) || pageStatus?.error}">
+<mat-card class="omv-m"
+          [ngClass]="{'omv-display-none': (pageStatus?.loading && pageStatus?.initialLoad) || pageStatus?.error}">
   <ng-container *ngTemplateOutlet="renderCardHeader"></ng-container>
   <mat-card-content>
     <omv-intuition-form [id]="config.id"
@@ -20,7 +21,7 @@
     </omv-intuition-form>
   </mat-card-content>
   <mat-card-actions *ngIf="config.buttons.length"
-                    class="omv-display-flex omv-flex-row"
+                    class="omv-display-flex omv-flex-row omv-gap-2"
                     [ngClass]="{'omv-justify-content-start': config.buttonAlign === 'start', 'omv-justify-content-center': config.buttonAlign === 'center', 'omv-justify-content-end': config.buttonAlign === 'end'}">
     <ng-container *ngFor="let button of config.buttons">
       <omv-submit-button *ngIf="button.template === 'submit'"
@@ -57,14 +58,14 @@
       </mat-card-header>
     </ng-container>
     <ng-container *ngIf="!config.icon">
-      <mat-card-title-group>
+      <mat-card-header>
         <mat-card-title *ngIf="config.title">
           {{ config.title | transloco | template:pageContext }}
         </mat-card-title>
         <mat-card-subtitle *ngIf="config.subTitle">
           {{ config.subTitle | transloco | template:pageContext }}
         </mat-card-subtitle>
-      </mat-card-title-group>
+      </mat-card-header>
     </ng-container>
   </ng-container>
 </ng-template>

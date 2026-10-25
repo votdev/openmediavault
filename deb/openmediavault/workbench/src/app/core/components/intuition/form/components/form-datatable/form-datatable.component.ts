@@ -30,7 +30,7 @@ import { Icon } from '~/app/shared/enum/icon.enum';
 @Component({
   selector: 'omv-form-datatable',
   templateUrl: './form-datatable.component.html',
-  styleUrls: ['./form-datatable.component.scss']
+  standalone: false
 })
 export class FormDatatableComponent extends AbstractFormFieldComponent {
   protected override sanitizeConfig(): void {

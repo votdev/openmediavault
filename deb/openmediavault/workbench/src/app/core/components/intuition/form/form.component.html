@@ -1,7 +1,7 @@
 <form [attr.id]="id"
       [formGroup]="formGroup">
   <ng-container *ngFor="let field of config">
-    <p>
+    <p *ngIf="'hidden' !== field.type">
       <ng-container [ngTemplateOutlet]="renderFormField"
                     [ngTemplateOutletContext]="{ $implicit: field }">
       </ng-container>

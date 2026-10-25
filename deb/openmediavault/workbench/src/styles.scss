@@ -21,102 +21,85 @@
 @use 'scss/defaults/variables' as dv;
 @use 'scss/theme';
 @use 'scss/mixins';
-@use 'scss/ngx-scrollbar';
-@use 'scss/ngx-toastr';
+@use 'scss/scrollbar';
+@use 'scss/toastr';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Initialize Material
 ////////////////////////////////////////////////////////////////////////////////
-$omv-typography-config: mat.define-typography-config(theme.$omv-font-family-default);
+html {
+  // The corporate colors have no role in the Material 3 theme, thus they
+  // are provided as CSS variables.
+  --omv-color-corporate: #{dc.$omv-color-corporate-default};
+  --omv-color-corporate-dark: #{dc.$omv-color-corporate-dark};
+  --omv-color-corporate-darker: #{dc.$omv-color-corporate-darker};
 
-@include mat.core($omv-typography-config);
+  @include mat.theme(
+    (
+      color: (
+        primary: theme.$omv-m3-primary-palette,
+        tertiary: theme.$omv-m3-tertiary-palette,
+        theme-type: color-scheme
+      ),
+      typography: theme.$omv-font-family-default,
+      density: 0
+    )
+  );
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: var(--omv-color-corporate)
+    )
+  );
 
-$omv-theme-primary-palette: mat.define-palette(theme.$omv-color-primary-palette);
-$omv-theme-accent-palette: map.merge(
-  mat.define-palette(theme.$omv-color-accent-palette),
-  (
-    default-contrast: theme.$omv-color-accent-contrast
-  )
-);
-$omv-theme-warn-palette: mat.define-palette(theme.$omv-color-warn-palette);
-$omv-light-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $omv-theme-primary-palette,
-      accent: $omv-theme-accent-palette,
-      warn: $omv-theme-warn-palette
+  // - The dialogs are opened with an explicit width in percent, which must
+  //   not be limited by the M3 maximum of 560px.
+  // - The default headline padding is only 6px at the top because it is
+  //   meant to compensate the height of a pseudo element of the title.
+  @include mat.dialog-overrides(
+    (
+      container-max-width: 80vw,
+      headline-padding: dv.$omv-header-padding dv.$omv-margin dv.$omv-header-padding
     )
-  )
-);
-$omv-light-theme-background-palette: (
-  status-bar: map.get(dc.$omv-color-slate-gray-palette, 300),
-  app-bar: map.get(dc.$omv-color-slate-gray-palette, 100),
-  background: map.get(dc.$omv-color-slate-gray-palette, 50),
-  selected-button: map.get(dc.$omv-color-slate-gray-palette, 300),
-  selected-disabled-button: map.get(dc.$omv-color-slate-gray-palette, 400),
-  disabled-button-toggle: map.get(dc.$omv-color-slate-gray-palette, 200),
-  unselected-chip: map.get(dc.$omv-color-slate-gray-palette, 300),
-  disabled-list-option: map.get(dc.$omv-color-slate-gray-palette, 200),
-  tooltip: map.get(dc.$omv-color-slate-gray-palette, 700)
-);
-$omv-light-theme: map.deep-merge(
-  $omv-light-theme,
-  (
-    background: $omv-light-theme-background-palette,
-    color: (
-      background: $omv-light-theme-background-palette
-    )
-  )
-);
-$omv-dark-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $omv-theme-primary-palette,
-      accent: $omv-theme-accent-palette,
-      warn: $omv-theme-warn-palette
-    )
-  )
-);
-$omv-dark-theme-background-palette: (
-  app-bar: map.get(dc.$omv-color-charcoal-palette, 800),
-  background: map.get(dc.$omv-color-slate-gray-palette, 900),
-  card: map.get(dc.$omv-color-charcoal-palette, 600),
-  dialog: map.get(dc.$omv-color-charcoal-palette, 600),
-  raised-button: map.get(dc.$omv-color-charcoal-palette, 800),
-  selected-button: map.get(dc.$omv-color-charcoal-palette, 900),
-  selected-disabled-button: map.get(dc.$omv-color-charcoal-palette, 800),
-  unselected-chip: map.get(dc.$omv-color-charcoal-palette, 700),
-  tooltip: map.get(dc.$omv-color-charcoal-palette, 700)
-);
-$omv-dark-theme: map.deep-merge(
-  $omv-dark-theme,
-  (
-    background: $omv-dark-theme-background-palette,
-    color: (
-      background: $omv-dark-theme-background-palette
-    )
-  )
-);
+  );
 
-@include mat.all-component-themes($omv-light-theme);
-@include theme.all-component-themes('light', $omv-light-theme, $omv-typography-config);
-
-.omv-dark-theme {
-  @include mat.all-component-colors($omv-dark-theme);
-  @include theme.all-component-themes('dark', $omv-dark-theme, $omv-typography-config);
+  color-scheme: light;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// CSS variables
-////////////////////////////////////////////////////////////////////////////////
-:root {
-  --omv-background-color-muted: rgb(0 0 0 / 10%);
-  --omv-background-color-muted-text: rgb(0 0 0 / 6%);
+body.omv-dark-theme {
+  color-scheme: dark;
+}
+
+// The toolbars within a card (e.g. of the datatable, text or selection list
+// page) are set off from the surface of the card.
+mat-card {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--mat-sys-surface-variant)
+    )
+  );
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes
 ////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Display
+.omv-display-none {
+  display: none !important;
+}
+
+.omv-display-flex {
+  display: flex !important;
+}
+
+.omv-display-block {
+  display: block;
+}
+
+.omv-display-grid {
+  display: grid;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Orientation
@@ -128,6 +111,12 @@ $omv-dark-theme: map.deep-merge(
 .omv-horizontal-align {
   @extend .omv-display-flex;
   @extend .omv-justify-content-center;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Vertical align
+.omv-align-middle {
+  vertical-align: middle;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -150,7 +139,8 @@ $omv-dark-theme: map.deep-merge(
 
 ////////////////////////////////////////////////////////////////////////////////
 // Sizing
-.omv-h-100, .omv-h-full {
+.omv-h-100,
+.omv-h-full {
   height: 100% !important;
 }
 
@@ -202,7 +192,8 @@ $omv-dark-theme: map.deep-merge(
   width: 90% !important;
 }
 
-.omv-w-100, .omv-w-full {
+.omv-w-100,
+.omv-w-full {
   width: 100% !important;
 }
 
@@ -528,10 +519,6 @@ $omv-dark-theme: map.deep-merge(
 // References:
 // - https://github.com/angular/flex-layout/wiki/Declarative-API-Overview
 // - https://github.com/angular/flex-layout/wiki/Responsive-API
-.omv-display-flex {
-  display: flex !important;
-}
-
 .omv-flex-row {
   flex-direction: row;
 }
@@ -571,7 +558,8 @@ $omv-dark-theme: map.deep-merge(
 
 // Allow a flex item to shrink but not grow, taking into account its
 // initial size.
-.omv-flex-initial, .omv-flex-nogrow {
+.omv-flex-initial,
+.omv-flex-nogrow {
   flex: 0 1 auto;
 }
 
@@ -667,7 +655,7 @@ $omv-dark-theme: map.deep-merge(
 ////////////////////////////////////////////////////////////////////////////////
 // Grid
 .omv-grid {
-  display: grid;
+  @extend .omv-display-grid;
 
   & > * {
     // Ensure grid items handle text overflow properly.
@@ -740,12 +728,13 @@ $omv-dark-theme: map.deep-merge(
 
 ////////////////////////////////////////////////////////////////////////////////
 // Color
-.omv-color-primary {
-  color: theme.$omv-color-primary;
+.omv-color-primary,
+.omv-color-corporate {
+  color: var(--omv-color-corporate);
 }
 
 .omv-color-accent {
-  color: theme.$omv-color-accent;
+  color: dc.$omv-color-yellow;
 }
 
 .omv-color-black {
@@ -781,54 +770,91 @@ $omv-dark-theme: map.deep-merge(
   color: theme.$omv-color-info;
 }
 
-@each $name in map-keys(theme.$omv-color-pairs) {
+@each $name in map.keys(theme.$omv-color-pairs) {
   .omv-background-color-pair-#{$name} {
     @include theme.background-color-pair($name);
-  }
+    @include mat.chips-overrides(
+      (
+        outline-color: map.get(theme.$omv-color-pairs, $name, background-color),
+        elevated-container-color: map.get(theme.$omv-color-pairs, $name, background-color),
+        label-text-color: map.get(theme.$omv-color-pairs, $name, color)
+      )
+    );
 
-  .omv-dark-theme {
-    .omv-background-color-pair-#{$name} {
-      @include theme.background-color-pair($name);
-    }
+    // Material components paint their colors via tokens, not via
+    // `background-color`. The tokens are inherited by the child components,
+    // e.g. the icon buttons of a card use the foreground color of the pair.
+    @include mat.card-overrides(
+      (
+        elevated-container-color: map.get(theme.$omv-color-pairs, $name, background-color)
+      )
+    );
+    @include mat.icon-button-overrides(
+      (
+        icon-color: map.get(theme.$omv-color-pairs, $name, color),
+        state-layer-color: map.get(theme.$omv-color-pairs, $name, color),
+        ripple-color: color-mix(
+            in srgb,
+            map.get(theme.$omv-color-pairs, $name, color)
+              calc(var(--mat-sys-pressed-state-layer-opacity) * 100%),
+            transparent
+          ),
+        disabled-icon-color: color-mix(
+            in srgb,
+            map.get(theme.$omv-color-pairs, $name, color) 38%,
+            transparent
+          )
+      )
+    );
+    @include mat.button-overrides(
+      (
+        filled-container-color: map.get(theme.$omv-color-pairs, $name, background-color),
+        filled-label-text-color: map.get(theme.$omv-color-pairs, $name, color),
+        filled-state-layer-color: map.get(theme.$omv-color-pairs, $name, color),
+        filled-ripple-color: color-mix(
+            in srgb,
+            map.get(theme.$omv-color-pairs, $name, color)
+              calc(var(--mat-sys-pressed-state-layer-opacity) * 100%),
+            transparent
+          )
+      )
+    );
   }
-}
-
-.omv-background-color-pair-tip {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Color - Derived from the active Material theme
+// Color - Derived from the Material 3 system colors
 .omv-color-text {
-  color: var(--mat-color-text);
+  color: var(--mat-sys-on-surface);
 }
 
 .omv-color-secondary-text {
-  color: var(--mat-color-secondary-text);
+  color: var(--mat-sys-on-surface-variant);
 }
 
 .omv-color-disabled-text {
-  color: var(--mat-color-disabled-text);
+  color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent);
 }
 
 .omv-color-hint-text {
-  color: var(--mat-color-hint-text);
+  color: var(--mat-sys-on-surface-variant);
 }
 
 .omv-background-color-hover {
-  background-color: var(--mat-background-color-hover);
+  background-color: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
 }
 
 .omv-background-color-muted,
 .omv-background-color-selected-button {
-  background-color: var(--omv-background-color-muted);
+  background-color: var(--mat-sys-surface-container-highest);
 }
 
 .omv-background-color-muted-text {
-  background-color: var(--omv-background-color-muted-text);
+  background-color: var(--mat-sys-surface-container-high);
 }
 
 .omv-background-color-card {
-  background-color: var(--mat-background-color-card);
+  background-color: var(--mat-sys-surface-container-low);
 }
 
 .omv-background-color-transparent {
@@ -876,12 +902,6 @@ $omv-dark-theme: map.deep-merge(
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Display
-.omv-display-none {
-  display: none !important;
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Font
 .omv-font-weight-lighter {
   font-weight: lighter !important;
@@ -924,17 +944,21 @@ $omv-dark-theme: map.deep-merge(
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Font - Derived from the Material theme typography
+// Font - Derived from the Material 3 type scale
 .omv-font-weight-title {
-  font-weight: var(--mat-font-weight-title);
+  font-weight: var(--mat-sys-title-large-weight);
 }
 
 .omv-font-size-title {
-  font-size: var(--mat-font-size-title);
+  font-size: var(--mat-sys-title-large-size);
+}
+
+.omv-font-size-headline {
+  font-size: var(--mat-sys-headline-small-size);
 }
 
 .omv-font-size-subheading-2 {
-  font-size: var(--mat-font-size-subheading-2);
+  font-size: var(--mat-sys-body-large-size);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -996,16 +1020,6 @@ $omv-dark-theme: map.deep-merge(
 @keyframes rotate-360 {
   0% {
     transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes loading-spinner {
-  0% {
-    transform: rotate(0deg);
   }
 
   100% {
@@ -1085,15 +1099,15 @@ $omv-dark-theme: map.deep-merge(
   line-height: 1.2rem;
 
   blockquote {
-    background-color: var(--omv-background-color-muted-text);
-    border-left: 4px solid dc.$omv-color-corporate-default;
+    background-color: var(--mat-sys-surface-container-high);
+    border-left: 4px solid var(--mat-sys-primary);
     border-radius: 4px;
     margin: 20px 0;
     padding: 1px 20px;
   }
 
   code {
-    background-color: var(--omv-background-color-muted-text);
+    background-color: var(--mat-sys-surface-container-high);
     border-radius: 4px;
     font-size: 85%;
     margin: 0;
@@ -1102,7 +1116,7 @@ $omv-dark-theme: map.deep-merge(
   }
 
   pre {
-    background-color: var(--omv-background-color-muted-text);
+    background-color: var(--mat-sys-surface-container-high);
     border-radius: 4px;
     font-size: 85%;
     overflow: auto;
@@ -1131,8 +1145,9 @@ body {
 }
 
 body {
-  background-color: var(--mat-background-color-body);
-  font-family: var(--mat-font-family-body);
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
   margin: 0;
 }
 
@@ -1163,12 +1178,12 @@ img.loading {
   content: url('data:image/x-icon;base64,');
   color: rgb(0 0 0 / 0%) !important; // Hide 'alt' text.
   font-size: 5px;
-  border-top: 1.1em solid dc.$omv-color-whitesmoke;
-  border-right: 1.1em solid dc.$omv-color-whitesmoke;
-  border-bottom: 1.1em solid dc.$omv-color-whitesmoke;
-  border-left: 1.1em solid dc.$omv-color-corporate-default;
+  border-top: 1.1em solid var(--mat-sys-surface-container-high);
+  border-right: 1.1em solid var(--mat-sys-surface-container-high);
+  border-bottom: 1.1em solid var(--mat-sys-surface-container-high);
+  border-left: 1.1em solid var(--mat-sys-primary);
   animation-duration: 1.1s;
   animation-iteration-count: infinite;
-  animation-name: loading-spinner;
+  animation-name: rotate-360;
   animation-timing-function: linear;
 }

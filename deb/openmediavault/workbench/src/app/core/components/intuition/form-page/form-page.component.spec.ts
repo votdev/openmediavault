@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 import { of } from 'rxjs';
 
 import { FormPageComponent } from '~/app/core/components/intuition/form-page/form-page.component';

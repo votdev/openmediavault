@@ -12,18 +12,15 @@
   <mat-list role="list">
     <mat-list-item *ngFor="let task of tasks | keyvalue"
                    role="listitem">
-      <mat-icon mat-list-icon
+      <mat-icon matListItemIcon
                 svgIcon="{{ icon.console }}">
       </mat-icon>
-      <span mat-line
-            class="list-item-message">
-        {{ "Background task" | transloco }}
-      </span>
-      <span mat-line
-            class="list-item-timestamp">
-        {{ task.value.startTime | localeDate:'relative' }}
-      </span>
+      <span matListItemTitle
+            class="list-item-message">{{ "Background task" | transloco }}</span>
+      <span matListItemLine
+            class="list-item-timestamp">{{ task.value.startTime | localeDate:'relative' }}</span>
       <button mat-icon-button
+              matListItemMeta
               [matMenuTriggerFor]="taskActionMenu">
         <mat-icon svgIcon="{{ icon.dotmenu }}"></mat-icon>
       </button>
@@ -48,60 +45,54 @@
 
     <mat-list-item *ngIf="!notifications.length"
                    role="listitem">
-      <mat-icon mat-list-icon
+      <mat-icon matListItemIcon
                 class="omv-color-info"
                 svgIcon="{{ icon.information }}">
       </mat-icon>
-      <p mat-line
-         class="list-item-title omv-font-weight-bold">
-        {{ 'There are no notifications.' | transloco }}
-      </p>
+      <p matListItemTitle
+         class="list-item-title omv-font-weight-bold">{{ 'There are no notifications.' | transloco }}</p>
     </mat-list-item>
 
     <mat-list-item *ngFor="let notification of notifications"
                    role="listitem">
       <mat-icon *ngIf="notification.type === 'success'"
-                mat-list-icon
+                matListItemIcon
                 class="omv-color-success"
                 svgIcon="{{ icon.success }}">
       </mat-icon>
       <mat-icon *ngIf="notification.type === 'error'"
-                mat-list-icon
+                matListItemIcon
                 class="omv-color-error"
                 svgIcon="{{ icon.error }}">
       </mat-icon>
       <mat-icon *ngIf="notification.type === 'warning'"
-                mat-list-icon
+                matListItemIcon
                 class="omv-color-warning"
                 svgIcon="{{ icon.warning }}">
       </mat-icon>
       <mat-icon *ngIf="notification.type === 'info'"
-                mat-list-icon
+                matListItemIcon
                 class="omv-color-info"
                 svgIcon="{{ icon.information }}">
       </mat-icon>
-      <span mat-line
+      <span matListItemTitle
             class="list-item-title omv-font-weight-bold"
             [ngClass]="{'omv-cursor-pointer': notification.url}"
-            (click)="onNavigate(notification.url)">
-        {{ notification.title | transloco | truncate:100 }}
-      </span>
-      <span mat-line
+            (click)="onNavigate(notification.url)">{{ notification.title | transloco | truncate:100 }}</span>
+      <span matListItemLine
             class="list-item-message"
             [ngClass]="{'omv-cursor-pointer': notification.url}"
-            (click)="onNavigate(notification.url)">
-        {{ notification.message | transloco | truncate:100 }}
+            (click)="onNavigate(notification.url)">{{ notification.message | transloco | truncate:100 }}
         <mat-icon *ngIf="notification.url"
                   class="omv-icon-sm"
                   svgIcon="{{ icon.link }}">
         </mat-icon>
       </span>
       <span *ngIf="notification.timestamp"
-            mat-line
-            class="list-item-timestamp">
-        {{ notification.timestamp | localeDate:'relative' }}
-      </span>
+            matListItemLine
+            class="list-item-timestamp">{{ notification.timestamp | localeDate:'relative' }}</span>
       <button mat-icon-button
+              matListItemMeta
               [matMenuTriggerFor]="notificationActionMenu">
         <mat-icon svgIcon="{{ icon.dotmenu }}"></mat-icon>
       </button>

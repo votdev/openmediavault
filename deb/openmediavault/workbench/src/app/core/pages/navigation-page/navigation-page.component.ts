@@ -28,7 +28,8 @@ import { Icon } from '~/app/shared/enum/icon.enum';
 @Component({
   selector: 'omv-navigation-page',
   templateUrl: './navigation-page.component.html',
-  styleUrls: ['./navigation-page.component.scss']
+  styleUrls: ['./navigation-page.component.scss'],
+  standalone: false
 })
 export class NavigationPageComponent implements OnInit {
   public menuItems: NavigationMenuItem[] = [];

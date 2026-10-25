@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  */
 import { Component, Inject, OnInit } from '@angular/core';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { Observable, Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -38,7 +38,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-intuition-rrd-page',
   templateUrl: './rrd-page.component.html',
   styleUrls: ['./rrd-page.component.scss'],
-  providers: [PageContextService]
+  providers: [PageContextService],
+  standalone: false
 })
 export class RrdPageComponent extends AbstractPageComponent<RrdPageConfig> implements OnInit {
   @Unsubscribe()

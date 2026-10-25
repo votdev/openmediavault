@@ -18,7 +18,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { Subscription, timer } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
@@ -42,7 +42,8 @@ import { RunningTasks, TaskRunnerService } from '~/app/shared/services/task-runn
 @Component({
   selector: 'omv-notification-bar',
   templateUrl: './notification-bar.component.html',
-  styleUrls: ['./notification-bar.component.scss']
+  styleUrls: ['./notification-bar.component.scss'],
+  standalone: false
 })
 export class NotificationBarComponent implements OnInit {
   @Input()

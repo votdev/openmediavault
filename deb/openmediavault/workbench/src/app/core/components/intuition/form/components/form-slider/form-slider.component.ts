@@ -15,21 +15,19 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, ViewEncapsulation } from '@angular/core';
-import { MatSliderChange } from '@angular/material/slider';
+import { Component } from '@angular/core';
 
 import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form/components/abstract-form-field-component';
 
 @Component({
   selector: 'omv-form-slider',
   templateUrl: './form-slider.component.html',
-  styleUrls: ['./form-slider.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  standalone: false
 })
 export class FormSliderComponent extends AbstractFormFieldComponent {
-  onChange(event: MatSliderChange) {
+  onChange(value: number) {
     const control = this.formGroup.get(this.config.name);
-    control.setValue(event.value);
+    control.setValue(value);
     control.markAsTouched();
     control.markAsDirty();
     control.updateValueAndValidity();

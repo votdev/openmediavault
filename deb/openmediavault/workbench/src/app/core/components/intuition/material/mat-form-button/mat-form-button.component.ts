@@ -37,7 +37,8 @@ let nextUniqueId = 0;
       useExisting: MatFormButtonComponent
     }
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class MatFormButtonComponent implements ControlValueAccessor, MatFormFieldControl<any> {
   /**

@@ -1,3 +1,10 @@
+openmediavault (8.7.0-1) stable; urgency=medium
+
+  * Upgrade the Workbench to Angular 21 and Angular Material 21 (Material 3
+    theme).
+
+ -- Volker Theile <volker.theile@openmediavault.org>  Tue, 20 Oct 2026 03:01:50 +0200
+
 openmediavault (8.6.0-1) stable; urgency=medium
 
   * Read the file system information from the udev database instead of

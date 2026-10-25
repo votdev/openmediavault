@@ -23,7 +23,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-welcome-panel',
   templateUrl: './welcome-panel.component.html',
   styleUrls: ['./welcome-panel.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class WelcomePanelComponent {
   constructor(private rpcService: RpcService) {}

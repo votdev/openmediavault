@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 import { ComponentsModule } from '~/app/core/components/components.module';
 import { TopBarComponent } from '~/app/core/components/top-bar/top-bar.component';

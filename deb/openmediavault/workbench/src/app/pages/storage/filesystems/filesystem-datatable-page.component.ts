@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  */
 import { Component, OnInit } from '@angular/core';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
 
@@ -25,7 +25,8 @@ import { MkfsConfig, MkfsConfigService } from '~/app/core/services/mkfs-config.s
 import { Unsubscribe } from '~/app/decorators';
 
 @Component({
-  template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>'
+  template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>',
+  standalone: false
 })
 export class FilesystemDatatablePageComponent implements OnInit {
   @Unsubscribe()

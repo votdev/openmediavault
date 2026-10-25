@@ -1,5 +1,5 @@
 import { Injectable, NgZone, OnDestroy } from '@angular/core';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import { EMPTY, fromEvent, merge, Observable, Subject, timer } from 'rxjs';
 import { filter, share, switchMap, takeUntil, tap, throttleTime } from 'rxjs/operators';
 

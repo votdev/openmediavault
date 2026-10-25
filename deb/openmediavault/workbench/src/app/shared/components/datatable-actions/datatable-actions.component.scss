@@ -1,9 +1,11 @@
-.mat-form-field {
+@use 'scss/defaults/variables' as dv;
+
+mat-form-field {
   vertical-align: middle;
 }
 
-.mat-divider {
+mat-divider {
   display: unset;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: dv.$omv-margin * 0.33;
+  margin-right: dv.$omv-margin * 0.33;
 }

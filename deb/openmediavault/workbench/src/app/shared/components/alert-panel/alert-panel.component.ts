@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  */
 import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 
 import { CoerceBoolean } from '~/app/decorators';
@@ -34,7 +34,8 @@ export type AlertPanelButtonConfig = {
 @Component({
   selector: 'omv-alert-panel',
   templateUrl: './alert-panel.component.html',
-  styleUrls: ['./alert-panel.component.scss']
+  styleUrls: ['./alert-panel.component.scss'],
+  standalone: false
 })
 export class AlertPanelComponent implements OnInit {
   @Input()

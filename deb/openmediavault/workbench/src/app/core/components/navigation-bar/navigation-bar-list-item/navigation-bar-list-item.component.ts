@@ -15,7 +15,16 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
+import { MatTooltip } from '@angular/material/tooltip';
 import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
@@ -28,19 +37,27 @@ import { Icon } from '~/app/shared/enum/icon.enum';
 @Component({
   selector: 'omv-navigation-bar-list-item',
   templateUrl: './navigation-bar-list-item.component.html',
-  styleUrls: ['./navigation-bar-list-item.component.scss']
+  standalone: false
 })
-export class NavigationBarListItemComponent implements OnInit {
+export class NavigationBarListItemComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input()
   item: NavigationBarListItem;
 
   @Input()
   depth = 0;
 
+  @ViewChild(MatTooltip, { static: true })
+  tooltip: MatTooltip;
+
+  @ViewChild('title', { static: true })
+  title: ElementRef<HTMLElement>;
+
   @Unsubscribe()
   private subscriptions = new Subscription();
 
   public icon = Icon;
+
+  private resizeObserver?: ResizeObserver;
 
   constructor(private router: Router) {
     this.subscriptions.add(
@@ -79,6 +96,36 @@ export class NavigationBarListItemComponent implements OnInit {
     this.item.expanded = _.startsWith(this.router.url, this.item.url);
   }
 
+  /**
+   * Enable the tooltip only if the text is truncated.
+   *
+   * The state is updated in advance, so it is also correct if the
+   * tooltip is triggered by a touch gesture, which happens before any
+   * `mouseenter` event. It is updated again on `mouseenter`, because a
+   * late loaded font can change the text width without resizing the
+   * element. That handler runs before the one of the tooltip, so the
+   * tooltip already sees the updated state.
+   *
+   * Note, the tooltip must be enabled when it is initialized, otherwise
+   * it does not register its event listeners. This is the case, because
+   * it is initialized before `ngAfterViewInit` of this component.
+   */
+  updateTooltip(): void {
+    const el = this.title.nativeElement;
+    this.tooltip.disabled = el.scrollWidth <= el.clientWidth;
+  }
+
+  ngAfterViewInit(): void {
+    // The observer is also called initially and when the element gets
+    // visible, e.g. when the navigation sidenav is opened.
+    this.resizeObserver = new ResizeObserver(() => this.updateTooltip());
+    this.resizeObserver.observe(this.title.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    this.resizeObserver?.disconnect();
+  }
+
   onClick(item: NavigationBarListItem) {
     if (item.children && item.children.length > 0) {
       item.expanded = !item.expanded;
@@ -86,5 +133,19 @@ export class NavigationBarListItemComponent implements OnInit {
     if (item.url) {
       this.router.navigate([item.url]);
     }
+  }
+
+  /**
+   * Activate the item via keyboard (Enter/Space), like a native
+   * interactive element would. `mat-list-item` is not a native element
+   * (unlike `a[mat-list-item]` or `button[mat-list-item]`), so it is
+   * neither focusable nor does it react to these keys on its own.
+   *
+   * The default action of `Space` (scrolling the page) must be
+   * prevented.
+   */
+  onKeydownActivate(event: KeyboardEvent): void {
+    event.preventDefault();
+    this.onClick(this.item);
   }
 }

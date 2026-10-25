@@ -3,26 +3,22 @@
 .omv-dashboard-widget-container {
   break-inside: avoid;
 
-  .mat-card {
+  mat-card {
     margin-bottom: dv.$omv-margin * 0.5;
-    padding: unset;
     position: relative;
     overflow: hidden; // https://stackoverflow.com/a/67873739
 
-    .mat-progress-bar {
+    mat-progress-bar {
       position: absolute;
     }
 
-    .mat-card-title-group {
-      padding: dv.$omv-padding dv.$omv-padding (dv.$omv-padding * 0.5) dv.$omv-padding;
-
-      .mat-card-title {
-        font-size: var(--mat-font-size-title);
-      }
+    // Material has no token for the space between the header and the content.
+    mat-card-header {
+      padding-bottom: dv.$omv-header-padding;
     }
   }
 
-  &.loading .mat-card {
+  &.loading mat-card {
     min-height: 2rem;
   }
 }
