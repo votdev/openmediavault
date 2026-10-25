@@ -17,7 +17,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 
 import { DashboardWidgetConfig } from '~/app/core/components/dashboard/models/dashboard-widget-config.model';
@@ -31,7 +31,8 @@ type SelectionListItem = Pick<DashboardWidgetConfig, 'id' | 'title' | 'descripti
 
 @Component({
   template:
-    '<omv-intuition-selection-list-page [config]="this.config"></omv-intuition-selection-list-page>'
+    '<omv-intuition-selection-list-page [config]="this.config"></omv-intuition-selection-list-page>',
+  standalone: false
 })
 export class DashboardSettingsPageComponent
   extends BaseSelectionListPageComponent

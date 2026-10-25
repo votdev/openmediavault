@@ -59,12 +59,12 @@
                [offset]="offset"
                [selectionType]="selectionType !== 'none' ? selectionType : undefined"
                [selected]="selection.selected"
-               (select)="onSelect()"
+               (selectedChange)="onSelectedChange($event)"
                [externalPaging]="remotePaging"
                [externalSorting]="remoteSorting"
                [sorts]="sorters"
                [sortType]="sortType"
-               (sort)="onSort($event)"
+               (sortsChange)="onSortsChange($event)"
                (page)="onPage($event)"
                [treeFromRelation]="treeFromRelation"
                [treeToRelation]="treeToRelation"
@@ -184,15 +184,14 @@
              let-value="value"
              let-column="column"
              let-row="row">
-  <mat-chip-list [tabIndex]="-1">
+  <mat-chip-set [tabIndex]="-1">
     <mat-chip *ngFor="let item of (value | split:column?.cellTemplateConfig?.separator | array)"
-              [selectable]="false"
               [disableRipple]="true"
               [ngClass]="(column?.cellTemplateConfig?.map && column?.cellTemplateConfig?.map[item]?.class) ? column.cellTemplateConfig.map[item].class : (column?.cellTemplateConfig?.class ? column.cellTemplateConfig.class : 'omv-background-color-pair-gray')"
               [matTooltip]="(column?.cellTemplateConfig?.map && column?.cellTemplateConfig?.map[item]?.tooltip) ? column?.cellTemplateConfig?.map[item]?.tooltip : undefined">
       <span class="omv-text-truncate">{{ ((column?.cellTemplateConfig?.map && column?.cellTemplateConfig?.map[item]?.value) ? (column.cellTemplateConfig.map[item].value | template:row) : (column?.cellTemplateConfig?.template ? (column.cellTemplateConfig.template | template:row) : item)) | transloco }}</span>
     </mat-chip>
-  </mat-chip-list>
+  </mat-chip-set>
 </ng-template>
 
 <ng-template #unsortedListTpl

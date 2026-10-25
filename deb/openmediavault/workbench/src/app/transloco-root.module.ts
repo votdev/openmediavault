@@ -2,15 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, NgModule } from '@angular/core';
 import {
   DefaultTranspiler,
-  Translation,
-  TRANSLOCO_CONFIG,
-  TRANSLOCO_LOADER,
-  TRANSLOCO_TRANSPILER,
-  translocoConfig,
+  provideTransloco,
+  provideTranslocoTranspiler,
+  type Translation,
   TranslocoLoader,
-  TranslocoModule
-} from '@ngneat/transloco';
-import { HashMap } from '@ngneat/transloco/lib/types';
+  TranslocoModule,
+  type TranspileParams
+} from '@jsverse/transloco';
 import * as _ from 'lodash';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -44,7 +42,7 @@ class CustomLoader implements TranslocoLoader {
  */
 @Injectable({ providedIn: 'root' })
 class CustomTranspiler extends DefaultTranspiler {
-  public override transpile(value: any, params: HashMap, translation: Translation): any {
+  public override transpile({ value }: TranspileParams): any {
     return value;
   }
 }
@@ -52,18 +50,18 @@ class CustomTranspiler extends DefaultTranspiler {
 @NgModule({
   exports: [TranslocoModule],
   providers: [
-    {
-      provide: TRANSLOCO_CONFIG,
-      useValue: translocoConfig({
+    provideTransloco({
+      config: {
         availableLangs: _.keys(SupportedLocales),
         defaultLang: 'en_GB',
         missingHandler: { allowEmpty: true, logMissingKey: false },
         prodMode: environment.production,
         reRenderOnLangChange: true
-      })
-    },
-    { provide: TRANSLOCO_LOADER, useClass: CustomLoader },
-    { provide: TRANSLOCO_TRANSPILER, useClass: CustomTranspiler }
+      },
+      loader: CustomLoader
+    }),
+    // Override the default transpiler.
+    provideTranslocoTranspiler(CustomTranspiler)
   ]
 })
 export class TranslocoRootModule {}

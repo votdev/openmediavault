@@ -33,7 +33,7 @@
               "validator",
               "bezier-easing",
               "dayjs",
-              "@ngneat/transloco-keys-manager/marker",
+              "@jsverse/transloco-keys-manager/marker",
               "nunjucks",
               "flat"
             ],
@@ -57,9 +57,8 @@
             "styles": [
               "node_modules/@fontsource/inter/index.css",
               "node_modules/@fontsource/roboto-mono/index.css",
-              "node_modules/@siemens/ngx-datatable/index.scss",
               "node_modules/@siemens/ngx-datatable/assets/icons.css",
-              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/@openng/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
@@ -105,33 +104,26 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "openmediavault-workbench:build",
+            "buildTarget": "openmediavault-workbench:build",
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "openmediavault-workbench:build:production"
+              "buildTarget": "openmediavault-workbench:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "openmediavault-workbench:build"
+            "buildTarget": "openmediavault-workbench:build"
           }
         },
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "styles": ["src/styles.scss"],
-            "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/favicon.svg",
-              "src/favicon_180x180.png",
-              "src/assets"
-            ]
+            "zoneless": false
           }
         },
         "lint": {

@@ -17,7 +17,7 @@
  */
 import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { EMPTY, exhaustMap, Observable, Subscription, timer } from 'rxjs';
 import { debounceTime, finalize } from 'rxjs/operators';
@@ -63,7 +63,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-intuition-form-page',
   templateUrl: './form-page.component.html',
   styleUrls: ['./form-page.component.scss'],
-  providers: [PageContextService]
+  providers: [PageContextService],
+  standalone: false
 })
 export class FormPageComponent
   extends AbstractPageComponent<FormPageConfig>

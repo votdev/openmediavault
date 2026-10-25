@@ -16,12 +16,13 @@
  * GNU General Public License for more details.
  */
 import { Component } from '@angular/core';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 
 import { FormPageConfig } from '~/app/core/components/intuition/models/form-page-config.type';
 
 @Component({
-  template: '<omv-intuition-form-page [config]="this.config"></omv-intuition-form-page>'
+  template: '<omv-intuition-form-page [config]="this.config"></omv-intuition-form-page>',
+  standalone: false
 })
 export class InterfaceDetailsFormPageComponent {
   public config: FormPageConfig = {

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 import { FormCardComponent } from '~/app/core/components/intuition/form/components/form-card/form-card.component';
 import { IntuitionModule } from '~/app/core/components/intuition/intuition.module';

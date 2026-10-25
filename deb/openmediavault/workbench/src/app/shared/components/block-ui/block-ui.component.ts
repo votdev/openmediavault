@@ -14,7 +14,8 @@ import { BlockUiService } from '~/app/shared/services/block-ui.service';
       transition(':enter', [style({ opacity: 0 }), animate('250ms')]),
       transition(':leave', [animate('200ms', style({ opacity: 0 }))])
     ])
-  ]
+  ],
+  standalone: false
 })
 export class BlockUiComponent {
   constructor(public blockUiService: BlockUiService) {}

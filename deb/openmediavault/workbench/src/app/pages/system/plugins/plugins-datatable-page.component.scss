@@ -3,13 +3,10 @@
 .omv-datatable-cell-package-info {
   .omv-datatable-cell-header {
     align-items: center;
-
-    .installed {
-      margin-left: dv.$omv-margin;
-    }
   }
 
-  .architecture {
+  .architecture,
+  .installed {
     margin-top: 0.5rem;
   }
 }

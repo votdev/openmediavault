@@ -25,7 +25,8 @@ import { Unsubscribe } from '~/app/decorators';
 @Component({
   selector: 'omv-background-image-layout',
   templateUrl: './background-image-layout.component.html',
-  styleUrls: ['./background-image-layout.component.scss']
+  styleUrls: ['./background-image-layout.component.scss'],
+  standalone: false
 })
 export class BackgroundImageLayoutComponent implements OnInit {
   @Unsubscribe()

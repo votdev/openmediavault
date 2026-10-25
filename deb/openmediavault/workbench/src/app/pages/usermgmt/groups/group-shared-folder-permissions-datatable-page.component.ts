@@ -17,7 +17,7 @@
  */
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 
 import { DatatablePageComponent } from '~/app/core/components/intuition/datatable-page/datatable-page.component';
@@ -30,7 +30,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
 
 @Component({
   template:
-    '<omv-intuition-datatable-page #page [config]="this.config"></omv-intuition-datatable-page>'
+    '<omv-intuition-datatable-page #page [config]="this.config"></omv-intuition-datatable-page>',
+  standalone: false
 })
 export class GroupSharedFolderPermissionsDatatablePageComponent {
   @ViewChild('page', { static: true })

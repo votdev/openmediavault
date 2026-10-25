@@ -1,5 +1,4 @@
-<mat-toolbar class="omv-top-bar"
-             color="primary">
+<mat-toolbar class="omv-top-bar">
   <button mat-icon-button
           matTooltip="{{ 'Show/Hide navigation' | transloco }}"
           [attr.aria-label]="'Show/Hide navigation' | transloco"
@@ -19,7 +18,6 @@
     <mat-icon svgIcon="{{ icon.bell }}"
               [matBadge]="numNotifications"
               [matBadgeHidden]="!numNotifications"
-              matBadgeColor="accent"
               matBadgeOverlap="true"
               matBadgeSize="small">
     </mat-icon>

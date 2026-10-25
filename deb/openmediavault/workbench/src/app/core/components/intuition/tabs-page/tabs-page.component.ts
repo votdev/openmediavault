@@ -29,7 +29,8 @@ import { PageContextService } from '~/app/core/services/page-context.service';
   selector: 'omv-intuition-tabs-page',
   templateUrl: './tabs-page.component.html',
   styleUrls: ['./tabs-page.component.scss'],
-  providers: [PageContextService]
+  providers: [PageContextService],
+  standalone: false
 })
 export class TabsPageComponent extends AbstractPageComponent<TabsPageConfig> {
   constructor(@Inject(PageContextService) pageContextService: PageContextService) {

@@ -24,7 +24,8 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
 @Component({
   selector: 'omv-form-file-input',
   templateUrl: './form-file-input.component.html',
-  styleUrls: ['./form-file-input.component.scss']
+  styleUrls: ['./form-file-input.component.scss'],
+  standalone: false
 })
 export class FormFileInputComponent extends AbstractFormFieldComponent {
   onChange(event: Event) {

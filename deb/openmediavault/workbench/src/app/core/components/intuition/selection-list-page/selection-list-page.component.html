@@ -1,5 +1,6 @@
 <omv-intuition-page-header></omv-intuition-page-header>
-<mat-card [ngClass]="{'omv-display-none': (pageStatus?.loading && pageStatus?.initialLoad) || pageStatus?.error}">
+<mat-card class="omv-m"
+          [ngClass]="{'omv-display-none': (pageStatus?.loading && pageStatus?.initialLoad) || pageStatus?.error}">
   <mat-toolbar *ngIf="config.multiple && config.hasSelectAllButton"
                class="omv-sticky">
     <button mat-icon-button
@@ -9,31 +10,32 @@
       <mat-icon svgIcon="mdi:check-all"></mat-icon>
     </button>
   </mat-toolbar>
-  <mat-card-title-group *ngIf="config.title || config.subTitle">
+  <mat-card-header *ngIf="config.title || config.subTitle">
     <mat-card-title *ngIf="config.title">
       {{ config.title | transloco | template:pageContext }}
     </mat-card-title>
     <mat-card-subtitle *ngIf="config.subTitle">
       {{ config.subTitle | transloco | template:pageContext }}
     </mat-card-subtitle>
-  </mat-card-title-group>
+  </mat-card-header>
   <mat-card-content>
     <mat-selection-list #list
                         [multiple]="config.multiple"
                         (selectionChange)="onSelectionChange($event)">
       <mat-list-option *ngFor="let option of config.store.data"
-                       checkboxPosition="before"
+                       togglePosition="before"
                        [value]="option[config.valueProp]"
                        [selected]="config.value.includes(option[config.valueProp])">
-        {{ option[config.textProp] | transloco }}
-        <mat-hint *ngIf="config.hintProp && option[config.hintProp]">
+        <span matListItemTitle>{{ option[config.textProp] | transloco }}</span>
+        <span *ngIf="config.hintProp && option[config.hintProp]"
+              matListItemLine>
           {{ option[config.hintProp] | transloco }}
-        </mat-hint>
+        </span>
       </mat-list-option>
     </mat-selection-list>
   </mat-card-content>
   <mat-card-actions *ngIf="config.buttons.length"
-                    class="omv-display-flex omv-flex-row"
+                    class="omv-display-flex omv-flex-row omv-gap-2"
                     [ngClass]="{'omv-justify-content-start': config.buttonAlign === 'start', 'omv-justify-content-center': config.buttonAlign === 'center', 'omv-justify-content-end': config.buttonAlign === 'end'}">
     <ng-container *ngFor="let button of config.buttons">
       <omv-submit-button *ngIf="button.template === 'submit'"

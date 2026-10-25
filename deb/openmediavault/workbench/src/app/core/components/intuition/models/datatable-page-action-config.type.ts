@@ -20,7 +20,7 @@ import { DatatableAction } from '~/app/shared/models/datatable-action.type';
 import { ModalDialogConfig } from '~/app/shared/models/modal-dialog-config.type';
 import { TaskDialogConfig } from '~/app/shared/models/task-dialog-config.type';
 
-export type DatatablePageActionConfig = DatatableAction & {
+export type DatatablePageActionConfig = Omit<DatatableAction, 'actions'> & {
   // Specifies a template that pre-configures the datatable action:
   // add    - A button with an icon and the tooltip 'Add'.
   //          The button is always enabled.

@@ -7,7 +7,8 @@ import { CoerceBoolean, Unsubscribe } from '~/app/decorators';
 @Component({
   selector: 'omv-intuition-page-header',
   templateUrl: './page-header.component.html',
-  styleUrls: ['./page-header.component.scss']
+  styleUrls: ['./page-header.component.scss'],
+  standalone: false
 })
 export class PageHeaderComponent {
   @CoerceBoolean()

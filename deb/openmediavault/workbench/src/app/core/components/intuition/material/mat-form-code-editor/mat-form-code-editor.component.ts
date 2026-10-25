@@ -86,7 +86,8 @@ let nextUniqueId = 0;
       useExisting: MatFormCodeEditorComponent
     }
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class MatFormCodeEditorComponent
   implements OnInit, AfterViewInit, ControlValueAccessor, MatFormFieldControl<string>

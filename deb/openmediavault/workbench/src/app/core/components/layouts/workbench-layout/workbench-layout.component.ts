@@ -19,7 +19,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Event, NavigationEnd, Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { forkJoin, Subscription } from 'rxjs';
 import { delay, filter, finalize, take, tap } from 'rxjs/operators';
@@ -43,7 +43,8 @@ import { UserLocalStorageService } from '~/app/shared/services/user-local-storag
 @Component({
   selector: 'omv-workbench-layout',
   templateUrl: './workbench-layout.component.html',
-  styleUrls: ['./workbench-layout.component.scss']
+  styleUrls: ['./workbench-layout.component.scss'],
+  standalone: false
 })
 export class WorkbenchLayoutComponent implements OnInit {
   @ViewChild('navigationSidenav', { static: false })

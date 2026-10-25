@@ -40,8 +40,8 @@ type Column = {
 @Component({
   selector: 'omv-green-rain',
   templateUrl: './green-rain.component.html',
-  styleUrls: ['./green-rain.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class GreenRainComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true })
@@ -85,14 +85,14 @@ export class GreenRainComponent implements OnInit, OnDestroy {
     this.prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   }
 
-  @HostListener('click', ['$event'])
+  @HostListener('click')
   onClick() {
     if (!this.prefersReducedMotion && this.initialDelayComplete) {
       this.restart(this.delay);
     }
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize() {
     if (!this.prefersReducedMotion && this.initialDelayComplete) {
       this.restart(200);

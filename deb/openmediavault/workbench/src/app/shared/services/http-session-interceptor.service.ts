@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  */
 import {
-  HttpEvent,
+  type HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,

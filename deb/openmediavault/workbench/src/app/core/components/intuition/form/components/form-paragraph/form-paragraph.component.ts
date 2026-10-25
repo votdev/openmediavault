@@ -22,6 +22,7 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
 @Component({
   selector: 'omv-form-paragraph',
   templateUrl: './form-paragraph.component.html',
-  styleUrls: ['./form-paragraph.component.scss']
+  styleUrls: ['./form-paragraph.component.scss'],
+  standalone: false
 })
 export class FormParagraphComponent extends AbstractFormFieldComponent {}

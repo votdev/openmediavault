@@ -24,7 +24,7 @@ import {
   ValidatorFn,
   Validators
 } from '@angular/forms';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
 
@@ -51,7 +51,8 @@ let nextUniqueId = 0;
 @Component({
   selector: 'omv-intuition-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
+  standalone: false
 })
 export class FormComponent implements AfterViewInit, OnInit {
   @Input()
@@ -366,7 +367,7 @@ export class FormComponent implements AfterViewInit, OnInit {
   private doModifier(control: AbstractControl, modifier: FormFieldModifier): void {
     const opposite = _.defaultTo(modifier.opposite, true);
     const nativeElement: HTMLElement = _.get(control, 'nativeElement');
-    const formFieldElement = nativeElement && nativeElement.closest('.mat-form-field');
+    const formFieldElement = nativeElement && nativeElement.closest('.omv-form-field');
     // Note, use `getRawValue` here to get the latest values including
     // those of disabled form fields as well. `values` is outdated at
     // that moment because the event we are handling has not bubbled up
@@ -446,7 +447,7 @@ export class FormComponent implements AfterViewInit, OnInit {
         break;
       case 'reload':
         if (fulfilled) {
-          // eslint-disable-next-line @typescript-eslint/ban-types
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
           const reloadFn: Function = _.get(control, 'reload');
           if (_.isFunction(reloadFn)) {
             const store: DataStore = formatDeep(modifier.typeConfig, values);

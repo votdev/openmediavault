@@ -25,7 +25,8 @@ import { unixTimeStamp } from '~/app/functions.helper';
 @Component({
   selector: 'omv-dashboard-widget-rrd',
   templateUrl: './dashboard-widget-rrd.component.html',
-  styleUrls: ['./dashboard-widget-rrd.component.scss']
+  styleUrls: ['./dashboard-widget-rrd.component.scss'],
+  standalone: false
 })
 export class DashboardWidgetRrdComponent implements OnInit {
   @Input()

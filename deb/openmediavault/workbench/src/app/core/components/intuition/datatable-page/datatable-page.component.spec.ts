@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ToastrModule } from '@openng/ngx-toastr';
 import * as _ from 'lodash';
-import { ToastrModule } from 'ngx-toastr';
 import { of, Subject, throwError } from 'rxjs';
 
 import { DatatablePageComponent } from '~/app/core/components/intuition/datatable-page/datatable-page.component';

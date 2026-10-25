@@ -17,7 +17,7 @@
  */
 import {
   HttpErrorResponse,
-  HttpEvent,
+  type HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest

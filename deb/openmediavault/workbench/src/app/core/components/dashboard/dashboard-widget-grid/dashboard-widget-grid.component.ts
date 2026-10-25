@@ -17,7 +17,7 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { marker as gettext } from '@ngneat/transloco-keys-manager/marker';
+import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 
@@ -28,7 +28,8 @@ import { DataStoreResponse, DataStoreService } from '~/app/shared/services/data-
 @Component({
   selector: 'omv-dashboard-widget-grid',
   templateUrl: './dashboard-widget-grid.component.html',
-  styleUrls: ['./dashboard-widget-grid.component.scss']
+  styleUrls: ['./dashboard-widget-grid.component.scss'],
+  standalone: false
 })
 export class DashboardWidgetGridComponent implements OnInit {
   @Input()

@@ -13,14 +13,16 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-@use 'scss/theme/colors' as tc;
+@use 'scss/mixins';
+@use 'ngx-scrollbar' as scrollbar;
 
-@mixin theme($mode, $theme-config, $typography-config) {
-  // We need to define these classes here as well to have a
-  // higher order of precedence.
-  @each $name in map-keys(tc.$omv-color-pairs) {
-    .mat-chip.omv-background-color-pair-#{$name} {
-      @include tc.background-color-pair($name);
-    }
-  }
+.ng-scrollbar {
+  @include mixins.omv-scrollbar;
+  @include scrollbar.ng-scrollbar-overrides(
+    (
+      container-offset: 0.25rem,
+      track-color: transparent,
+      track-thickness: 0.3125rem
+    )
+  );
 }

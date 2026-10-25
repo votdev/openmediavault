@@ -1,3 +1,10 @@
+openmediavault (8.7.0-1) stable; urgency=medium
+
+  * Upgrade the Workbench to Angular 21 and Angular Material 21 (Material 3
+    theme).
+
+ -- Volker Theile <volker.theile@openmediavault.org>  Tue, 20 Oct 2026 03:01:50 +0200
+
 openmediavault (8.6.1-1) stable; urgency=medium
 
   * Update i18n files.

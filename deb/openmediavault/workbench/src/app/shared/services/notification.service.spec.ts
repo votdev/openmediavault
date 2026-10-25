@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from '@openng/ngx-toastr';
 
 import { NotificationService } from '~/app/shared/services/notification.service';
 
