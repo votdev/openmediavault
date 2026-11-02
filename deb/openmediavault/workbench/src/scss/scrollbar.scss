@@ -20,7 +20,6 @@
   @include mixins.omv-scrollbar;
   @include scrollbar.ng-scrollbar-overrides(
     (
-      container-offset: 0.25rem,
       track-color: transparent,
       track-thickness: 0.3125rem
     )
