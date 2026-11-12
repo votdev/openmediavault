@@ -3,6 +3,7 @@
 .omv-top-bar {
   height: dv.$omv-top-bar-height;
   border-bottom: dv.$omv-accent-line-width solid var(--omv-color-corporate);
+  background-color: var(--mat-sys-surface-container-low);
 
   mat-divider {
     height: 24px;
