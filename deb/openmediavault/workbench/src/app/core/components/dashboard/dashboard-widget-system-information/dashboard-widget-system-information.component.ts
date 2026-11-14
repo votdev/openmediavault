@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import dayjs from 'dayjs';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
@@ -31,6 +31,7 @@ import {
   selector: 'omv-dashboard-widget-system-information',
   templateUrl: './dashboard-widget-system-information.component.html',
   styleUrls: ['./dashboard-widget-system-information.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardWidgetSystemInformationComponent {

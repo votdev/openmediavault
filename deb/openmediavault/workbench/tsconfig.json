@@ -1,10 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "paths": {
       "~/*": [
-        "src/*"
+        "./src/*"
       ]
     },
     "outDir": "./dist/out-tsc",
@@ -21,24 +20,23 @@
     "noImplicitAny": false,
     "module": "es2022",
     "moduleResolution": "bundler",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2022",
     "esModuleInterop": true,
-    "typeRoots": [
-      "node_modules/@types"
+    "types": [
+      "jest",
+      "node"
     ],
     "lib": [
       "es2022",
       "dom",
       "dom.iterable"
     ],
-    "downlevelIteration": true,
     "incremental": true,
     "useDefineForClassFields": false
   },
-  "exclude": ["cypress", "dist", "node_modules"],
+  "exclude": ["cypress", "cypress.config.ts", "dist", "node_modules"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

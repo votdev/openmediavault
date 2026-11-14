@@ -19,6 +19,7 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostBinding,
@@ -85,6 +86,7 @@ let nextUniqueId = 0;
     }
   ],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class MatFormCodeEditorComponent

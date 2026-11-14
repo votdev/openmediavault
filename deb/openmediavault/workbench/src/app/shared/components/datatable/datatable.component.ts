@@ -16,6 +16,7 @@
  * GNU General Public License for more details.
  */
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -30,6 +31,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
+import { PageEvent } from '@angular/material/paginator';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import { DatatableComponent as NgxDatatableComponent, SortPropDir } from '@siemens/ngx-datatable';
 import * as _ from 'lodash';
@@ -61,11 +63,17 @@ export type DataTableCellChanged = {
   column: DatatableColumn;
 };
 
+type DatatableState = {
+  columns?: Array<{ name: string; hidden: boolean }>;
+  limit?: number;
+};
+
 @Component({
   selector: 'omv-datatable',
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DatatableComponent implements Datatable, OnInit, OnDestroy, OnChanges {
@@ -279,6 +287,7 @@ export class DatatableComponent implements Datatable, OnInit, OnDestroy, OnChang
     selectedMessage: string;
   };
   public searchFilter = '';
+  public pageSizeOptions = [5, 10, 25, 50, 100];
 
   private cellTemplates: { [key: string]: TemplateRef<any> };
   private rawColumns: DatatableColumn[] = [];
@@ -417,25 +426,44 @@ export class DatatableComponent implements Datatable, OnInit, OnDestroy, OnChang
   }
 
   onSortsChange(sorts: SortPropDir[]): void {
-    if (this.remotePaging) {
-      this.offset = 0;
-    }
+    // Note, the datatable always jumps to the first page when sorting.
+    this.offset = 0;
     if (this.remoteSorting) {
       this.sorters = sorts as Sorter[];
+    }
+    if (this.remotePaging || this.remoteSorting) {
       this.reloadData();
     }
   }
 
-  onPage({ count, pageSize, limit, offset }): void {
+  onPage({ offset }: { offset: number }): void {
+    // The datatable also emits the current page, e.g. on initialization
+    // or after sorting. Skip it to prevent loading the data twice.
+    if (offset === this.offset) {
+      return;
+    }
+    this.offset = offset;
     if (this.remotePaging) {
-      this.offset = offset;
       this.reloadData();
     }
+  }
+
+  onPaginatorPage({ pageIndex, pageSize }: PageEvent): void {
+    if (pageSize !== this.limit) {
+      this.limit = pageSize;
+      this.offset = pageIndex;
+      this.saveState();
+      if (this.remotePaging) {
+        this.reloadData();
+      }
+      return;
+    }
+    this.onPage({ offset: pageIndex });
   }
 
   onToggleColumn(column: DatatableColumn): void {
     column.hidden = !column.hidden;
-    this.saveColumnState();
+    this.saveState();
     this.updateColumns();
   }
 
@@ -445,9 +473,9 @@ export class DatatableComponent implements Datatable, OnInit, OnDestroy, OnChang
   }
 
   updateColumns(): void {
-    // Load the custom column configuration from the browser
-    // local store and filter hidden columns.
-    this.loadColumnState();
+    // Load the custom configuration from the browser local store
+    // and filter hidden columns.
+    this.loadState();
     this.filteredColumns = this.rawColumns.filter((column) => !column.hidden);
   }
 
@@ -567,36 +595,45 @@ export class DatatableComponent implements Datatable, OnInit, OnDestroy, OnChang
     });
   }
 
-  private loadColumnState(): void {
+  private loadState(): void {
     if (!this.stateId) {
       return;
     }
     const value = this.userLocalStorageService.get(`datatable_state_${this.stateId}`);
-    if (_.isString(value)) {
-      const columnsConfig = JSON.parse(value);
-      _.forEach(columnsConfig, (columnConfig: Record<string, any>) => {
-        const column = _.find(this.columns, ['name', _.get(columnConfig, 'name')]);
-        if (column) {
-          _.merge(column, columnConfig);
-        }
-      });
+    if (!_.isString(value)) {
+      return;
+    }
+    let state: DatatableState = JSON.parse(value);
+    // Settings of older versions only contain the column configuration.
+    if (_.isArray(state)) {
+      state = { columns: state };
+    }
+    if (!_.isPlainObject(state)) {
+      return;
+    }
+    _.forEach(state.columns, (columnConfig: Record<string, any>) => {
+      const column = _.find(this.columns, ['name', _.get(columnConfig, 'name')]);
+      if (column) {
+        _.merge(column, columnConfig);
+      }
+    });
+    // Make sure paging is not enabled when it is disabled.
+    if (this.limit > 0 && _.isInteger(state.limit) && state.limit > 0) {
+      this.limit = state.limit;
     }
   }
 
-  private saveColumnState(): void {
+  private saveState(): void {
     if (!this.stateId) {
       return;
     }
-    const columnsConfig = [];
-    _.forEach(this.columns, (column: DatatableColumn) => {
-      columnsConfig.push({
+    const state: DatatableState = {
+      columns: _.map(this.columns, (column: DatatableColumn) => ({
         name: column.name,
         hidden: column.hidden
-      });
-    });
-    this.userLocalStorageService.set(
-      `datatable_state_${this.stateId}`,
-      JSON.stringify(columnsConfig)
-    );
+      })),
+      limit: this.limit
+    };
+    this.userLocalStorageService.set(`datatable_state_${this.stateId}`, JSON.stringify(state));
   }
 }

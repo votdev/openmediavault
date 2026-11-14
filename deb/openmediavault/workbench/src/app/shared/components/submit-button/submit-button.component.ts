@@ -15,13 +15,21 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import * as _ from 'lodash';
 
 @Component({
   selector: 'omv-submit-button',
   templateUrl: './submit-button.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class SubmitButtonComponent {

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import * as _ from 'lodash';
 import { EMPTY, Observable, Subscription, timer } from 'rxjs';
 import { catchError, finalize, map, take } from 'rxjs/operators';
@@ -12,6 +19,7 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-dashboard-widget',
   templateUrl: './dashboard-widget.component.html',
   styleUrls: ['./dashboard-widget.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardWidgetComponent implements OnInit {

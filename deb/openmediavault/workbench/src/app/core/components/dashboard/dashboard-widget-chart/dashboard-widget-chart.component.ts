@@ -15,7 +15,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import {
   ArcElement,
   Chart,
@@ -44,6 +52,7 @@ Chart.register(ArcElement, DoughnutController, Tooltip);
   selector: 'omv-dashboard-widget-chart',
   templateUrl: './dashboard-widget-chart.component.html',
   styleUrls: ['./dashboard-widget-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardWidgetChartComponent implements OnInit, OnDestroy {

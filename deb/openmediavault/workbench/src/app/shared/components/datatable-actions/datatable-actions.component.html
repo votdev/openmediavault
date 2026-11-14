@@ -60,7 +60,6 @@
     </ng-template>
     <ng-template [ngSwitchCase]="'select'">
       <mat-form-field>
-        <mat-label></mat-label>
         <mat-select [disabled]="isDisabled(action)"
                     placeholder="{{ action.placeholder | transloco }}"
                     (selectionChange)="onSelectionChange($event, action)">

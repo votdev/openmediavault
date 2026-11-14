@@ -26,7 +26,6 @@ import { PageContextService } from '~/app/core/services/page-context.service';
 import { Icon } from '~/app/shared/enum/icon.enum';
 
 @Directive()
-// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class AbstractFormFieldComponent implements OnInit {
   @Input()
   config: FormFieldConfig;

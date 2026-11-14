@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import * as _ from 'lodash';
 
@@ -34,6 +34,7 @@ import { DataStoreService } from '~/app/shared/services/data-store.service';
   selector: 'omv-datatable-actions',
   templateUrl: './datatable-actions.component.html',
   styleUrls: ['./datatable-actions.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DatatableActionsComponent implements OnInit {

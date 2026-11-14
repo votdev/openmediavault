@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatSelectionList, MatSelectionListChange } from '@angular/material/list';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
@@ -40,7 +40,9 @@ import { NotificationService } from '~/app/shared/services/notification.service'
 @Component({
   selector: 'omv-intuition-selection-list-page',
   templateUrl: './selection-list-page.component.html',
+  styleUrls: ['./selection-list-page.component.scss'],
   providers: [PageContextService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class SelectionListPageComponent

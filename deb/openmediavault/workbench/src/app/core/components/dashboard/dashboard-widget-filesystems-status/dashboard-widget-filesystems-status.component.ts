@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { DashboardWidgetConfig } from '~/app/core/components/dashboard/models/dashboard-widget-config.model';
@@ -25,6 +25,7 @@ import { DataStoreResponse, DataStoreService } from '~/app/shared/services/data-
   selector: 'omv-dashboard-widget-filesystems-status',
   templateUrl: './dashboard-widget-filesystems-status.component.html',
   styleUrls: ['./dashboard-widget-filesystems-status.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardWidgetFilesystemsStatusComponent {

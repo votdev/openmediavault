@@ -13,10 +13,15 @@
       width: 100%;
       height: 100%;
       background-color: var(--mat-sys-on-surface-variant);
-      mask-image: url('^./assets/images/openmediavault_logo_simple.svg');
+      mask-image: url('/assets/images/openmediavault_logo_simple.svg');
       mask-repeat: no-repeat;
       mask-size: contain;
       mask-position: left center;
     }
+  }
+
+  mat-nav-list {
+    padding: 0;
+    margin: dv.$omv-margin * 0.5;
   }
 }

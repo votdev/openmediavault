@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
@@ -32,6 +32,7 @@ type SelectionListItem = Pick<DashboardWidgetConfig, 'id' | 'title' | 'descripti
 @Component({
   template:
     '<omv-intuition-selection-list-page [config]="this.config"></omv-intuition-selection-list-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardSettingsPageComponent

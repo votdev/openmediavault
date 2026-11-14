@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import { EMPTY, interval, Subscription } from 'rxjs';
@@ -44,6 +44,7 @@ import { UserLocalStorageService } from '~/app/shared/services/user-local-storag
   selector: 'omv-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class TopBarComponent {

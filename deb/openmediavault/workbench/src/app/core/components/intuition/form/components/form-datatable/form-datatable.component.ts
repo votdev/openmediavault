@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import * as _ from 'lodash';
 
 import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form/components/abstract-form-field-component';
@@ -30,6 +30,7 @@ import { Icon } from '~/app/shared/enum/icon.enum';
 @Component({
   selector: 'omv-form-datatable',
   templateUrl: './form-datatable.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormDatatableComponent extends AbstractFormFieldComponent {

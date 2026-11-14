@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
@@ -29,6 +29,7 @@ import { DataStoreResponse, DataStoreService } from '~/app/shared/services/data-
   selector: 'omv-dashboard-widget-grid',
   templateUrl: './dashboard-widget-grid.component.html',
   styleUrls: ['./dashboard-widget-grid.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardWidgetGridComponent implements OnInit {

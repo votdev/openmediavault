@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { Event, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';

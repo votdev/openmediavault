@@ -27,7 +27,6 @@ import { formatDeep, isFormatable } from '~/app/functions.helper';
 import { RpcObjectResponse } from '~/app/shared/models/rpc.model';
 
 @Directive()
-// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export abstract class AbstractPageComponent<T> implements AfterViewInit, OnInit {
   @Input()
   config: T;

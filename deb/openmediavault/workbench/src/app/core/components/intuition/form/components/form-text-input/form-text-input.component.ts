@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import * as _ from 'lodash';
@@ -30,6 +30,7 @@ import { DataStoreService } from '~/app/shared/services/data-store.service';
 @Component({
   selector: 'omv-form-text-input',
   templateUrl: './form-text-input.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormTextInputComponent extends AbstractFormFieldComponent implements OnInit {

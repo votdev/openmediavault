@@ -9,6 +9,14 @@
   left: 0;
   z-index: 30000;
 
+  &.fade-in {
+    animation: fade-in 250ms linear both;
+  }
+
+  &.fade-out {
+    animation: fade-out 200ms linear both;
+  }
+
   .container {
     display: block;
     position: absolute;

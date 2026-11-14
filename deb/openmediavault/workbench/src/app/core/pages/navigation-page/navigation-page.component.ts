@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
 
@@ -29,6 +29,7 @@ import { Icon } from '~/app/shared/enum/icon.enum';
   selector: 'omv-navigation-page',
   templateUrl: './navigation-page.component.html',
   styleUrls: ['./navigation-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class NavigationPageComponent implements OnInit {

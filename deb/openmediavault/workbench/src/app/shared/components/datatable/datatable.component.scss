@@ -1,3 +1,5 @@
+@use 'scss/mixins';
+
 omv-datatable {
   .action-toolbar {
     // Show the loading indicator as overlay below the toolbar.
@@ -33,9 +35,9 @@ omv-datatable {
 
         &.active:hover,
         &.active:hover .datatable-row-group {
-          background-color: color-mix(
-            in srgb,
-            var(--mat-sys-on-secondary-container) 8%,
+          background-color: mixins.omv-state-layer(
+            var(--mat-sys-on-secondary-container),
+            hover,
             var(--mat-sys-secondary-container)
           );
           transition-property: background;
@@ -45,9 +47,9 @@ omv-datatable {
 
         &.active:focus,
         &.active:focus .datatable-row-group {
-          background-color: color-mix(
-            in srgb,
-            var(--mat-sys-on-secondary-container) 10%,
+          background-color: mixins.omv-state-layer(
+            var(--mat-sys-on-secondary-container),
+            focus,
             var(--mat-sys-secondary-container)
           );
         }
@@ -58,7 +60,7 @@ omv-datatable {
       .datatable-body-row {
         &:hover,
         &:hover .datatable-row-group {
-          background-color: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
+          background-color: mixins.omv-state-layer(var(--mat-sys-on-surface), hover);
           transition-property: background;
           transition-duration: 0.3s;
           transition-timing-function: linear;
@@ -66,7 +68,7 @@ omv-datatable {
 
         &:focus,
         &:focus .datatable-row-group {
-          background-color: color-mix(in srgb, var(--mat-sys-on-surface) 10%, transparent);
+          background-color: mixins.omv-state-layer(var(--mat-sys-on-surface), focus);
         }
       }
     }
@@ -113,6 +115,7 @@ omv-datatable {
         text-align: left;
         padding: 0.5rem 1.2rem;
         vertical-align: top;
+        color: var(--mat-sys-on-surface-variant);
       }
 
       .datatable-body-row {
@@ -138,55 +141,19 @@ omv-datatable {
      * Footer Styles
      */
     .datatable-footer {
-      .page-count {
-        line-height: 50px;
-        height: 50px;
-        padding: 0 1.2rem;
+      .datatable-footer-inner {
+        justify-content: space-between;
       }
 
-      .datatable-pager {
-        margin: 0 10px;
+      .page-count {
+        flex: 0 1 auto;
+        padding: 0 1.2rem;
+        font: var(--mat-sys-body-small);
+        color: var(--mat-sys-on-surface);
+      }
 
-        li {
-          vertical-align: middle;
-
-          &.disabled a {
-            color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent);
-            background-color: transparent !important;
-          }
-
-          &.active a {
-            background: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
-            font-weight: bold;
-          }
-        }
-
-        a {
-          color: var(--mat-sys-on-surface);
-          height: 22px;
-          min-width: 24px;
-          line-height: 22px;
-          padding: 0 6px;
-          border-radius: 3px;
-          margin: 6px 3px;
-          text-align: center;
-          text-decoration: none;
-          vertical-align: bottom;
-
-          &:hover {
-            background: color-mix(in srgb, var(--mat-sys-on-surface) 8%, transparent);
-            color: var(--mat-sys-primary);
-          }
-        }
-
-        .datatable-icon-left,
-        .datatable-icon-skip,
-        .datatable-icon-right,
-        .datatable-icon-prev {
-          font-size: 20px;
-          line-height: 20px;
-          padding: 0 3px;
-        }
+      mat-paginator {
+        flex: 0 0 auto;
       }
     }
     /* stylelint-enable no-descending-specificity */

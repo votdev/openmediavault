@@ -1,11 +1,19 @@
 @use 'scss/defaults/variables' as dv;
 
+// Align all actions (buttons, select fields, dividers) on the same
+// horizontal center line.
+:host {
+  display: flex;
+  align-items: center;
+}
+
 mat-form-field {
   vertical-align: middle;
 }
 
 mat-divider {
-  display: unset;
+  display: block;
+  height: 24px;
   margin-left: dv.$omv-margin * 0.33;
   margin-right: dv.$omv-margin * 0.33;
 }

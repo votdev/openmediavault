@@ -17,7 +17,16 @@
  */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, Input, OnChanges, OnDestroy, OnInit, Optional, Self } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Optional,
+  Self
+} from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
@@ -96,6 +105,7 @@ export type MatFormDatatableAction = {
       useExisting: MatFormDatatableComponent
     }
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class MatFormDatatableComponent
@@ -217,15 +227,10 @@ export class MatFormDatatableComponent
   public selection = new DatatableSelection();
   public store: DataStore = { data: [] };
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
   private _value = [];
-  // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
   private _required = false;
-  // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
   private _disabled = false;
-  // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
   private _uniqueId = `mat-datatable-${++nextUniqueId}`;
-  // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   private onChange = (_value: any) => {};
 
   writeValue(value: any): void {

@@ -15,7 +15,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { ActivatedRoute, PRIMARY_OUTLET, Router } from '@angular/router';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
@@ -62,8 +69,8 @@ import { RpcService } from '~/app/shared/services/rpc.service';
 @Component({
   selector: 'omv-intuition-form-page',
   templateUrl: './form-page.component.html',
-  styleUrls: ['./form-page.component.scss'],
   providers: [PageContextService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormPageComponent

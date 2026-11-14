@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as _ from 'lodash';
 
@@ -30,6 +30,7 @@ import { ModalDialogConfig } from '~/app/shared/models/modal-dialog-config.type'
 @Component({
   selector: 'omv-confirm-dialog',
   templateUrl: './modal-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class ModalDialogComponent {

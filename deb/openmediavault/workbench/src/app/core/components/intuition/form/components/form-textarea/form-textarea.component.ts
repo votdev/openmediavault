@@ -15,13 +15,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form/components/abstract-form-field-component';
 
 @Component({
   selector: 'omv-form-textarea',
   templateUrl: './form-textarea.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormTextareaComponent extends AbstractFormFieldComponent {}

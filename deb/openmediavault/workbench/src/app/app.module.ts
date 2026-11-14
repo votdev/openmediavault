@@ -18,7 +18,6 @@
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslocoService } from '@jsverse/transloco';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import { ToastrModule } from '@openng/ngx-toastr';
@@ -43,7 +42,6 @@ import { TranslocoRootModule } from '~/app/transloco-root.module';
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     CoreModule.forRoot(),
     SharedModule,
     ToastrModule.forRoot({

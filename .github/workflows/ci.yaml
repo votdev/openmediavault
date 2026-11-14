@@ -9,7 +9,7 @@ on:
       - 'master'
 
 env:
-  NODE_VERSION: 20
+  NODE_VERSION: 26
   NODE_OPTIONS: --max_old_space_size=4096
 
 permissions:

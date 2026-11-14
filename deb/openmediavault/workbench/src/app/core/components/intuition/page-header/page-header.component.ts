@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { PageContextService, PageStatus } from '~/app/core/services/page-context.service';
@@ -8,6 +8,7 @@ import { CoerceBoolean, Unsubscribe } from '~/app/decorators';
   selector: 'omv-intuition-page-header',
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class PageHeaderComponent {

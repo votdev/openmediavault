@@ -195,7 +195,6 @@ export class RouteConfigService {
         (customRoute: Route) => getSegments(customRoute.path)
       );
       _.forEach(filteredRoutes, (filteredRoute: Route) => {
-        // eslint-disable-next-line no-shadow
         const getParentNode = (routes: Routes, segments: Array<string>): Routes => {
           if (!segments.length) {
             return routes;

@@ -15,13 +15,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 
 import { DatatablePageConfig } from '~/app/core/components/intuition/models/datatable-page-config.type';
 
 @Component({
   template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class SslCertificateDatatablePageComponent {

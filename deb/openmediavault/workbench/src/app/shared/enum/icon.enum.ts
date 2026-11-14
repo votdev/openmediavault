@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-// eslint-disable-next-line no-shadow
+/* eslint-disable @typescript-eslint/no-duplicate-enum-values -- Aliases with identical icons are intended. */
 export enum Icon {
   user = 'mdi:account',
   users = 'mdi:account-multiple',

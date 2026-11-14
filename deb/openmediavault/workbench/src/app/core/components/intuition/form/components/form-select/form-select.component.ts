@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import * as _ from 'lodash';
 import { Subscription, throwError } from 'rxjs';
@@ -30,6 +30,7 @@ import { DataStoreService } from '~/app/shared/services/data-store.service';
 @Component({
   selector: 'omv-form-select',
   templateUrl: './form-select.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormSelectComponent extends AbstractFormFieldComponent implements OnInit {

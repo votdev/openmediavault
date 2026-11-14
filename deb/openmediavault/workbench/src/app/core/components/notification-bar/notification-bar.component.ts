@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
@@ -43,6 +43,7 @@ import { RunningTasks, TaskRunnerService } from '~/app/shared/services/task-runn
   selector: 'omv-notification-bar',
   templateUrl: './notification-bar.component.html',
   styleUrls: ['./notification-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class NotificationBarComponent implements OnInit {

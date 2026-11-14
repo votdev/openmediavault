@@ -35,8 +35,9 @@ describe('AppRoutingModule', () => {
 
   it('should not execute the download if the navigation was triggered externally [1]', async () => {
     // Simulate a manually entered URL or a click on a link.
-    const spy = jest.spyOn(router, 'getCurrentNavigation');
-    spy.mockReturnValue({ trigger: 'hashchange', previousNavigation: null } as any);
+    Object.defineProperty(router, 'currentNavigation', {
+      value: () => ({ trigger: 'hashchange', previousNavigation: null })
+    });
     await router.navigateByUrl(downloadUrl);
     expect(rpcService.download).not.toHaveBeenCalled();
     expect(router.url).toBe('/404');
@@ -44,8 +45,9 @@ describe('AppRoutingModule', () => {
 
   it('should not execute the download if the navigation was triggered externally [2]', async () => {
     // Simulate the initial navigation, e.g. a bookmark or a page reload.
-    const spy = jest.spyOn(router, 'getCurrentNavigation');
-    spy.mockReturnValue({ trigger: 'imperative', previousNavigation: null } as any);
+    Object.defineProperty(router, 'currentNavigation', {
+      value: () => ({ trigger: 'imperative', previousNavigation: null })
+    });
     await router.navigateByUrl(downloadUrl);
     expect(rpcService.download).not.toHaveBeenCalled();
     expect(router.url).toBe('/404');

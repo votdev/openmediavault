@@ -242,7 +242,7 @@ const routes: Routes = [
         // This route is only intended to be used by the UI itself. Do not
         // execute the RPC if the navigation was triggered from outside,
         // e.g. via an external link, a bookmark or a page reload.
-        const navigation = router.getCurrentNavigation();
+        const navigation = router.currentNavigation();
         if (navigation?.trigger !== 'imperative' || _.isNull(navigation.previousNavigation)) {
           router.navigate(['/404']);
           return EMPTY;

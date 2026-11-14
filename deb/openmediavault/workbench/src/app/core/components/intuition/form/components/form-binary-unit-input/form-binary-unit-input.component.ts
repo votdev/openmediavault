@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form/components/abstract-form-field-component';
 import { ClipboardService } from '~/app/shared/services/clipboard.service';
@@ -23,6 +23,7 @@ import { ClipboardService } from '~/app/shared/services/clipboard.service';
 @Component({
   selector: 'omv-form-binary-unit-input',
   templateUrl: './form-binary-unit-input.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormBinaryUnitInputComponent extends AbstractFormFieldComponent {

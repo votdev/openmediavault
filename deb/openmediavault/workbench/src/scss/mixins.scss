@@ -13,6 +13,62 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
+@use '@angular/material' as mat;
+@use 'scss/defaults/variables' as dv;
+
+// Sets the background color of the toolbars (e.g. of a datatable) within the
+// element. The raised variant is meant for toolbars that are placed on a
+// filled surface (e.g. of a form field) and uses a state layer of the text
+// color. This is darker in the light and lighter in the dark theme.
+@mixin omv-toolbar-surface($raised: false) {
+  @if $raised {
+    @include mat.toolbar-overrides(
+      (
+        container-background-color: color-mix(
+            in srgb,
+            var(--mat-sys-surface-variant),
+            var(--mat-sys-on-surface) calc(var(--mat-sys-dragged-state-layer-opacity) * 100%)
+          )
+      )
+    );
+
+    // Let the toolbar shine through the filled search field.
+    @include mat.form-field-overrides(
+      (
+        filled-container-color: transparent
+      )
+    );
+  } @else {
+    @include mat.toolbar-overrides(
+      (
+        container-background-color: var(--mat-sys-surface-variant)
+      )
+    );
+  }
+}
+
+// Aligns a toolbar that is a direct child of a card with the toolbar of a
+// datatable, which is placed within the card content and therefore inset by
+// the padding of the content.
+@mixin omv-card-toolbar {
+  mat-toolbar {
+    box-sizing: border-box;
+    width: auto;
+    margin: dv.$omv-padding dv.$omv-padding 0;
+  }
+}
+
+// Mixes a state layer (`hover`, `focus`, `pressed` or `dragged`) of the
+// given color into the base color using the opacity token of the Material 3
+// system.
+@function omv-state-layer($layer-color, $state, $base-color: transparent) {
+  @return color-mix(
+    in srgb,
+    $base-color,
+    $layer-color calc(var(--mat-sys-#{$state}-state-layer-opacity) * 100%)
+  );
+}
+
 @mixin omv-scrollbar {
   scrollbar-color: var(--omv-color-corporate) transparent;
 

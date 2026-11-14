@@ -52,7 +52,7 @@
                [columnMode]="columnMode"
                [reorderable]="reorderable"
                [headerHeight]="hasHeader ? 50 : 0"
-               [footerHeight]="hasFooter ? 50 : 0"
+               [footerHeight]="hasFooter ? 56 : 0"
                [rowHeight]="'auto'"
                [limit]="limit > 0 ? limit : undefined"
                [count]="count"
@@ -69,6 +69,27 @@
                [treeFromRelation]="treeFromRelation"
                [treeToRelation]="treeToRelation"
                (treeAction)="treeActionEvent.emit($event.row)">
+  <ngx-datatable-footer>
+    <ng-template ngx-datatable-footer-template
+                 let-rowCount="rowCount"
+                 let-pageSize="pageSize"
+                 let-selectedCount="selectedCount"
+                 let-offset="offset">
+      <div class="page-count">
+        <span *ngIf="selectionType !== 'none'">{{ selectedCount.toLocaleString() }} {{ messages.selectedMessage }} / </span>
+        <span>{{ rowCount.toLocaleString() }} {{ messages.totalMessage }}</span>
+      </div>
+      <mat-paginator *ngIf="limit > 0"
+                     [attr.aria-label]="'Select page' | transloco"
+                     [length]="rowCount"
+                     [pageSize]="pageSize"
+                     [pageIndex]="offset"
+                     [pageSizeOptions]="pageSizeOptions"
+                     [showFirstLastButtons]="true"
+                     (page)="onPaginatorPage($event)">
+      </mat-paginator>
+    </ng-template>
+  </ngx-datatable-footer>
 </ngx-datatable>
 
 <mat-menu #columnMenu="matMenu">

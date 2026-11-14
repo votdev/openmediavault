@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 
@@ -27,6 +27,7 @@ import { DataStoreService } from '~/app/shared/services/data-store.service';
   selector: 'omv-dashboard-widget-datatable',
   templateUrl: './dashboard-widget-datatable.component.html',
   styleUrls: ['./dashboard-widget-datatable.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardWidgetDatatableComponent implements OnInit {

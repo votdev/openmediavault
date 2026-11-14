@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { Observable, of } from 'rxjs';
 
@@ -26,6 +26,7 @@ import { unixTimeStamp } from '~/app/functions.helper';
   selector: 'omv-dashboard-widget-rrd',
   templateUrl: './dashboard-widget-rrd.component.html',
   styleUrls: ['./dashboard-widget-rrd.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardWidgetRrdComponent implements OnInit {

@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 
@@ -26,6 +26,7 @@ import { DialogService } from '~/app/shared/services/dialog.service';
   selector: 'omv-guru-meditation-page',
   templateUrl: './guru-meditation-page.component.html',
   styleUrls: ['./guru-meditation-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class GuruMeditationPageComponent implements OnInit, OnDestroy {

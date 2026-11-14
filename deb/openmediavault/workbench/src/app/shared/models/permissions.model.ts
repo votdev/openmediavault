@@ -19,7 +19,6 @@ import * as _ from 'lodash';
 
 export type Role = 'admin' | 'user';
 
-// eslint-disable-next-line no-shadow
 export enum Roles {
   admin = 'admin',
   user = 'user'

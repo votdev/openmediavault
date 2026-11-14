@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
@@ -31,6 +31,7 @@ import { DialogService } from '~/app/shared/services/dialog.service';
 
 @Component({
   template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DiskDatatablePageComponent {
@@ -196,7 +197,6 @@ export class DiskDatatablePageComponent {
         confirmationDialogConfig: {
           template: 'confirmation',
           message: gettext(
-            // eslint-disable-next-line max-len
             'It may take a while to detect the new devices, thus it might be necessary to reload the table several times. Do you want to proceed?'
           )
         },

@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormGroupDirective } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
@@ -25,6 +25,7 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
   selector: 'omv-form-checkbox',
   templateUrl: './form-checkbox.component.html',
   styleUrls: ['./form-checkbox.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormCheckboxComponent extends AbstractFormFieldComponent {

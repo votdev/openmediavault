@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 
-// eslint-disable-next-line max-len
 import { FormFolderbrowserComponent } from '~/app/core/components/intuition/form/components/form-folderbrowser/form-folderbrowser.component';
 import { IntuitionModule } from '~/app/core/components/intuition/intuition.module';
 import { PageContextService } from '~/app/core/services/page-context.service';

@@ -15,12 +15,13 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { TextPageConfig } from '~/app/core/components/intuition/models/text-page-config.type';
 
 @Component({
   template: '<omv-intuition-text-page [config]="this.config"></omv-intuition-text-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FilesystemDetailsTextPageComponent {

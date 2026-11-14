@@ -10,10 +10,10 @@ describe('Login page', () => {
   });
 
   it('Log in', () => {
-    const username: string = Cypress.env('username');
-    const password: string = Cypress.env('password');
-    cy.get('[ng-reflect-name="username"]').type(username);
-    cy.get('[ng-reflect-name="password"]').type(password);
-    cy.get('button[type="submit"]').click();
+    cy.env(['username', 'password']).then(({ username, password }) => {
+      cy.get('[ng-reflect-name="username"]').type(username);
+      cy.get('[ng-reflect-name="password"]').type(password);
+      cy.get('button[type="submit"]').click();
+    });
   });
 });

@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
 
@@ -25,6 +25,7 @@ import { DataStoreService } from '~/app/shared/services/data-store.service';
 @Component({
   selector: 'omv-form-sslcert-select',
   templateUrl: './form-sslcert-select.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormSslcertSelectComponent extends FormSelectComponent {

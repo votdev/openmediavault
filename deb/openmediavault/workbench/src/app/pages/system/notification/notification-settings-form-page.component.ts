@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 
 import { FormPageConfig } from '~/app/core/components/intuition/models/form-page-config.type';
@@ -23,6 +23,7 @@ import { BaseFormPageComponent } from '~/app/pages/base-page-component';
 
 @Component({
   template: '<omv-intuition-form-page [config]="this.config"></omv-intuition-form-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class NotificationSettingsFormPageComponent extends BaseFormPageComponent {
@@ -174,7 +175,6 @@ export class NotificationSettingsFormPageComponent extends BaseFormPageComponent
             method: 'sendTestEmail',
             progressMessage: gettext('Please wait, sending a test email ...'),
             successNotification: gettext(
-              // eslint-disable-next-line max-len
               'An attempt to send the test email has been made. Please check your mailbox. If the email does not arrive, check any spam folders and also check there are no Postfix related errors in the system log.'
             )
           }

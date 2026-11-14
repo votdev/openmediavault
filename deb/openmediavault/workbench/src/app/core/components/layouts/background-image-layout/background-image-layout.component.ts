@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -26,6 +26,7 @@ import { Unsubscribe } from '~/app/decorators';
   selector: 'omv-background-image-layout',
   templateUrl: './background-image-layout.component.html',
   styleUrls: ['./background-image-layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class BackgroundImageLayoutComponent implements OnInit {

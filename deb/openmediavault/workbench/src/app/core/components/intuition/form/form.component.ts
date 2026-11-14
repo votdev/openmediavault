@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -52,6 +52,7 @@ let nextUniqueId = 0;
   selector: 'omv-intuition-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormComponent implements AfterViewInit, OnInit {

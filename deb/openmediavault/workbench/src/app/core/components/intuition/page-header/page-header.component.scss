@@ -4,4 +4,11 @@
   mat-progress-bar {
     position: absolute;
   }
+
+  // Show the loading indicators with a delay to prevent flickering
+  // if the data is loaded quickly.
+  .omv-page-header-delayed {
+    opacity: 0;
+    animation: fade-in 150ms ease-out 400ms forwards;
+  }
 }

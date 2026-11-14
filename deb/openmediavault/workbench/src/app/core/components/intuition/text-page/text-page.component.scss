@@ -1,0 +1,9 @@
+@use 'scss/mixins';
+@use 'scss/defaults/variables' as dv;
+@include mixins.omv-card-toolbar;
+
+mat-card {
+  mat-card-content {
+    padding-top: dv.$omv-padding;
+  }
+}

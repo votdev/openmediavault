@@ -15,7 +15,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
 
@@ -35,6 +43,7 @@ export type AlertPanelButtonConfig = {
   selector: 'omv-alert-panel',
   templateUrl: './alert-panel.component.html',
   styleUrls: ['./alert-panel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class AlertPanelComponent implements OnInit {

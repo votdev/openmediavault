@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 

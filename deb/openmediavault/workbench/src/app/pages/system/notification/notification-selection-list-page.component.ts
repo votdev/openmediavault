@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { SelectionListPageConfig } from '~/app/core/components/intuition/models/selection-list-page-config.type';
 import { BaseSelectionListPageComponent } from '~/app/pages/base-page-component';
@@ -23,6 +23,7 @@ import { BaseSelectionListPageComponent } from '~/app/pages/base-page-component'
 @Component({
   template:
     '<omv-intuition-selection-list-page [config]="this.config"></omv-intuition-selection-list-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class NotificationSelectionListPageComponent extends BaseSelectionListPageComponent {

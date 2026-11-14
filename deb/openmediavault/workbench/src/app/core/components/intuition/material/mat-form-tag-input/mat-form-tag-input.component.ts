@@ -18,7 +18,14 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, HostBinding, Input, Optional, Self } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  Optional,
+  Self
+} from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatFormFieldControl } from '@angular/material/form-field';
@@ -40,6 +47,7 @@ let nextUniqueId = 0;
       useExisting: MatFormTagInputComponent
     }
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class MatFormTagInputComponent implements ControlValueAccessor, MatFormFieldControl<string> {

@@ -15,13 +15,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { FormButtonComponent } from '~/app/core/components/intuition/form/components/form-button/form-button.component';
 
 @Component({
   selector: 'omv-form-icon-button',
   templateUrl: './form-icon-button.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormIconButtonComponent extends FormButtonComponent {}

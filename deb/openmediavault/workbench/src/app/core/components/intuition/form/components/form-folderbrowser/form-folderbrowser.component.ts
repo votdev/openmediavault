@@ -17,7 +17,14 @@
  */
 import { ConnectedPosition } from '@angular/cdk/overlay';
 import { ViewportRuler } from '@angular/cdk/scrolling';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { MatSelectionListChange } from '@angular/material/list';
@@ -33,6 +40,7 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-form-folderbrowser',
   templateUrl: './form-folderbrowser.component.html',
   styleUrls: ['./form-folderbrowser.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormFolderbrowserComponent

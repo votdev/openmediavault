@@ -17,7 +17,8 @@
 
   @include mat.sidenav-overrides(
     (
-      container-width: dv.$omv-navigation-bar-width
+      container-width: dv.$omv-navigation-bar-width,
+      container-shape: 0
     )
   );
 }

@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import * as _ from 'lodash';
 
 import { AbstractPageComponent } from '~/app/core/components/intuition/abstract-page-component';
@@ -30,6 +30,7 @@ import { PageContextService } from '~/app/core/services/page-context.service';
   templateUrl: './tabs-page.component.html',
   styleUrls: ['./tabs-page.component.scss'],
   providers: [PageContextService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class TabsPageComponent extends AbstractPageComponent<TabsPageConfig> {

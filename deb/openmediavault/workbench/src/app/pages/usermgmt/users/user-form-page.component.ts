@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 
 import { FormPageConfig } from '~/app/core/components/intuition/models/form-page-config.type';
@@ -23,6 +23,7 @@ import { BaseFormPageComponent } from '~/app/pages/base-page-component';
 
 @Component({
   template: '<omv-intuition-form-page [config]="this.config"></omv-intuition-form-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class UserFormPageComponent extends BaseFormPageComponent {
@@ -56,6 +57,7 @@ export class UserFormPageComponent extends BaseFormPageComponent {
         type: 'textInput',
         name: 'email',
         label: gettext('Email'),
+        hint: gettext('Messages from the system for this user are sent to this address.'),
         value: '',
         autocomplete: 'off',
         validators: {
@@ -96,6 +98,9 @@ export class UserFormPageComponent extends BaseFormPageComponent {
         type: 'select',
         name: 'shell',
         label: gettext('Shell'),
+        hint: gettext(
+          'The shell used for console and SSH logins. Select <em>nologin</em> to deny shell access.'
+        ),
         placeholder: gettext('Select a shell ...'),
         value: '/usr/bin/sh',
         store: {
@@ -117,6 +122,7 @@ export class UserFormPageComponent extends BaseFormPageComponent {
         type: 'select',
         name: 'groups',
         label: gettext('Groups'),
+        hint: gettext('The groups the user is a member of.'),
         placeholder: gettext('Select groups ...'),
         multiple: true,
         valueField: 'name',
@@ -141,6 +147,7 @@ export class UserFormPageComponent extends BaseFormPageComponent {
         type: 'datatable',
         name: 'sshpubkeys',
         label: gettext('SSH public keys'),
+        hint: gettext('Public keys that allow this user to log in via SSH without a password.'),
         hasHeader: false,
         hasFooter: false,
         columns: [
@@ -184,9 +191,8 @@ export class UserFormPageComponent extends BaseFormPageComponent {
       {
         type: 'checkbox',
         name: 'disallowusermod',
-        label: gettext('Disallow account modification'),
-        value: false,
-        hint: gettext('Disallow the user to modify their own account.')
+        label: gettext('Disallow the user to modify their own account.'),
+        value: false
       },
       {
         type: 'tagInput',

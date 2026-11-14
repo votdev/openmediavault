@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form/components/abstract-form-field-component';
@@ -24,6 +24,7 @@ import { ClipboardService } from '~/app/shared/services/clipboard.service';
 @Component({
   selector: 'omv-form-password-input',
   templateUrl: './form-password-input.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormPasswordInputComponent extends AbstractFormFieldComponent {

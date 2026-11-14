@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form/components/abstract-form-field-component';
@@ -8,6 +8,7 @@ import { format } from '~/app/functions.helper';
 @Component({
   selector: 'omv-form-card',
   templateUrl: './form-card.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormCardComponent extends AbstractFormFieldComponent implements OnInit {

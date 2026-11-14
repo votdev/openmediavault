@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from '@openng/ngx-toastr';
 
 import { LoginPageComponent } from '~/app/core/pages/login-page/login-page.component';
@@ -12,7 +11,7 @@ describe('LoginPageComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, PagesModule, TestingModule, ToastrModule.forRoot()]
+      imports: [PagesModule, TestingModule, ToastrModule.forRoot()]
     }).compileComponents();
   }));
 

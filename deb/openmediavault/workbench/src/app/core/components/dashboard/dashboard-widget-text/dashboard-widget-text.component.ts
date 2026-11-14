@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 
 import { DashboardWidgetConfig } from '~/app/core/components/dashboard/models/dashboard-widget-config.model';
@@ -24,6 +24,7 @@ import { DashboardWidgetConfig } from '~/app/core/components/dashboard/models/da
   selector: 'omv-dashboard-widget-text',
   templateUrl: './dashboard-widget-text.component.html',
   styleUrls: ['./dashboard-widget-text.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardWidgetTextComponent implements OnInit {

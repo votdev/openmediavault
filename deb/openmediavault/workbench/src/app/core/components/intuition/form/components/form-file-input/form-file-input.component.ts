@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import * as _ from 'lodash';
 
@@ -25,6 +25,7 @@ import { AbstractFormFieldComponent } from '~/app/core/components/intuition/form
   selector: 'omv-form-file-input',
   templateUrl: './form-file-input.component.html',
   styleUrls: ['./form-file-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormFileInputComponent extends AbstractFormFieldComponent {

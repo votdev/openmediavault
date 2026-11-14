@@ -1,17 +1,8 @@
-@use '@angular/material' as mat;
+@use 'scss/mixins';
 
 // The datatable is placed on the filled surface of a form field, which has
 // the same color as the toolbar of a datatable on a card. Raise the toolbar
-// by one level using a state layer of the text color. This is darker in the
-// light and lighter in the dark theme.
+// by one level.
 omv-datatable {
-  @include mat.toolbar-overrides(
-    (
-      container-background-color: color-mix(
-          in srgb,
-          var(--mat-sys-surface-variant),
-          var(--mat-sys-on-surface) calc(var(--mat-sys-dragged-state-layer-opacity) * 100%)
-        )
-    )
-  );
+  @include mixins.omv-toolbar-surface($raised: true);
 }

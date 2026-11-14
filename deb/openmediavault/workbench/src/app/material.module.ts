@@ -20,6 +20,7 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -29,6 +30,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DomSanitizer } from '@angular/platform-browser';
+
+import { PaginatorIntlService } from '~/app/shared/services/paginator-intl.service';
 
 @NgModule({
   exports: [
@@ -48,6 +51,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatPaginatorModule,
     MatNativeDateModule,
     MatProgressBarModule,
     MatRippleModule,
@@ -68,7 +72,8 @@ import { DomSanitizer } from '@angular/platform-browser';
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { floatLabel: 'always', subscriptSizing: 'dynamic' }
-    }
+    },
+    { provide: MatPaginatorIntl, useClass: PaginatorIntlService }
   ]
 })
 export class MaterialModule {

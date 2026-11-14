@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  */
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Event, NavigationEnd, Router } from '@angular/router';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
@@ -44,6 +44,7 @@ import { UserLocalStorageService } from '~/app/shared/services/user-local-storag
   selector: 'omv-workbench-layout',
   templateUrl: './workbench-layout.component.html',
   styleUrls: ['./workbench-layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class WorkbenchLayoutComponent implements OnInit {

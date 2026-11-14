@@ -70,13 +70,25 @@ body.omv-dark-theme {
 }
 
 // The toolbars within a card (e.g. of the datatable, text or selection list
-// page) are set off from the surface of the card.
+// page) are set off from the surface of the card. The paginator (e.g. of the
+// datatable) must not paint the default surface color over the card.
 mat-card {
-  @include mat.toolbar-overrides(
+  @include mixins.omv-toolbar-surface;
+  @include mat.paginator-overrides(
     (
-      container-background-color: var(--mat-sys-surface-variant)
+      container-background-color: transparent
     )
   );
+
+  .mat-mdc-card-actions {
+    padding: dv.$omv-padding;
+  }
+}
+
+// The tab headers are aligned with the content of the pages, which has a
+// margin of $omv-margin.
+.mat-mdc-tab-header {
+  padding-inline: dv.$omv-margin;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -953,10 +965,6 @@ mat-card {
   font-size: var(--mat-sys-title-large-size);
 }
 
-.omv-font-size-headline {
-  font-size: var(--mat-sys-headline-small-size);
-}
-
 .omv-font-size-subheading-2 {
   font-size: var(--mat-sys-body-large-size);
 }
@@ -1011,6 +1019,26 @@ mat-card {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Keyframes
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes toggle-opacity {
   50% {
     opacity: 0;
@@ -1130,7 +1158,7 @@ mat-card {
       margin: 0;
       overflow: visible;
       padding: 0;
-      word-wrap: normal;
+      overflow-wrap: normal;
     }
   }
 }
@@ -1147,8 +1175,15 @@ body {
 body {
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
+  font: var(--mat-sys-body-large);
   margin: 0;
+}
+
+// Use the corporate color as background while the application is loading and
+// the login page is displayed. After the login the background is determined by
+// the Angular theme again.
+body:has(.boot-loader, omv-login-page) {
+  background-color: var(--omv-color-corporate);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -15,13 +15,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 
 import { DatatablePageConfig } from '~/app/core/components/intuition/models/datatable-page-config.type';
 
 @Component({
   template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class UpdateDatatablePageComponent {
@@ -41,7 +42,6 @@ export class UpdateDatatablePageComponent {
           '  <br>' +
           '{% if extendeddescription %}  <span>{{ extendeddescription }}</span><br><br>{% endif %}' +
           '{% if maintainer %}  <span>{{ "Maintainer" | translate }}: {{ maintainer }}</span><br>{% endif %}' +
-          // eslint-disable-next-line max-len
           '{% if homepage %}  <span>{{ "Homepage" | translate }}: <a href="{{ homepage }}">{{ homepage }}</a></span><br>{% endif %}' +
           '{% if repository %}  <span>{{ "Repository" | translate }}: {{ repository }}</span><br>{% endif %}' +
           '{% if size %}  <span>{{ "Size" | translate }}: {{ size | binaryunit }}</span><br>{% endif %}' +

@@ -33,7 +33,6 @@ import { Constraint } from '~/app/shared/models/constraint.type';
 import { ConstraintService } from '~/app/shared/services/constraint.service';
 
 const regExp = {
-  /* eslint-disable max-len */
   // Regular expression is taken from Debian tools.
   // - https://github.com/shadow-maint/shadow/blob/55e75ec6b2f8878c6c269570a4470730092c1b39/lib/chkname.c#L52
   // - https://salsa.debian.org/debian/adduser/-/blob/debian/latest/adduser.conf?ref_type=heads#L88
@@ -44,7 +43,8 @@ const regExp = {
   // - Control characters 0x00-0x1F are illegal
   // - Leading and trailing spaces are not allowed
   // - All other Unicode characters (incl. spaces within the name) are legal
-  shareName: /^(?![ ])[^"\x00-\x1F\\\/\[\]:|<>+=;,*?]+(?<! )$/,
+  // eslint-disable-next-line no-control-regex
+  shareName: /^(?![ ])[^"\x00-\x1F\\/[\]:|<>+=;,*?]+(?<! )$/,
   ipv4NetCidr:
     /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(3[0-2]|[0-2]?[0-9])$/,
   ipv6NetCidr: /^(?:[a-f0-9]{1,4}:){7}[a-f0-9]{1,4}\/(12[0-8]|1[0-1][0-9]|[1-9][0-9]|[0-9])$/i,

@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 
 import { DatatablePageConfig } from '~/app/core/components/intuition/models/datatable-page-config.type';
@@ -25,6 +25,7 @@ import { DEFAULT_TEXTS } from '~/app/shared/constants/text.constants';
 @Component({
   template:
     '<omv-intuition-datatable-page #page [config]="this.config"></omv-intuition-datatable-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class InterfaceDatatablePageComponent extends BaseFormPageComponent {
@@ -62,7 +63,6 @@ export class InterfaceDatatablePageComponent extends BaseFormPageComponent {
         sortable: true,
         cellTemplateName: 'template',
         cellTemplateConfig:
-          // eslint-disable-next-line max-len
           'IPv4: {{ method | replace("manual", "Disabled") | replace("dhcp", "DHCP") | replace("auto", "Automatic") | replace("static", "Static") | translate }}<br>IPv6: {{ method6 | replace("manual", "Disabled") | replace("dhcp", "DHCP") | replace("auto", "Automatic") | replace("static", "Static") | translate }}'
       },
       {

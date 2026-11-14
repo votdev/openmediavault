@@ -25,11 +25,10 @@ import * as _ from 'lodash';
 export function Unsubscribe() {
   return (target: any, propertyKey: string) => {
     const originalFn = target.ngOnDestroy;
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-    target.ngOnDestroy = function () {
+    target.ngOnDestroy = function (...args: any[]) {
       const property = this[propertyKey];
       property?.unsubscribe?.();
-      originalFn?.apply?.(this, arguments);
+      originalFn?.apply?.(this, args);
     };
   };
 }

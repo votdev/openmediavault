@@ -15,7 +15,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { Router } from '@angular/router';
 import {
   autocompletion,
@@ -73,6 +81,7 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-intuition-code-editor-page',
   templateUrl: './code-editor-page.component.html',
   providers: [PageContextService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class CodeEditorPageComponent

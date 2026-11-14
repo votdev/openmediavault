@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Inject, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
@@ -49,6 +49,7 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   templateUrl: './form-dialog.component.html',
   styleUrls: ['./form-dialog.component.scss'],
   providers: [PageContextService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class FormDialogComponent {

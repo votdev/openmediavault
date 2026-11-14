@@ -16,6 +16,7 @@
  * GNU General Public License for more details.
  */
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -37,6 +38,7 @@ import { DEFAULT_TEXTS } from '~/app/shared/constants/text.constants';
 import { Icon } from '~/app/shared/enum/icon.enum';
 import { TaskDialogConfig } from '~/app/shared/models/task-dialog-config.type';
 import { AuthSessionService } from '~/app/shared/services/auth-session.service';
+import { DialogResultProvider } from '~/app/shared/services/dialog.service';
 import { RpcBgResponse, RpcService } from '~/app/shared/services/rpc.service';
 
 /**
@@ -47,9 +49,10 @@ import { RpcBgResponse, RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-task-dialog',
   templateUrl: './task-dialog.component.html',
   styleUrls: ['./task-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
-export class TaskDialogComponent implements OnInit, OnDestroy {
+export class TaskDialogComponent implements OnInit, OnDestroy, DialogResultProvider {
   @HostBinding('class')
   className = 'omv-display-flex omv-flex-column omv-h-100';
 
@@ -93,7 +96,9 @@ export class TaskDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    // The dialog can be closed while a task is still running, e.g.
+    // via `ESC`. Make sure the task is stopped in this case.
+    this.onStop();
   }
 
   onStart() {
@@ -142,8 +147,18 @@ export class TaskDialogComponent implements OnInit, OnDestroy {
       });
   }
 
+  getDialogResult(): any {
+    return this.config.buttons.close.dialogResult;
+  }
+
   onStop(): void {
+    // Unsubscribing resets `running` (see `finalize`), so remember
+    // the state beforehand.
+    const stopTask = this.running && !_.isUndefined(this.filename);
     this.subscription?.unsubscribe();
+    if (!stopTask) {
+      return;
+    }
     this.rpcService
       .stopTask(this.filename)
       .pipe(

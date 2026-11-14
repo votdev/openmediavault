@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import dayjs from 'dayjs';
 import * as _ from 'lodash';
@@ -33,6 +33,7 @@ import {
 
 @Component({
   template: '<omv-intuition-datatable-page [config]="this.config"></omv-intuition-datatable-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class SystemInformationDatatablePageComponent {

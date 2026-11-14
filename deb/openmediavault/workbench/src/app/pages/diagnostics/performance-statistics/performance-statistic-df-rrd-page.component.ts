@@ -15,12 +15,13 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { RrdPageConfig } from '~/app/core/components/intuition/models/rrd-page-config.type';
 
 @Component({
   template: '<omv-intuition-rrd-page [config]="this.config"></omv-intuition-rrd-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class PerformanceStatisticDfRrdPageComponent {

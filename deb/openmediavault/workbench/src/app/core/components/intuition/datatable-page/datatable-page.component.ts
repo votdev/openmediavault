@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, Inject, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 import * as _ from 'lodash';
@@ -56,6 +56,7 @@ import { RpcService } from '~/app/shared/services/rpc.service';
   selector: 'omv-intuition-datatable-page',
   templateUrl: './datatable-page.component.html',
   providers: [PageContextService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DatatablePageComponent extends AbstractPageComponent<DatatablePageConfig> {

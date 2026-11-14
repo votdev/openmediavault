@@ -17,7 +17,14 @@
  */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, Input, Optional, Self, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Optional,
+  Self,
+  ViewEncapsulation
+} from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import * as _ from 'lodash';
@@ -38,6 +45,7 @@ let nextUniqueId = 0;
     }
   ],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class MatFormButtonComponent implements ControlValueAccessor, MatFormFieldControl<any> {

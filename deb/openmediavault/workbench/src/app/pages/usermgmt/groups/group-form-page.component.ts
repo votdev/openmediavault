@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { marker as gettext } from '@jsverse/transloco-keys-manager/marker';
 
 import { FormPageConfig } from '~/app/core/components/intuition/models/form-page-config.type';
@@ -23,6 +23,7 @@ import { BaseFormPageComponent } from '~/app/pages/base-page-component';
 
 @Component({
   template: '<omv-intuition-form-page [config]="this.config"></omv-intuition-form-page>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class GroupFormPageComponent extends BaseFormPageComponent {
@@ -55,6 +56,7 @@ export class GroupFormPageComponent extends BaseFormPageComponent {
         type: 'select',
         name: 'members',
         label: gettext('Members'),
+        hint: gettext('The users that belong to this group.'),
         placeholder: gettext('Select members ...'),
         multiple: true,
         valueField: 'name',

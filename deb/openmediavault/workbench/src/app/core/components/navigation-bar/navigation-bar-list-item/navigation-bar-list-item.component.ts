@@ -17,6 +17,7 @@
  */
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   Input,
@@ -37,6 +38,7 @@ import { Icon } from '~/app/shared/enum/icon.enum';
 @Component({
   selector: 'omv-navigation-bar-list-item',
   templateUrl: './navigation-bar-list-item.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class NavigationBarListItemComponent implements OnInit, AfterViewInit, OnDestroy {

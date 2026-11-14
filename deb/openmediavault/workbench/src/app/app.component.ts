@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Renderer2 } from '@angular/core';
 
 import { LocaleService } from '~/app/shared/services/locale.service';
 import {
@@ -26,6 +26,7 @@ import {
 @Component({
   selector: 'omv-root',
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class AppComponent implements OnInit {
